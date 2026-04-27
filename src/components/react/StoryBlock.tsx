@@ -92,7 +92,7 @@ export default function StoryBlock({ eyebrow, heading, body, aside, warm, icon =
           >
             {icons[icon]}
           </motion.div>
-          <span className="font-[Silkscreen] text-[13px] text-accent tracking-widest uppercase">
+          <span className="font-[Silkscreen] text-[15px] text-accent tracking-widest uppercase">
             {eyebrow}
           </span>
         </div>

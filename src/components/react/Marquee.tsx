@@ -2,24 +2,24 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 const tools = [
-  { name: "React", color: "bg-pastel-blue/50 text-blue-600 border-blue-100/80" },
-  { name: "Next.js", color: "bg-pastel-blue/50 text-blue-600 border-blue-100/80" },
-  { name: "TypeScript", color: "bg-pastel-blue/50 text-blue-600 border-blue-100/80" },
-  { name: "Flutter", color: "bg-pastel-purple/50 text-purple-600 border-purple-100/80" },
-  { name: "Supabase", color: "bg-pastel-green/50 text-green-600 border-green-100/80" },
-  { name: "PostgreSQL", color: "bg-pastel-blue/50 text-blue-600 border-blue-100/80" },
-  { name: "Python", color: "bg-pastel-yellow/50 text-yellow-700 border-yellow-100/80" },
-  { name: "Docker", color: "bg-pastel-blue/50 text-blue-600 border-blue-100/80" },
-  { name: "Kubernetes", color: "bg-pastel-purple/50 text-purple-600 border-purple-100/80" },
-  { name: "Tailwind CSS", color: "bg-pastel-blue/50 text-blue-600 border-blue-100/80" },
-  { name: "Node.js", color: "bg-pastel-green/50 text-green-600 border-green-100/80" },
-  { name: "MSSQL", color: "bg-pastel-orange/50 text-orange-600 border-orange-100/80" },
-  { name: "GitHub Actions", color: "bg-pastel-purple/50 text-purple-600 border-purple-100/80" },
-  { name: "Cloudflare", color: "bg-pastel-orange/50 text-orange-600 border-orange-100/80" },
-  { name: "Tailscale", color: "bg-pastel-green/50 text-green-600 border-green-100/80" },
-  { name: "Arch Linux", color: "bg-pastel-blue/50 text-blue-600 border-blue-100/80" },
-  { name: "Hyprland", color: "bg-pastel-purple/50 text-purple-600 border-purple-100/80" },
-  { name: "n8n", color: "bg-pastel-pink/50 text-pink-600 border-pink-100/80" },
+  { name: "React", color: "bg-pastel-blue/50 text-blue-600 border-blue-100/80", icon: "/reactjs.svg" },
+  { name: "Next.js", color: "bg-pastel-blue/50 text-blue-600 border-blue-100/80", icon: "/nextjs-light.svg" },
+  { name: "TypeScript", color: "bg-pastel-blue/50 text-blue-600 border-blue-100/80", icon: "/typescript.svg" },
+  { name: "Flutter", color: "bg-pastel-purple/50 text-purple-600 border-purple-100/80", icon: "/flutter.svg" },
+  { name: "Supabase", color: "bg-pastel-green/50 text-green-600 border-green-100/80", icon: "/supabase.svg" },
+  { name: "PostgreSQL", color: "bg-pastel-blue/50 text-blue-600 border-blue-100/80", icon: "/postgresql.svg" },
+  { name: "Python", color: "bg-pastel-yellow/50 text-yellow-700 border-yellow-100/80", icon: "/python.svg" },
+  { name: "Docker", color: "bg-pastel-blue/50 text-blue-600 border-blue-100/80", icon: "/docker-engine.svg" },
+  { name: "Kubernetes", color: "bg-pastel-purple/50 text-purple-600 border-purple-100/80", icon: "/kubernetes.svg" },
+  { name: "Tailwind CSS", color: "bg-pastel-blue/50 text-blue-600 border-blue-100/80", icon: "/tailwind.svg" },
+  { name: "Node.js", color: "bg-pastel-green/50 text-green-600 border-green-100/80", icon: "/nodejs.svg" },
+  { name: "MSSQL", color: "bg-pastel-orange/50 text-orange-600 border-orange-100/80", icon: "/microsoft-sql-server.svg" },
+  { name: "GitHub Actions", color: "bg-pastel-purple/50 text-purple-600 border-purple-100/80", icon: "/github-light.svg" },
+  { name: "Cloudflare", color: "bg-pastel-orange/50 text-orange-600 border-orange-100/80", icon: "/cloudflare.svg" },
+  { name: "Tailscale", color: "bg-pastel-green/50 text-green-600 border-green-100/80", icon: "/tailscale-light.svg" },
+  { name: "Arch Linux", color: "bg-pastel-blue/50 text-blue-600 border-blue-100/80", icon: "/arch-linux.svg" },
+  { name: "Hyprland", color: "bg-pastel-purple/50 text-purple-600 border-purple-100/80", icon: "/hyprland.svg" },
+  { name: "n8n", color: "bg-pastel-pink/50 text-pink-600 border-pink-100/80", icon: "/n8n.svg" },
 ];
 
 export default function Marquee() {
@@ -51,7 +51,7 @@ export default function Marquee() {
             <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
           </svg>
         </motion.div>
-        <span className="font-[Silkscreen] text-[13px] text-accent tracking-widest uppercase">
+        <span className="font-[Silkscreen] text-[15px] text-accent tracking-widest uppercase">
           The Stack
         </span>
       </div>
@@ -63,8 +63,9 @@ export default function Marquee() {
             key={`a-${i}`}
             whileHover={{ scale: 1.08, y: -3 }}
             transition={{ type: "spring", stiffness: 300 }}
-            className={`inline-flex items-center gap-2 px-4 py-2.5 text-xs font-bold rounded-full border shrink-0 cursor-default shadow-sm shadow-black/[0.02] ${tool.color}`}
+            className={`inline-flex items-center gap-2.5 px-4 py-2.5 text-xs font-bold rounded-full border shrink-0 cursor-default shadow-sm shadow-black/[0.02] ${tool.color}`}
           >
+            <img src={tool.icon} alt="" className="w-4 h-4 object-contain" />
             {tool.name}
           </motion.span>
         ))}
@@ -77,8 +78,9 @@ export default function Marquee() {
             key={`b-${i}`}
             whileHover={{ scale: 1.08, y: -3 }}
             transition={{ type: "spring", stiffness: 300 }}
-            className={`inline-flex items-center gap-2 px-4 py-2.5 text-xs font-bold rounded-full border shrink-0 cursor-default shadow-sm shadow-black/[0.02] ${tool.color}`}
+            className={`inline-flex items-center gap-2.5 px-4 py-2.5 text-xs font-bold rounded-full border shrink-0 cursor-default shadow-sm shadow-black/[0.02] ${tool.color}`}
           >
+            <img src={tool.icon} alt="" className="w-4 h-4 object-contain" />
             {tool.name}
           </motion.span>
         ))}

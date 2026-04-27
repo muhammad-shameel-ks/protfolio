@@ -146,7 +146,7 @@ export default function Hero() {
           transition={{ delay: 0.7, duration: 0.8 }}
           className="mb-10"
         >
-          <span className="font-[Silkscreen] text-[14px] md:text-[15px] text-accent tracking-wider uppercase">
+          <span className="font-[Silkscreen] text-[15px] md:text-[17px] text-accent tracking-wider uppercase">
             React / K8s / Linux / TypeScript / AI-Augmented
           </span>
         </motion.div>

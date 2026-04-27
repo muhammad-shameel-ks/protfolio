@@ -50,13 +50,11 @@ export default function InfraFlow() {
         <div className="flex items-center gap-3 mb-4">
           <motion.div
             whileHover={{ rotate: -8 }}
-            className="w-10 h-10 rounded-xl bg-pastel-green/40 flex items-center justify-center text-green-500 shrink-0"
+            className="w-10 h-10 rounded-xl bg-pastel-blue/40 flex items-center justify-center text-blue-500 shrink-0"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-            </svg>
+            <img src="/kubernetes.svg" alt="K8s" className="w-5 h-5 object-contain" />
           </motion.div>
-          <span className="font-[Silkscreen] text-[13px] text-accent tracking-widest uppercase">
+          <span className="font-[Silkscreen] text-[15px] text-accent tracking-widest uppercase">
             Infrastructure
           </span>
         </div>
@@ -66,7 +64,7 @@ export default function InfraFlow() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-2xl md:text-4xl font-bold tracking-tight mb-3"
+          className="text-3xl md:text-5xl font-bold tracking-tight mb-3"
         >
           My code <span className="text-accent">deploys itself.</span>
         </motion.h2>
@@ -75,11 +73,11 @@ export default function InfraFlow() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1, duration: 0.8 }}
-          className="text-fg-muted text-base font-light mb-14 max-w-2xl leading-relaxed"
+          className="text-fg-muted text-lg font-light mb-14 max-w-3xl leading-relaxed"
         >
           Zero-trust CI/CD. Push to GitHub, container builds, encrypted tunnel,
           auto-deploys to my private K8s cluster. No ports exposed. No cloud bills.{' '}
-          <span className="font-medium text-fg">Just vibes and YAML.</span>
+          <span className="font-medium text-fg text-lg">Just vibes and YAML.</span>
         </motion.p>
 
         {/* Flow */}

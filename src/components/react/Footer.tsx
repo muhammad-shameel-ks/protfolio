@@ -32,7 +32,7 @@ export default function Footer() {
               <polyline points="22,6 12,13 2,6"/>
             </svg>
           </motion.div>
-          <span className="font-[Silkscreen] text-[13px] text-accent tracking-widest uppercase">
+          <span className="font-[Silkscreen] text-[15px] text-accent tracking-widest uppercase">
             Let's Talk
           </span>
         </div>

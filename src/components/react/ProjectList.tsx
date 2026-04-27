@@ -12,6 +12,7 @@ interface Project {
   highlights: string[];
   cardBg: string;
   iconColor: string;
+  showInternshipBadge?: boolean;
 }
 
 const projects: Project[] = [
@@ -59,9 +60,9 @@ const projects: Project[] = [
   {
     index: "03",
     title: "KSDC Smart Helper",
-    subtitle: "Government Database Utility",
-    description: "Built for the Kerala State Development Corporation. Their APIs were silently crashing in production due to encryption mismatches. I found the bug, fixed the infra, and hardened everything.",
-    funNote: "Debugging government software is its own extreme sport.",
+    subtitle: "SQL Command Generator",
+    description: "A tool to auto-generate SQL commands and make SQL usage simpler for the Kerala State Development Corporation. Built to simplify complex database operations for non-technical staff.",
+    funNote: "Making SQL accessible to everyone, one query at a time.",
     tags: [
       { name: "React", color: "bg-pastel-blue/50 text-blue-700" },
       { name: "TypeScript", color: "bg-pastel-blue/50 text-blue-700" },
@@ -70,12 +71,13 @@ const projects: Project[] = [
     ],
     link: "https://github.com/muhammad-shameel-ks/ksdc-smart-helper",
     highlights: [
-      "Fixed silent encryption-related API crashes",
-      "Centralized CORS & env management",
-      "Production security hardening",
+      "Auto-generate complex SQL queries",
+      "Simplified interface for non-technical users",
+      "Query validation and optimization",
     ],
     cardBg: "bg-gradient-to-br from-pastel-orange/20 to-pastel-yellow/10",
     iconColor: "bg-pastel-orange/40 text-orange-600",
+    showInternshipBadge: true,
   },
   {
     index: "04",
@@ -109,6 +111,7 @@ const projectIcons: Record<string, React.ReactNode> = {
 function TiltCard({ project }: { project: Project }) {
   const ref = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [showInternshipNote, setShowInternshipNote] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -194,6 +197,38 @@ function TiltCard({ project }: { project: Project }) {
             {project.funNote}
           </p>
         </div>
+
+        {/* Internship Badge */}
+        {project.showInternshipBadge && (
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowInternshipNote(!showInternshipNote);
+            }}
+            className="mb-4 px-3.5 py-2 text-[12px] font-bold rounded-lg bg-gradient-to-r from-slate-800 to-slate-700 text-slate-200 shadow-lg shadow-slate-500/20 hover:shadow-xl hover:shadow-slate-500/30 transition-all flex items-center gap-1.5 border border-slate-600/50"
+          >
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/>
+            </svg>
+            {showInternshipNote ? "Hide Note" : "I worked here"}
+          </motion.button>
+        )}
+
+        {/* Internship Note */}
+        {project.showInternshipBadge && showInternshipNote && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="mb-4 px-4 py-3 rounded-xl bg-gradient-to-r from-slate-800 to-slate-900 border border-slate-600/50 shadow-lg"
+          >
+            <p className="text-sm text-slate-200 font-medium">
+              Worked at KSDC for <span className="text-accent font-bold">3 months</span> as a Software Developer.
+            </p>
+          </motion.div>
+        )}
 
         {/* Tags */}
         <div className="flex flex-wrap gap-1.5">

@@ -1,8 +1,49 @@
-import React, { useRef } from 'react';
+import React, { useRef, useMemo } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+
+const FLOAT_ICONS = [
+  "/reactjs.svg", "/nextjs-light.svg", "/typescript.svg", "/kubernetes.svg",
+  "/docker-engine.svg", "/python.svg", "/nodejs.svg", "/supabase.svg",
+  "/tailwind.svg", "/arch-linux.svg"
+];
+
+function FloatingIcon({ src, delay, position }: { src: string, delay: number, position: { top: string, left: string } }) {
+  return (
+    <motion.img
+      src={src}
+      alt=""
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ 
+        opacity: [0, 0.4, 0.4, 0],
+        scale: [0.5, 1, 1, 0.5],
+        y: [0, -40, -40, -80],
+        x: [0, 20, -20, 0],
+      }}
+      transition={{
+        duration: 8,
+        delay,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }}
+      className="absolute w-10 h-10 object-contain pointer-events-none z-0 filter grayscale opacity-40"
+      style={position}
+    />
+  );
+}
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const floatingIcons = useMemo(() => {
+    return FLOAT_ICONS.map((src, i) => ({
+      src,
+      delay: i * 2,
+      position: {
+        top: `${15 + (Math.random() * 60)}%`,
+        left: `${65 + (Math.random() * 25)}%`,
+      }
+    }));
+  }, []);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
@@ -33,7 +74,7 @@ export default function Hero() {
           className="flex items-center gap-2.5"
         >
           <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
-            <span className="text-white text-xs font-bold font-[Silkscreen]">S</span>
+            <span className="text-white text-sm font-bold font-[Silkscreen]">S</span>
           </div>
           <span className="text-sm font-semibold text-fg hidden sm:inline">shameel.dev</span>
         </motion.div>
@@ -64,6 +105,13 @@ export default function Hero() {
         transition={{ delay: 0.6, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         className="absolute top-[18vh] right-[8vw] w-56 h-64 rounded-3xl bg-pastel-blue/25 hidden lg:block"
       />
+
+      {/* Floating background icons */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden lg:block">
+        {floatingIcons.map((icon, i) => (
+          <FloatingIcon key={i} {...icon} />
+        ))}
+      </div>
 
       {/* Main content */}
       <div className="max-w-4xl relative z-10">
@@ -146,7 +194,7 @@ export default function Hero() {
           transition={{ delay: 0.7, duration: 0.8 }}
           className="mb-10"
         >
-          <span className="font-[Silkscreen] text-[15px] md:text-[17px] text-accent tracking-wider uppercase">
+          <span className="font-[Silkscreen] text-[18px] md:text-[20px] text-accent tracking-wider uppercase">
             React / K8s / Linux / TypeScript / AI-Augmented
           </span>
         </motion.div>
@@ -167,7 +215,7 @@ export default function Hero() {
           >
             <div className="flex items-center gap-2 text-blue-600">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-              <span className="font-[Silkscreen] text-[11px] tracking-wider uppercase font-bold">Build</span>
+              <span className="font-[Silkscreen] text-[14px] tracking-wider uppercase font-bold">Build</span>
             </div>
             <p className="text-[13px] text-fg-muted leading-snug">
               Modern web apps with <span className="text-fg font-medium">React, Next.js, and TypeScript.</span> Type-safe and performant.
@@ -183,7 +231,7 @@ export default function Hero() {
           >
             <div className="flex items-center gap-2 text-purple-600">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-              <span className="font-[Silkscreen] text-[11px] tracking-wider uppercase font-bold">Deploy</span>
+              <span className="font-[Silkscreen] text-[14px] tracking-wider uppercase font-bold">Deploy</span>
             </div>
             <p className="text-[13px] text-fg-muted leading-snug">
               Production-grade <span className="text-fg font-medium">Kubernetes & Linux</span> environments. Automated CI/CD pipelines.
@@ -199,7 +247,7 @@ export default function Hero() {
           >
             <div className="flex items-center gap-2 text-orange-600">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a4 4 0 00-4 4v1a3 3 0 00-3 3 3 3 0 000 6 3 3 0 003 3v1a4 4 0 008 0v-1a3 3 0 003-3 3 3 0 000-6 3 3 0 00-3-3V6a4 4 0 00-4-4z"/><path d="M12 2v20"/></svg>
-              <span className="font-[Silkscreen] text-[11px] tracking-wider uppercase font-bold">Automate</span>
+              <span className="font-[Silkscreen] text-[14px] tracking-wider uppercase font-bold">Automate</span>
             </div>
             <p className="text-[13px] text-fg-muted leading-snug">
               Leveraging <span className="text-fg font-medium">AI & n8n</span> to build autonomous workflows and ship 3x faster.
@@ -215,7 +263,7 @@ export default function Hero() {
         transition={{ delay: 2, duration: 1 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-3 hidden md:flex"
       >
-        <span className="text-[12.5px] text-fg-faint font-[Silkscreen] tracking-wider">SCROLL DOWN</span>
+        <span className="text-[15px] text-fg-faint font-[Silkscreen] tracking-wider">SCROLL DOWN</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}

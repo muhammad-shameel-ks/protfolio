@@ -32,7 +32,7 @@ export default function Footer() {
               <polyline points="22,6 12,13 2,6"/>
             </svg>
           </motion.div>
-          <span className="font-[Silkscreen] text-[15px] text-accent tracking-widest uppercase">
+          <span className="font-[Silkscreen] text-[18px] text-accent tracking-widest uppercase">
             Let's Talk
           </span>
         </div>
@@ -74,7 +74,7 @@ export default function Footer() {
           <motion.a
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.97 }}
-            href="mailto:hello@shameel.dev"
+            href="#contact"
             className="inline-flex items-center justify-center gap-2.5 px-7 py-4 bg-accent text-white text-sm font-bold rounded-full hover:bg-accent-dark transition-colors shadow-lg shadow-accent/20"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -117,7 +117,7 @@ export default function Footer() {
                 {stat.icon}
               </div>
               <span className="text-2xl md:text-3xl font-extrabold text-fg block mb-1">{stat.value}</span>
-              <span className="font-[Silkscreen] text-[11px] text-fg-muted tracking-wider uppercase">{stat.label}</span>
+              <span className="font-[Silkscreen] text-[14px] text-fg-muted tracking-wider uppercase">{stat.label}</span>
             </motion.div>
           ))}
         </div>
@@ -130,7 +130,7 @@ export default function Footer() {
             </svg>
             {new Date().getFullYear()} Muhammad Shameel KS. Crafted with Astro & too much chai.
           </p>
-          <p className="font-[Silkscreen] text-[10.5px] text-fg-faint tracking-wider uppercase">
+          <p className="font-[Silkscreen] text-[13px] text-fg-faint tracking-wider uppercase">
             Built from Kerala, deployed from a VAIO.
           </p>
         </div>

@@ -54,7 +54,7 @@ export default function InfraFlow() {
           >
             <img src="/kubernetes.svg" alt="K8s" className="w-5 h-5 object-contain" />
           </motion.div>
-          <span className="font-[Silkscreen] text-[15px] text-accent tracking-widest uppercase">
+          <span className="font-[Silkscreen] text-[18px] text-accent tracking-widest uppercase">
             Infrastructure
           </span>
         </div>

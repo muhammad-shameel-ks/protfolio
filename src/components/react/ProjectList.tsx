@@ -160,7 +160,7 @@ function TiltCard({ project }: { project: Project }) {
             >
               {projectIcons[project.index]}
             </motion.div>
-            <span className="font-[Silkscreen] text-[11.5px] text-fg-faint tracking-wider uppercase">
+            <span className="font-[Silkscreen] text-[14.5px] text-fg-faint tracking-wider uppercase">
               {project.index} / {project.subtitle}
             </span>
           </div>
@@ -215,7 +215,7 @@ function TiltCard({ project }: { project: Project }) {
               className="overflow-hidden"
             >
               <div className="pt-5 mt-4 border-t border-border/30">
-                <span className="font-[Silkscreen] text-[14px] text-accent tracking-widest uppercase block mb-3">
+                <span className="font-[Silkscreen] text-[17px] text-accent tracking-widest uppercase block mb-3">
                   HIGHLIGHTS
                 </span>
                 <ul className="space-y-2.5 mb-5">
@@ -269,7 +269,7 @@ export default function ProjectList() {
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
             </svg>
           </motion.div>
-          <span className="font-[Silkscreen] text-[15px] text-accent tracking-widest uppercase">
+          <span className="font-[Silkscreen] text-[18px] text-accent tracking-widest uppercase">
             The Work
           </span>
         </div>

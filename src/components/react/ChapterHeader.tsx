@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 
 interface Chapter {
@@ -87,17 +87,6 @@ export default function ChapterHeader() {
               <span className="font-[Silkscreen] text-xs text-fg-muted tracking-wider uppercase">
                 {visibleChapter.label}
               </span>
-            </div>
-            
-            {/* Progress bar */}
-            <div className="hidden md:block w-32 h-1 rounded-full bg-border overflow-hidden">
-              <motion.div
-                className="h-full bg-accent rounded-full"
-                style={{
-                  // Calculate progress based on current chapter index
-                  width: `${((CHAPTERS.findIndex(c => c.id === visibleChapter.id) + 1) / CHAPTERS.length) * 100}%`
-                }}
-              />
             </div>
           </div>
         </motion.div>

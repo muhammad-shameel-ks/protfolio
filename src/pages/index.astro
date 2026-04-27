@@ -17,6 +17,7 @@ import Footer from '../components/react/Footer';
 	<div class="relative z-10">
 		<Hero client:load />
 
+		<!-- Chapter 01 — Origin story: builds trust, shows self-taught grit -->
 		<StoryBlock
 			client:visible
 			icon="rocket"
@@ -32,6 +33,7 @@ import Footer from '../components/react/Footer';
 			highlightWords={["annoyed", "stubborn", "ship"]}
 		/>
 
+		<!-- Chapter 02 — Philosophy: shows product thinking, user empathy -->
 		<StoryBlock
 			client:visible
 			warm={true}
@@ -42,9 +44,15 @@ import Footer from '../components/react/Footer';
 			aside="My operating philosophy is borrowed from my Linux setup: if it doesn't serve a purpose, it doesn't belong. Every function, every component, every line of YAML."
 		/>
 
-		<ProjectList client:visible />
-
-		<InfraFlow client:visible />
+		<!-- Chapter 03 — SysAdmin: differentiator, shows depth beyond frontend -->
+		<StoryBlock
+			client:visible
+			icon="cpu"
+			eyebrow="Chapter 03 — The Sysadmin"
+			heading="I don't just write apps. I run the machines they live on."
+			body="Most developers deploy to Vercel and call it a day. I run a Kubernetes cluster on a Sony VAIO in my bedroom. Pi-hole for DNS filtering, PocketBase for lightweight backends, Tailscale for zero-trust networking, and GitHub Actions pipelines that auto-deploy through encrypted tunnels. I understand the full stack — not just the React part, but the NGINX config, the Docker layers, the pod scheduling, and why your SSL cert expired at 3 AM."
+			aside="When a government API was silently crashing in production due to an encryption mismatch between environments, I was the one who found it. Nobody else noticed for weeks."
+		/>
 
 		<TextReveal
 			client:visible
@@ -52,17 +60,37 @@ import Footer from '../components/react/Footer';
 			highlightWords={["Kubernetes", "VAIO", "bedroom", "existential"]}
 		/>
 
+		<!-- Projects — the proof -->
+		<ProjectList client:visible />
+
+		<!-- Infra pipeline — shows DevOps chops -->
+		<InfraFlow client:visible />
+
+		<!-- Chapter 04 — AI workflow: shows modern relevance, multiplier mindset -->
+		<StoryBlock
+			client:visible
+			warm={true}
+			icon="brain"
+			eyebrow="Chapter 04 — The Multiplier"
+			heading="AI doesn't replace me. It makes me dangerous."
+			body="I use AI as a force multiplier, not a crutch. Claude for architectural decisions and code review. GitHub Copilot for boilerplate I'd rather not type. n8n workflows that automate the boring parts of development and operations. The result: I ship at the speed of a small team while maintaining the quality standards of someone who actually reads their own diffs."
+			aside="This entire portfolio was built in a single AI-augmented session. The design system, the animations, the storytelling — all coordinated between human taste and machine throughput."
+		/>
+
+		<!-- Chapter 05 — Toolkit: shows breadth, pragmatism -->
 		<StoryBlock
 			client:visible
 			icon="wrench"
-			eyebrow="Chapter 03 — The Toolkit"
+			eyebrow="Chapter 05 — The Toolkit"
 			heading="I pick the right tool, not the trendy one."
-			body="Next.js when I need SSR and speed. Flutter when the client wants one codebase for mobile. Supabase when I need real-time without the Firebase lock-in. Python when I need to automate something quickly. And Kubernetes when I need to feel something."
-			aside="I once debugged a government API that was silently crashing because of an encryption mismatch between environments. Nobody noticed for weeks. That's the kind of bug I live for."
+			body="Next.js when I need SSR and speed. Flutter when the client wants one codebase for mobile. Supabase when I need real-time without the Firebase lock-in. Python when I need to automate something quickly. And Kubernetes when I need to feel something. The point isn't the stack — it's knowing which tool solves the problem without creating three new ones."
+			aside="I once automated a college's entire exam seating arrangement with an algorithm that ensures no two students with the same exam sit adjacent. The superintendent who used to do this by hand thanked me. Then asked if I could also automate attendance."
 		/>
 
+		<!-- Tech stack marquee -->
 		<Marquee client:visible />
 
+		<!-- CTA + footer -->
 		<Footer client:visible />
 	</div>
 </Layout>

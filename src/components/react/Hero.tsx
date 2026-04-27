@@ -30,10 +30,10 @@ export default function Hero() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="flex items-center gap-2"
+          className="flex items-center gap-2.5"
         >
           <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
-            <span className="text-white text-xs font-bold">S</span>
+            <span className="text-white text-xs font-bold font-[Silkscreen]">S</span>
           </div>
           <span className="text-sm font-semibold text-fg hidden sm:inline">shameel.dev</span>
         </motion.div>
@@ -51,18 +51,18 @@ export default function Hero() {
         </motion.a>
       </div>
 
-      {/* Decorative pastel card behind hero — tilted */}
+      {/* Decorative tilted cards — desktop only */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8, rotate: -8 }}
-        animate={{ opacity: 1, scale: 1, rotate: -6 }}
+        animate={{ opacity: 0.6, scale: 1, rotate: -6 }}
         transition={{ delay: 0.4, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute top-[15vh] right-[5vw] w-64 h-72 rounded-3xl bg-pastel-orange/40 hidden lg:block"
+        className="absolute top-[15vh] right-[5vw] w-56 h-64 rounded-3xl bg-pastel-orange/30 hidden lg:block"
       />
       <motion.div
         initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
-        animate={{ opacity: 1, scale: 1, rotate: 3 }}
+        animate={{ opacity: 0.4, scale: 1, rotate: 3 }}
         transition={{ delay: 0.6, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute top-[18vh] right-[8vw] w-64 h-72 rounded-3xl bg-pastel-blue/30 hidden lg:block"
+        className="absolute top-[18vh] right-[8vw] w-56 h-64 rounded-3xl bg-pastel-blue/25 hidden lg:block"
       />
 
       {/* Main content */}
@@ -72,17 +72,17 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="inline-flex items-center gap-2.5 px-4 py-2 mb-8 rounded-full bg-pastel-green/60 border border-green-200/50"
+          className="inline-flex items-center gap-2.5 px-4 py-2 mb-8 rounded-full bg-pastel-green/50 border border-green-200/40"
         >
-          <span className="relative flex h-2.5 w-2.5">
+          <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
           </span>
-          <span className="text-sm font-medium text-green-800">Available for work</span>
+          <span className="text-xs font-medium text-green-800">Open to opportunities</span>
         </motion.div>
 
-        {/* Main heading with wave */}
-        <div className="overflow-hidden mb-6">
+        {/* Main heading */}
+        <div className="overflow-hidden mb-5">
           <motion.h1
             initial={{ y: '100%' }}
             animate={{ y: '0%' }}
@@ -102,7 +102,7 @@ export default function Hero() {
               >
                 <motion.path
                   d="M2 8C30 2 60 4 100 6C140 8 170 3 198 7"
-                  stroke="#FF6B35"
+                  stroke="#E8613C"
                   strokeWidth="3"
                   strokeLinecap="round"
                   initial={{ pathLength: 0 }}
@@ -113,10 +113,10 @@ export default function Hero() {
             </span>
             <motion.span
               {...waveHand}
-              className="inline-block ml-3 origin-[70%_70%]"
+              className="inline-block ml-2 origin-[70%_70%]"
               style={{ display: 'inline-block' }}
             >
-              <svg width="48" height="48" viewBox="0 0 36 36" className="inline w-[0.8em] h-[0.8em]">
+              <svg width="48" height="48" viewBox="0 0 36 36" className="inline w-[0.75em] h-[0.75em]">
                 <path fill="#FFDC5D" d="M18.5 3.5c0-1.1-.9-2-2-2s-2 .9-2 2v10h4v-10z"/>
                 <path fill="#FFDC5D" d="M23.5 7.5c0-1.1-.9-2-2-2s-2 .9-2 2v8h4v-8z"/>
                 <path fill="#FFDC5D" d="M28.5 8.5c0-1.1-.9-2-2-2s-2 .9-2 2v7h4v-7z"/>
@@ -126,66 +126,105 @@ export default function Hero() {
           </motion.h1>
         </div>
 
-        <div className="overflow-hidden mb-10">
+        <div className="overflow-hidden mb-8">
           <motion.p
             initial={{ y: '100%' }}
             animate={{ y: '0%' }}
             transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[clamp(1rem,2.2vw,1.4rem)] text-fg-muted font-light leading-relaxed max-w-xl"
+            className="text-[clamp(1rem,2.2vw,1.35rem)] text-fg-muted font-light leading-relaxed max-w-xl"
           >
-            I build things that work — and occasionally things that{' '}
-            <span className="wavy-underline italic font-medium text-fg">actually</span>{' '}
-            work. Full-stack engineer from Kerala who thinks
-            Kubernetes is a personality trait.
+            Full-stack engineer, system administrator, and Kubernetes enthusiast from Kerala.
+            I build production systems, automate everything I touch, and use AI to stay
+            three steps ahead.
           </motion.p>
         </div>
 
-        {/* Colorful tech pills */}
+        {/* Pixel font tagline */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7, duration: 0.8 }}
+          className="mb-10"
+        >
+          <span className="font-[Silkscreen] text-[14px] md:text-[15px] text-accent tracking-wider uppercase">
+            React / K8s / Linux / TypeScript / AI-Augmented
+          </span>
+        </motion.div>
+
+        {/* Quick Capabilities Overview */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
-          className="flex flex-wrap gap-2.5"
+          transition={{ delay: 0.9, duration: 1 }}
+          className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl"
         >
-          {[
-            { name: "Next.js", color: "bg-pastel-blue text-blue-800 border-blue-200" },
-            { name: "Flutter", color: "bg-pastel-purple text-purple-800 border-purple-200" },
-            { name: "TypeScript", color: "bg-pastel-blue text-blue-800 border-blue-200" },
-            { name: "Supabase", color: "bg-pastel-green text-green-800 border-green-200" },
-            { name: "K8s", color: "bg-pastel-purple text-purple-800 border-purple-200" },
-            { name: "Python", color: "bg-pastel-yellow text-yellow-800 border-yellow-200" },
-          ].map((tech, i) => (
-            <motion.span
-              key={tech.name}
-              initial={{ opacity: 0, y: 10, scale: 0.8 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ delay: 1.1 + i * 0.08, type: "spring", stiffness: 200 }}
-              whileHover={{ scale: 1.1, rotate: [-1, 1, -1, 0] }}
-              className={`px-4 py-1.5 text-xs font-semibold rounded-full border cursor-default ${tech.color}`}
-            >
-              {tech.name}
-            </motion.span>
-          ))}
+          {/* Engineering */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.0, duration: 0.7 }}
+            className="flex flex-col gap-2.5 p-4 rounded-2xl bg-pastel-blue/30 border border-blue-100/40"
+          >
+            <div className="flex items-center gap-2 text-blue-600">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              <span className="font-[Silkscreen] text-[11px] tracking-wider uppercase font-bold">Build</span>
+            </div>
+            <p className="text-[13px] text-fg-muted leading-snug">
+              Modern web apps with <span className="text-fg font-medium">React, Next.js, and TypeScript.</span> Type-safe and performant.
+            </p>
+          </motion.div>
+
+          {/* Infrastructure */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.1, duration: 0.7 }}
+            className="flex flex-col gap-2.5 p-4 rounded-2xl bg-pastel-purple/30 border border-purple-100/40"
+          >
+            <div className="flex items-center gap-2 text-purple-600">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+              <span className="font-[Silkscreen] text-[11px] tracking-wider uppercase font-bold">Deploy</span>
+            </div>
+            <p className="text-[13px] text-fg-muted leading-snug">
+              Production-grade <span className="text-fg font-medium">Kubernetes & Linux</span> environments. Automated CI/CD pipelines.
+            </p>
+          </motion.div>
+
+          {/* AI / Automation */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2, duration: 0.7 }}
+            className="flex flex-col gap-2.5 p-4 rounded-2xl bg-pastel-orange/30 border border-orange-100/40"
+          >
+            <div className="flex items-center gap-2 text-orange-600">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a4 4 0 00-4 4v1a3 3 0 00-3 3 3 3 0 000 6 3 3 0 003 3v1a4 4 0 008 0v-1a3 3 0 003-3 3 3 0 000-6 3 3 0 00-3-3V6a4 4 0 00-4-4z"/><path d="M12 2v20"/></svg>
+              <span className="font-[Silkscreen] text-[11px] tracking-wider uppercase font-bold">Automate</span>
+            </div>
+            <p className="text-[13px] text-fg-muted leading-snug">
+              Leveraging <span className="text-fg font-medium">AI & n8n</span> to build autonomous workflows and ship 3x faster.
+            </p>
+          </motion.div>
         </motion.div>
       </div>
 
-      {/* Scroll hint */}
+      {/* Scroll hint — HIDDEN on mobile */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-3 hidden md:flex"
       >
-        <span className="text-xs text-fg-faint font-mono">Keep scrolling, it gets better</span>
+        <span className="text-[12.5px] text-fg-faint font-[Silkscreen] tracking-wider">SCROLL DOWN</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-          className="w-6 h-10 rounded-full border-2 border-fg-faint/40 flex items-start justify-center p-1.5"
+          className="w-5 h-9 rounded-full border-2 border-fg-faint/30 flex items-start justify-center p-1.5"
         >
           <motion.div
-            animate={{ y: [0, 12, 0] }}
+            animate={{ y: [0, 10, 0] }}
             transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-            className="w-1.5 h-1.5 rounded-full bg-accent"
+            className="w-1 h-1 rounded-full bg-accent"
           />
         </motion.div>
       </motion.div>

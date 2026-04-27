@@ -17,22 +17,22 @@ export default function Footer() {
       style={{ opacity, y }}
       className="px-6 md:px-12 lg:px-20 py-24 md:py-36 relative overflow-hidden"
     >
-      {/* Big pastel background blob */}
-      <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-pastel-orange/25 blur-[120px] pointer-events-none" />
+      {/* Big pastel background blob — muted */}
+      <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-pastel-orange/15 blur-[120px] pointer-events-none" />
 
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Icon + eyebrow */}
         <div className="flex items-center gap-3 mb-6">
           <motion.div
             whileHover={{ rotate: 15, scale: 1.1 }}
-            className="w-12 h-12 rounded-2xl bg-pastel-pink flex items-center justify-center text-pink-600 shrink-0"
+            className="w-12 h-12 rounded-2xl bg-pastel-pink/40 flex items-center justify-center text-pink-500 shrink-0"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
               <polyline points="22,6 12,13 2,6"/>
             </svg>
           </motion.div>
-          <span className="text-xs font-mono text-accent tracking-widest uppercase font-medium">
+          <span className="font-[Silkscreen] text-[13px] text-accent tracking-widest uppercase">
             Let's Talk
           </span>
         </div>
@@ -53,7 +53,7 @@ export default function Footer() {
             >
               <motion.path
                 d="M2 8C40 2 80 5 120 7C160 9 200 3 238 6"
-                stroke="#FF6B35"
+                stroke="#E8613C"
                 strokeWidth="3"
                 strokeLinecap="round"
                 initial={{ pathLength: 0 }}
@@ -99,10 +99,10 @@ export default function Footer() {
         {/* Fun stats row */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
           {[
-            { value: "4+", label: "Shipped Projects", color: "bg-pastel-blue" },
-            { value: "1", label: "Home Server (VAIO)", color: "bg-pastel-purple" },
-            { value: "∞", label: "Cups of Chai", color: "bg-pastel-orange" },
-            { value: "btw", label: "I use Arch", color: "bg-pastel-green" },
+            { value: "4+", label: "Shipped Projects", color: "bg-pastel-blue/50", iconColor: "text-blue-500", icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> },
+            { value: "1", label: "Home Server (VAIO)", color: "bg-pastel-purple/50", iconColor: "text-purple-500", icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> },
+            { value: "\u221E", label: "Cups of Chai", color: "bg-pastel-orange/50", iconColor: "text-accent", icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 8h1a4 4 0 110 8h-1"/><path d="M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg> },
+            { value: "btw", label: "I use Arch", color: "bg-pastel-green/50", iconColor: "text-green-500", icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg> },
           ].map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -111,10 +111,13 @@ export default function Footer() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               whileHover={{ y: -4 }}
-              className={`${stat.color} rounded-2xl p-5 text-center border border-white/40`}
+              className={`${stat.color} rounded-2xl p-5 text-center border border-white/40 cursor-default`}
             >
+              <div className={`flex justify-center mb-2 ${stat.iconColor}`}>
+                {stat.icon}
+              </div>
               <span className="text-2xl md:text-3xl font-extrabold text-fg block mb-1">{stat.value}</span>
-              <span className="text-xs text-fg-muted font-medium">{stat.label}</span>
+              <span className="font-[Silkscreen] text-[11px] text-fg-muted tracking-wider uppercase">{stat.label}</span>
             </motion.div>
           ))}
         </div>
@@ -127,7 +130,7 @@ export default function Footer() {
             </svg>
             {new Date().getFullYear()} Muhammad Shameel KS. Crafted with Astro & too much chai.
           </p>
-          <p className="text-xs text-fg-faint font-mono">
+          <p className="font-[Silkscreen] text-[10.5px] text-fg-faint tracking-wider uppercase">
             Built from Kerala, deployed from a VAIO.
           </p>
         </div>

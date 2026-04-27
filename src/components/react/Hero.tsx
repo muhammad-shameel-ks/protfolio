@@ -50,7 +50,10 @@ export default function Hero() {
   });
 
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  // Fades out completely by the time we scroll through the hero
+  const opacity = useTransform(scrollYProgress, [0, 0.8, 1], [1, 0, 0]);
+  // Disable pointer events when faded out to prevent accidental clicks
+  const pointerEvents = useTransform(scrollYProgress, [0, 0.8], ["auto" as const, "none" as const]);
 
   const waveHand = {
     animate: {
@@ -61,9 +64,10 @@ export default function Hero() {
 
   return (
     <motion.section
+      id="hero"
       ref={containerRef}
-      style={{ y, opacity }}
-      className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20 overflow-hidden"
+      style={{ y, opacity, pointerEvents }}
+      className="relative min-h-[100svh] flex flex-col justify-center px-6 md:px-12 lg:px-20 overflow-visible py-20 md:py-0"
     >
       {/* Top nav */}
       <div className="absolute top-0 left-0 right-0 flex items-center justify-between px-6 md:px-12 lg:px-20 py-8 z-20">

@@ -8,6 +8,7 @@ interface Project {
   description: string;
   funNote: string;
   tags: { name: string; color: string }[];
+  stackIcons?: string[];
   link: string;
   highlights: string[];
   cardBg: string;
@@ -18,6 +19,30 @@ interface Project {
 const projects: Project[] = [
   {
     index: "01",
+    title: "Scentance",
+    subtitle: "Live E-commerce Platform",
+    description: "A premium fragrance e-commerce platform built for a client. Live at scentenceparfum.com with real customers and orders. Features a 3D mesh background, secure checkout, admin dashboard with order management, CSV/Excel/PDF exports, and automated email notifications via Resend.",
+    funNote: "This isn't a portfolio piece — it's a production business with real revenue.",
+    tags: [
+      { name: "Next.js 16", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "TypeScript", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "Three.js/R3F", color: "bg-pastel-purple/50 text-purple-700" },
+      { name: "Supabase", color: "bg-pastel-green/50 text-green-700" },
+      { name: "Resend", color: "bg-pastel-orange/50 text-orange-700" },
+    ],
+    stackIcons: ["/nextjs-light.svg", "/typescript.svg", "/supabase.svg", "/resend.svg"],
+    link: "https://scentenceparfum.com",
+    highlights: [
+      "Live production e-commerce with real customers",
+      "3D interactive mesh background with React Three Fiber",
+      "Admin dashboard with order tracking & shipping labels",
+      "Automated email receipts & status notifications",
+    ],
+    cardBg: "bg-gradient-to-br from-pastel-purple/25 to-pastel-pink/10",
+    iconColor: "bg-pastel-purple/40 text-purple-600",
+  },
+  {
+    index: "02",
     title: "Stock Salt",
     subtitle: "Real-time Retail SaaS",
     description: "Multi-outlet inventory management with real-time sync. When one branch sells something, every other branch knows instantly — no refresh, no lag, no \"oops we oversold.\"",
@@ -28,6 +53,7 @@ const projects: Project[] = [
       { name: "Supabase Realtime", color: "bg-pastel-green/50 text-green-700" },
       { name: "React", color: "bg-pastel-blue/50 text-blue-700" },
     ],
+    stackIcons: ["/nextjs-light.svg", "/typescript.svg", "/supabase.svg", "/reactjs.svg"],
     link: "https://github.com/muhammad-shameel-ks/stock-salt",
     highlights: [
       "Real-time stock sync across all POS terminals",
@@ -38,7 +64,7 @@ const projects: Project[] = [
     iconColor: "bg-pastel-blue/40 text-blue-600",
   },
   {
-    index: "02",
+    index: "03",
     title: "Office Pal",
     subtitle: "College Management System",
     description: "Replaces the mountain of paperwork in college administration. Features an algorithm that auto-generates exam seating so no two students with the same exam sit next to each other.",
@@ -48,6 +74,7 @@ const projects: Project[] = [
       { name: "Supabase", color: "bg-pastel-green/50 text-green-700" },
       { name: "Riverpod", color: "bg-pastel-orange/50 text-orange-700" },
     ],
+    stackIcons: ["/flutter.svg", "/supabase.svg"],
     link: "https://github.com/muhammad-shameel-ks/office_pal",
     highlights: [
       "Automated anti-cheat seating algorithm",
@@ -58,7 +85,7 @@ const projects: Project[] = [
     iconColor: "bg-pastel-purple/40 text-purple-600",
   },
   {
-    index: "03",
+    index: "04",
     title: "KSDC Smart Helper",
     subtitle: "SQL Command Generator",
     description: "A tool to auto-generate SQL commands and make SQL usage simpler for the Kerala State Development Corporation. Built to simplify complex database operations for non-technical staff.",
@@ -69,6 +96,7 @@ const projects: Project[] = [
       { name: "Node.js", color: "bg-pastel-green/50 text-green-700" },
       { name: "MSSQL", color: "bg-pastel-orange/50 text-orange-700" },
     ],
+    stackIcons: ["/reactjs.svg", "/typescript.svg", "/nodejs.svg", "/microsoft-sql-server.svg"],
     link: "https://github.com/muhammad-shameel-ks/ksdc-smart-helper",
     highlights: [
       "Auto-generate complex SQL queries",
@@ -80,7 +108,7 @@ const projects: Project[] = [
     showInternshipBadge: true,
   },
   {
-    index: "04",
+    index: "05",
     title: "n8n Easy Webhooks",
     subtitle: "Zero-Config Tunneling",
     description: "Makes local n8n development painless. No public IP, no port forwarding — just run it and a Cloudflare Tunnel appears out of thin air, ready to receive webhooks.",
@@ -90,6 +118,7 @@ const projects: Project[] = [
       { name: "Docker", color: "bg-pastel-blue/50 text-blue-700" },
       { name: "Cloudflare", color: "bg-pastel-orange/50 text-orange-700" },
     ],
+    stackIcons: ["/python.svg", "/docker-engine.svg", "/cloudflare.svg"],
     link: "https://github.com/muhammad-shameel-ks/n8n-easy-webhook",
     highlights: [
       "Auto Cloudflare Tunnel provisioning",
@@ -230,14 +259,22 @@ function TiltCard({ project }: { project: Project }) {
           </motion.div>
         )}
 
-        {/* Tags */}
-        <div className="flex flex-wrap gap-1.5">
-          {project.tags.map(tag => (
-            <span key={tag.name} className={`px-2 py-0.5 text-[10px] font-semibold rounded-full ${tag.color}`}>
-              {tag.name}
-            </span>
-          ))}
-        </div>
+        {/* Stack Icons (collapsed view) */}
+        {project.stackIcons && (
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="font-[Silkscreen] text-[11px] text-fg-faint tracking-wider uppercase">Stack:</span>
+            {project.stackIcons.map((icon, i) => (
+              <div key={i} className="flex items-center gap-1.5">
+                <img 
+                  src={icon} 
+                  alt={project.tags[i]?.name || 'Tech'}
+                  className="w-6 h-6 object-contain"
+                />
+                <span className="text-xs text-fg-muted">{project.tags[i]?.name || 'Tech'}</span>
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* Expanded */}
         <AnimatePresence>
@@ -269,6 +306,24 @@ function TiltCard({ project }: { project: Project }) {
                     </motion.li>
                   ))}
                 </ul>
+
+                {/* Stack List */}
+                {project.stackIcons && (
+                  <div className="mb-5">
+                    <span className="font-[Silkscreen] text-[14px] text-accent tracking-widest uppercase block mb-3">
+                      Tech Stack
+                    </span>
+                    <div className="grid grid-cols-2 gap-2">
+                      {project.stackIcons.map((icon, i) => (
+                        <div key={i} className="flex items-center gap-2 text-sm text-fg-muted">
+                          <img src={icon} alt="" className="w-5 h-5 object-contain" />
+                          <span className="capitalize">{project.tags[i]?.name || 'Tech'}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 <motion.a
                   href={project.link}
                   target="_blank"
@@ -277,7 +332,7 @@ function TiltCard({ project }: { project: Project }) {
                   whileHover={{ x: 3 }}
                   className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-dark transition-colors"
                 >
-                  View on GitHub
+                  {project.index === "01" ? "Visit Live Site" : "View on GitHub"}
                   <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
                     <path d="M1 13L13 1M13 1H5M13 1V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>

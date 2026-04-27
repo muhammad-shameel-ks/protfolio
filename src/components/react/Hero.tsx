@@ -76,7 +76,6 @@ export default function Hero() {
           <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
             <span className="text-white text-sm font-bold font-[Silkscreen]">S</span>
           </div>
-          <span className="text-sm font-semibold text-fg hidden sm:inline">shameel.dev</span>
         </motion.div>
         <motion.a
           initial={{ opacity: 0, y: -10 }}

@@ -19,19 +19,32 @@ export default function PersistentNav() {
   // Only show the dock after scrolling down 300px
   const dockOpacity = useTransform(scrollY, [200, 400], [0, 1]);
   const dockY = useTransform(scrollY, [200, 400], [20, 0]);
+  
+  // Use CSS to hide when modal is open (more reliable)
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    const checkModal = () => {
+      setIsModalOpen(document.body.hasAttribute('data-modal-open'));
+    };
+    checkModal();
+    // Check more frequently
+    const interval = setInterval(checkModal, 50);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Use CSS class to hide instead of returning null (allows re-appearance)
 
   useEffect(() => {
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      // Find all intersecting entries
       const intersecting = entries.filter(e => e.isIntersecting);
       if (intersecting.length > 0) {
-        // Use the one that is most prominent or the last one to enter
         setActiveSection(intersecting[intersecting.length - 1].target.id);
       }
     };
 
     const observerOptions = {
-      rootMargin: '-30% 0% -50% 0%', // Adjusted for better trigger point
+      rootMargin: '-30% 0% -50% 0%',
       threshold: 0
     };
 
@@ -57,8 +70,12 @@ export default function PersistentNav() {
   return (
     <motion.nav
       aria-label="Table of contents"
-      style={{ opacity: dockOpacity, y: dockY }}
-      className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 pointer-events-none"
+      style={{ 
+        opacity: isModalOpen ? 0 : dockOpacity, 
+        y: isModalOpen ? 20 : dockY,
+        pointerEvents: isModalOpen ? 'none' : 'auto'
+      }}
+      className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 transition-opacity duration-200"
     >
       <ul className="bg-white/90 backdrop-blur-md border border-border px-2 py-1.5 md:px-3 md:py-2 rounded-xl md:rounded-2xl shadow-lg flex items-center gap-0.5 md:gap-1.5 pointer-events-auto list-none">
         {NAV_ITEMS.map((item) => {
@@ -104,4 +121,3 @@ export default function PersistentNav() {
     </motion.nav>
   );
 }
-

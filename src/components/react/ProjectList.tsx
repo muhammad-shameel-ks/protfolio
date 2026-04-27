@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import { motion, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface Project {
   index: string;
@@ -14,60 +14,125 @@ interface Project {
   cardBg: string;
   iconColor: string;
   showInternshipBadge?: boolean;
+  screenshot?: string;
+  isLive?: boolean;
+}
+
+// Modal Component
+function ImageModal({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
+  // Hide dock and header when modal is open
+  React.useEffect(() => {
+    document.body.setAttribute('data-modal-open', 'true');
+    return () => document.body.removeAttribute('data-modal-open');
+  }, []);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[60] flex items-center justify-center bg-black/90 backdrop-blur-md p-4"
+      onClick={onClose}
+    >
+      {/* Close Button */}
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
+          <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+      {/* Image */}
+      <motion.img
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.9, opacity: 0 }}
+        src={src}
+        alt={alt}
+        className="max-w-full max-h-[85vh] rounded-lg shadow-2xl object-contain"
+        onClick={(e) => e.stopPropagation()}
+      />
+
+      {/* Project Title */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/60 rounded-lg">
+        <span className="text-white font-[Silkscreen] text-sm">{alt}</span>
+      </div>
+    </motion.div>
+  );
+}
+
+interface Project {
+  index: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  funNote: string;
+  tags: { name: string; color: string }[];
+  stackIcons?: string[];
+  link: string;
+  highlights: string[];
+  cardBg: string;
+  iconColor: string;
+  showInternshipBadge?: boolean;
+  screenshot?: string;
+  isLive?: boolean;
 }
 
 const projects: Project[] = [
   {
     index: "01",
     title: "Scentance",
-    subtitle: "Live E-commerce Platform",
-    description: "A premium fragrance e-commerce platform built for a client. Live at scentenceparfum.com with real customers and orders. Features a 3D mesh background, secure checkout, admin dashboard with order management, CSV/Excel/PDF exports, and automated email notifications via Resend.",
+    subtitle: "Premium Fragrance E-commerce",
+    description: "A premium fragrance e-commerce platform built for a client. Live at scentenceparfum.com with real customers and orders.",
     funNote: "This isn't a portfolio piece — it's a production business with real revenue.",
     tags: [
       { name: "Next.js 16", color: "bg-pastel-blue/50 text-blue-700" },
       { name: "TypeScript", color: "bg-pastel-blue/50 text-blue-700" },
       { name: "Three.js/R3F", color: "bg-pastel-purple/50 text-purple-700" },
       { name: "Supabase", color: "bg-pastel-green/50 text-green-700" },
-      { name: "Resend", color: "bg-pastel-orange/50 text-orange-700" },
     ],
     stackIcons: ["/nextjs-light.svg", "/typescript.svg", "/supabase.svg", "/resend.svg"],
     link: "https://scentenceparfum.com",
     highlights: [
-      "Live production e-commerce with real customers",
-      "3D interactive mesh background with React Three Fiber",
-      "Admin dashboard with order tracking & shipping labels",
-      "Automated email receipts & status notifications",
+      "Live production with real customers",
+      "3D interactive mesh background",
+      "Admin dashboard with order tracking",
     ],
     cardBg: "bg-gradient-to-br from-pastel-purple/25 to-pastel-pink/10",
     iconColor: "bg-pastel-purple/40 text-purple-600",
+    screenshot: "/projects/scentence.png",
+    isLive: true,
   },
   {
     index: "02",
     title: "Stock Salt",
-    subtitle: "Real-time Retail SaaS",
-    description: "Multi-outlet inventory management with real-time sync. When one branch sells something, every other branch knows instantly — no refresh, no lag, no \"oops we oversold.\"",
+    subtitle: "Real-time Inventory SaaS",
+    description: "Multi-outlet inventory management with real-time sync across all POS terminals.",
     funNote: "Because spreadsheets shouldn't be the backbone of a business.",
     tags: [
       { name: "Next.js 15", color: "bg-pastel-blue/50 text-blue-700" },
       { name: "TypeScript", color: "bg-pastel-blue/50 text-blue-700" },
       { name: "Supabase Realtime", color: "bg-pastel-green/50 text-green-700" },
-      { name: "React", color: "bg-pastel-blue/50 text-blue-700" },
     ],
     stackIcons: ["/nextjs-light.svg", "/typescript.svg", "/supabase.svg", "/reactjs.svg"],
     link: "https://github.com/muhammad-shameel-ks/stock-salt",
     highlights: [
-      "Real-time stock sync across all POS terminals",
-      "Centralized master stock with auto-distribution",
-      "Hourly revenue momentum analytics",
+      "Real-time stock sync across terminals",
+      "Centralized master stock management",
+      "Revenue analytics dashboard",
     ],
     cardBg: "bg-gradient-to-br from-pastel-blue/25 to-pastel-green/10",
     iconColor: "bg-pastel-blue/40 text-blue-600",
+    screenshot: "/projects/stock-salt.png",
+    isLive: true,
   },
   {
     index: "03",
     title: "Office Pal",
     subtitle: "College Management System",
-    description: "Replaces the mountain of paperwork in college administration. Features an algorithm that auto-generates exam seating so no two students with the same exam sit next to each other.",
+    description: "Replaces paperwork with automated exam seating and administration.",
     funNote: "Yes, I automated away someone's entire job. They thanked me.",
     tags: [
       { name: "Flutter", color: "bg-pastel-purple/50 text-purple-700" },
@@ -77,42 +142,43 @@ const projects: Project[] = [
     stackIcons: ["/flutter.svg", "/supabase.svg"],
     link: "https://github.com/muhammad-shameel-ks/office_pal",
     highlights: [
-      "Automated anti-cheat seating algorithm",
-      "Print-ready PDF generation engine",
-      "4 distinct role-based dashboards",
+      "Anti-cheat seating algorithm",
+      "Print-ready PDF generation",
+      "4 role-based dashboards",
     ],
     cardBg: "bg-gradient-to-br from-pastel-purple/25 to-pastel-pink/10",
     iconColor: "bg-pastel-purple/40 text-purple-600",
+    screenshot: "/projects/office-pal.png",
   },
   {
     index: "04",
     title: "KSDC Smart Helper",
     subtitle: "SQL Command Generator",
-    description: "A tool to auto-generate SQL commands and make SQL usage simpler for the Kerala State Development Corporation. Built to simplify complex database operations for non-technical staff.",
+    description: "Auto-generates SQL commands for non-technical staff.",
     funNote: "Making SQL accessible to everyone, one query at a time.",
     tags: [
       { name: "React", color: "bg-pastel-blue/50 text-blue-700" },
       { name: "TypeScript", color: "bg-pastel-blue/50 text-blue-700" },
       { name: "Node.js", color: "bg-pastel-green/50 text-green-700" },
-      { name: "MSSQL", color: "bg-pastel-orange/50 text-orange-700" },
     ],
     stackIcons: ["/reactjs.svg", "/typescript.svg", "/nodejs.svg", "/microsoft-sql-server.svg"],
     link: "https://github.com/muhammad-shameel-ks/ksdc-smart-helper",
     highlights: [
-      "Auto-generate complex SQL queries",
-      "Simplified interface for non-technical users",
-      "Query validation and optimization",
+      "Auto SQL query generation",
+      "Simplified UI for non-tech users",
+      "Query validation",
     ],
     cardBg: "bg-gradient-to-br from-pastel-orange/20 to-pastel-yellow/10",
     iconColor: "bg-pastel-orange/40 text-orange-600",
     showInternshipBadge: true,
+    screenshot: "/projects/ksdc-smart.png",
   },
   {
     index: "05",
     title: "n8n Easy Webhooks",
     subtitle: "Zero-Config Tunneling",
-    description: "Makes local n8n development painless. No public IP, no port forwarding — just run it and a Cloudflare Tunnel appears out of thin air, ready to receive webhooks.",
-    funNote: "I was too lazy to configure tunnels manually. So I automated it. Peak engineering.",
+    description: "Auto Cloudflare Tunnel for local n8n development.",
+    funNote: "I was too lazy to configure tunnels manually. So I automated it.",
     tags: [
       { name: "Python", color: "bg-pastel-yellow/50 text-yellow-700" },
       { name: "Docker", color: "bg-pastel-blue/50 text-blue-700" },
@@ -122,7 +188,7 @@ const projects: Project[] = [
     link: "https://github.com/muhammad-shameel-ks/n8n-easy-webhook",
     highlights: [
       "Auto Cloudflare Tunnel provisioning",
-      "Dynamic webhook URL configuration",
+      "Dynamic webhook URL config",
       "Dual CLI + TUI interface",
     ],
     cardBg: "bg-gradient-to-br from-pastel-green/20 to-pastel-blue/10",
@@ -135,220 +201,161 @@ const projectIcons: Record<string, React.ReactNode> = {
   "02": <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>,
   "03": <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>,
   "04": <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>,
+  "05": <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/><path d="M2 2l20 20"/></svg>,
 };
 
-function TiltCard({ project }: { project: Project }) {
-  const ref = useRef<HTMLDivElement>(null);
+function ProjectCard({ project, onImageClick }: { project: Project; onImageClick: (src: string, title: string) => void }) {
   const [isOpen, setIsOpen] = useState(false);
   const [showInternshipNote, setShowInternshipNote] = useState(false);
 
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "start 0.35"]
-  });
-
-  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const cardY = useTransform(scrollYProgress, [0, 1], [80, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.94, 0.97, 1]);
-
-  const rotateX = useMotionValue(0);
-  const rotateY = useMotionValue(0);
-  const smoothRotateX = useSpring(rotateX, { stiffness: 200, damping: 25 });
-  const smoothRotateY = useSpring(rotateY, { stiffness: 200, damping: 25 });
-
-  function handleMouseMove(e: React.MouseEvent) {
-    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    rotateX.set((y - rect.height / 2) / 25 * -1);
-    rotateY.set((x - rect.width / 2) / 25);
-  }
-
-  function handleMouseLeave() {
-    rotateX.set(0);
-    rotateY.set(0);
-  }
-
   return (
     <motion.div
-      ref={ref}
-      style={{ opacity, y: cardY, scale, rotateX: smoothRotateX, rotateY: smoothRotateY, transformPerspective: 800 }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      onClick={() => setIsOpen(!isOpen)}
-      className="group rounded-2xl border border-border/50 p-6 md:p-7 bg-white hover:shadow-lg hover:shadow-black/[0.03] transition-shadow duration-500 cursor-pointer relative overflow-hidden"
+      className="group rounded-2xl border border-border/50 bg-white hover:shadow-xl hover:shadow-black/[0.05] transition-all duration-300 overflow-hidden"
     >
-      <div className={`absolute inset-0 ${project.cardBg} opacity-60 group-hover:opacity-80 transition-opacity duration-500 rounded-2xl`} />
-      <div className="absolute -top-6 -right-6 w-28 h-28 rounded-full bg-white/30 blur-2xl" />
-
-      <div className="relative z-10">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-3">
-            <motion.div
-              whileHover={{ rotate: 6, scale: 1.08 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className={`w-10 h-10 rounded-xl ${project.iconColor} flex items-center justify-center`}
-            >
-              {projectIcons[project.index]}
-            </motion.div>
-            <span className="font-[Silkscreen] text-[14.5px] text-fg-faint tracking-wider uppercase">
-              {project.index} / {project.subtitle}
-            </span>
+      {/* Screenshot or Placeholder - Clickable */}
+      <div 
+        className={`relative h-40 ${project.screenshot ? 'cursor-zoom-in' : 'flex items-center justify-center'} bg-surface`}
+        onClick={() => project.screenshot && onImageClick(project.screenshot, project.title)}
+      >
+        {project.screenshot ? (
+          <>
+            <img 
+              src={project.screenshot} 
+              alt={project.title}
+              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            {/* Click hint */}
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+              <span className="opacity-0 group-hover:opacity-100 text-white text-xs font-medium bg-black/50 px-2 py-1 rounded transition-opacity">
+                Click to enlarge
+              </span>
+            </div>
+          </>
+        ) : (
+          <div className="flex flex-col items-center justify-center gap-2 text-fg-faint">
+            <div className="w-16 h-16 rounded-xl bg-pastel-green/30 flex items-center justify-center">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-green-600">
+                <path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/><path d="M2 2l20 20"/>
+              </svg>
+            </div>
+            <span className="font-[Silkscreen] text-[10px] tracking-wider">CLI TOOL</span>
           </div>
-          <motion.div
-            animate={{ rotate: isOpen ? 45 : 0 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="w-8 h-8 rounded-full bg-white/80 border border-border/50 group-hover:border-accent/30 flex items-center justify-center transition-colors shrink-0"
-          >
-            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" className="text-fg-muted group-hover:text-accent transition-colors">
-              <path d="M6 0V12M0 6H12" stroke="currentColor" strokeWidth="1.5" />
-            </svg>
-          </motion.div>
+        )}
+        
+        {/* Live Badge */}
+        {project.isLive && (
+          <div className="absolute top-3 right-3 px-2 py-1 rounded-md bg-green-500/90 text-white text-[10px] font-bold font-[Silkscreen] tracking-wider flex items-center gap-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+            LIVE
+          </div>
+        )}
+      </div>
+
+      <div className="p-5">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center gap-2">
+            <div className={`w-8 h-8 rounded-lg ${project.iconColor} flex items-center justify-center`}>
+              {projectIcons[project.index]}
+            </div>
+            <span className="font-bold text-fg">{project.title}</span>
+          </div>
         </div>
 
-        {/* Title */}
-        <h3 className="text-xl md:text-2xl font-bold tracking-tight mb-2.5 group-hover:text-accent transition-colors duration-300">
-          {project.title}
-        </h3>
-
-        {/* Description */}
-        <p className="text-fg-muted font-light leading-relaxed mb-3 text-sm">
-          {project.description}
+        {/* Subtitle */}
+        <p className="text-sm text-fg-muted font-light mb-3">
+          {project.subtitle}
         </p>
 
-        {/* Fun note */}
-        <div className="flex items-start gap-2 mb-4 px-3 py-2.5 rounded-lg bg-white/60 border border-border/30">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-accent mt-0.5 shrink-0">
-            <circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/>
-          </svg>
-          <p className="text-xs text-accent/80 italic font-medium leading-snug">
-            {project.funNote}
-          </p>
-        </div>
-
-        {/* Internship Badge */}
-        {project.showInternshipBadge && (
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={(e) => {
-              e.stopPropagation();
-              setShowInternshipNote(!showInternshipNote);
-            }}
-            className="mb-4 px-3.5 py-2 text-[12px] font-bold rounded-lg bg-gradient-to-r from-slate-800 to-slate-700 text-slate-200 shadow-lg shadow-slate-500/20 hover:shadow-xl hover:shadow-slate-500/30 transition-all flex items-center gap-1.5 border border-slate-600/50"
-          >
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/>
-            </svg>
-            {showInternshipNote ? "Hide Note" : "I worked here"}
-          </motion.button>
-        )}
-
-        {/* Internship Note */}
-        {project.showInternshipBadge && showInternshipNote && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="mb-4 px-4 py-3 rounded-xl bg-gradient-to-r from-slate-800 to-slate-900 border border-slate-600/50 shadow-lg"
-          >
-            <p className="text-sm text-slate-200 font-medium">
-              Worked at KSDC for <span className="text-accent font-bold">3 months</span> as a Software Developer.
-            </p>
-          </motion.div>
-        )}
-
-        {/* Stack Icons (collapsed view) */}
+        {/* Tech Stack Icons */}
         {project.stackIcons && (
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="font-[Silkscreen] text-[11px] text-fg-faint tracking-wider uppercase">Stack:</span>
+          <div className="flex flex-wrap gap-2 mb-4">
             {project.stackIcons.map((icon, i) => (
-              <div key={i} className="flex items-center gap-1.5">
-                <img 
-                  src={icon} 
-                  alt={project.tags[i]?.name || 'Tech'}
-                  className="w-6 h-6 object-contain"
-                />
-                <span className="text-xs text-fg-muted">{project.tags[i]?.name || 'Tech'}</span>
+              <div key={i} className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-surface border border-border/50">
+                <img src={icon} alt="" className="w-4 h-4 object-contain" />
+                <span className="text-[10px] text-fg-muted">{project.tags[i]?.name}</span>
               </div>
             ))}
           </div>
         )}
 
-        {/* Expanded */}
+        {/* Quick Highlights - Visible without click */}
+        <div className="space-y-1.5 mb-4">
+          {project.highlights.slice(0, 2).map((h, i) => (
+            <div key={i} className="flex items-start gap-2 text-xs text-fg-muted">
+              <span className="w-1 h-1 rounded-full bg-accent mt-1.5 shrink-0" />
+              {h}
+            </div>
+          ))}
+        </div>
+
+        {/* Expandable More */}
+        {project.highlights.length > 2 && (
+          <button 
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsOpen(!isOpen);
+            }}
+            className="text-xs text-accent font-medium hover:underline"
+          >
+            {isOpen ? 'Less' : `+${project.highlights.length - 2} more`}
+          </button>
+        )}
+
         <AnimatePresence>
           {isOpen && (
             <motion.div
               initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
+              animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="overflow-hidden"
             >
-              <div className="pt-5 mt-4 border-t border-border/30">
-                <span className="font-[Silkscreen] text-[17px] text-accent tracking-widest uppercase block mb-3">
-                  HIGHLIGHTS
-                </span>
-                <ul className="space-y-2.5 mb-5">
-                  {project.highlights.map((h, i) => (
-                    <motion.li
-                      key={i}
-                      initial={{ opacity: 0, x: 15 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.08, type: "spring", stiffness: 200 }}
-                      className="flex items-start gap-2.5 text-sm text-fg-muted"
-                    >
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-accent mt-0.5 shrink-0">
-                        <polyline points="20 6 9 17 4 12"/>
-                      </svg>
-                      {h}
-                    </motion.li>
-                  ))}
-                </ul>
-
-                {/* Stack List */}
-                {project.stackIcons && (
-                  <div className="mb-5">
-                    <span className="font-[Silkscreen] text-[14px] text-accent tracking-widest uppercase block mb-3">
-                      Tech Stack
-                    </span>
-                    <div className="grid grid-cols-2 gap-2">
-                      {project.stackIcons.map((icon, i) => (
-                        <div key={i} className="flex items-center gap-2 text-sm text-fg-muted">
-                          <img src={icon} alt="" className="w-5 h-5 object-contain" />
-                          <span className="capitalize">{project.tags[i]?.name || 'Tech'}</span>
-                        </div>
-                      ))}
-                    </div>
+              <div className="pt-3 space-y-1.5">
+                {project.highlights.slice(2).map((h, i) => (
+                  <div key={i} className="flex items-start gap-2 text-xs text-fg-muted">
+                    <span className="w-1 h-1 rounded-full bg-accent mt-1.5 shrink-0" />
+                    {h}
                   </div>
-                )}
-
-                <motion.a
-                  href={project.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  whileHover={{ x: 3 }}
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-dark transition-colors"
-                >
-                  {project.index === "01" ? "Visit Live Site" : "View on GitHub"}
-                  <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
-                    <path d="M1 13L13 1M13 1H5M13 1V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </motion.a>
+                ))}
               </div>
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* Link */}
+        <div className="mt-4 pt-3 border-t border-border/30">
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-dark transition-colors"
+          >
+            {project.isLive ? 'View Live Site' : 'View on GitHub'}
+            <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+              <path d="M1 13L13 1M13 1H5M13 1V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </motion.div>
   );
 }
 
 export default function ProjectList() {
+  const [modalImage, setModalImage] = useState<{ src: string; title: string } | null>(null);
+
   return (
     <section className="px-6 md:px-12 lg:px-20 py-20 md:py-32 relative">
+      <AnimatePresence>
+        {modalImage && (
+          <ImageModal 
+            src={modalImage.src} 
+            alt={modalImage.title} 
+            onClose={() => setModalImage(null)} 
+          />
+        )}
+      </AnimatePresence>
+
       <div className="max-w-5xl mx-auto">
         <div className="flex items-center gap-3 mb-4">
           <motion.div
@@ -385,7 +392,11 @@ export default function ProjectList() {
 
         <div className="grid md:grid-cols-2 gap-5">
           {projects.map((project) => (
-            <TiltCard key={project.index} project={project} />
+            <ProjectCard 
+              key={project.index} 
+              project={project} 
+              onImageClick={(src, title) => setModalImage({ src, title })}
+            />
           ))}
         </div>
       </div>

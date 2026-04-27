@@ -20,12 +20,25 @@ const CHAPTERS: Chapter[] = [
 export default function ChapterHeader() {
   const [visibleChapter, setVisibleChapter] = useState<Chapter | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
   const { scrollY } = useScroll();
-  
+   
   // Show after scrolling past hero (~200px)
   const opacity = useTransform(scrollY, [200, 400], [0, 1]);
   const y = useTransform(scrollY, [200, 400], [-10, 0]);
+
+  // Hide when modal is open - check continuously
+  useEffect(() => {
+    const checkModal = () => {
+      setIsModalOpen(document.body.hasAttribute('data-modal-open'));
+    };
+    checkModal();
+    const interval = setInterval(checkModal, 50);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Hide when modal opens using inline style override
 
   useEffect(() => {
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
@@ -70,12 +83,16 @@ export default function ChapterHeader() {
     <AnimatePresence mode="wait">
       {visibleChapter && isVisible && (
         <motion.div
-          style={{ opacity, y }}
+          style={{ 
+            opacity: isModalOpen ? 0 : opacity, 
+            y: isModalOpen ? -10 : y,
+            pointerEvents: isModalOpen ? 'none' : 'auto'
+          }}
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.3 }}
-          className="fixed top-0 left-0 right-0 z-40 bg-bg/95 backdrop-blur-sm border-b border-border/50"
+          className="fixed top-0 left-0 right-0 z-40 bg-bg/95 backdrop-blur-sm border-b border-border/50 transition-opacity duration-200"
         >
           <div className="max-w-5xl mx-auto px-6 md:px-12 py-4 flex items-center justify-between">
             {/* Chapter indicator */}

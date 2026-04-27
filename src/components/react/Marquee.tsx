@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const tools = [
   { name: "React", color: "bg-pastel-blue/50 text-blue-600 border-blue-100/80", icon: "/reactjs.svg" },
@@ -23,20 +23,8 @@ const tools = [
 ];
 
 export default function Marquee() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"]
-  });
-
-  const x1 = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
-  const x2 = useTransform(scrollYProgress, [0, 1], ["-20%", "0%"]);
-
-  const doubled = [...tools, ...tools];
-  const reversed = [...tools.slice().reverse(), ...tools.slice().reverse()];
-
   return (
-    <div ref={ref} className="py-20 md:py-28 overflow-hidden relative">
+    <div className="py-20 md:py-28 overflow-hidden relative">
       {/* Decorative blobs — muted */}
       <div className="absolute top-0 left-1/4 w-64 h-64 rounded-full bg-pastel-orange/12 blur-[100px]" />
       <div className="absolute bottom-0 right-1/4 w-48 h-48 rounded-full bg-pastel-purple/12 blur-[80px]" />
@@ -56,35 +44,20 @@ export default function Marquee() {
         </span>
       </div>
 
-      {/* Row 1 — moves left */}
-      <motion.div style={{ x: x1 }} className="flex gap-3 mb-4 whitespace-nowrap">
-        {doubled.map((tool, i) => (
+      {/* Static grid - shows all tools in readable layout */}
+      <div className="flex flex-wrap justify-center gap-2.5 px-4">
+        {tools.map((tool) => (
           <motion.span
-            key={`a-${i}`}
+            key={tool.name}
             whileHover={{ scale: 1.08, y: -3 }}
             transition={{ type: "spring", stiffness: 300 }}
-            className={`inline-flex items-center gap-2.5 px-4 py-2.5 text-xs font-bold rounded-full border shrink-0 cursor-default shadow-sm shadow-black/[0.02] ${tool.color}`}
+            className={`inline-flex items-center gap-2 px-3 py-2 text-xs font-bold rounded-full border shrink-0 cursor-default ${tool.color}`}
           >
             <img src={tool.icon} alt="" className="w-4 h-4 object-contain" />
             {tool.name}
           </motion.span>
         ))}
-      </motion.div>
-
-      {/* Row 2 — moves right */}
-      <motion.div style={{ x: x2 }} className="flex gap-3 whitespace-nowrap">
-        {reversed.map((tool, i) => (
-          <motion.span
-            key={`b-${i}`}
-            whileHover={{ scale: 1.08, y: -3 }}
-            transition={{ type: "spring", stiffness: 300 }}
-            className={`inline-flex items-center gap-2.5 px-4 py-2.5 text-xs font-bold rounded-full border shrink-0 cursor-default shadow-sm shadow-black/[0.02] ${tool.color}`}
-          >
-            <img src={tool.icon} alt="" className="w-4 h-4 object-contain" />
-            {tool.name}
-          </motion.span>
-        ))}
-      </motion.div>
+      </div>
     </div>
   );
 }

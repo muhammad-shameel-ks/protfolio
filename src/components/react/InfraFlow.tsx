@@ -75,9 +75,11 @@ export default function InfraFlow() {
           transition={{ delay: 0.1, duration: 0.8 }}
           className="text-fg-muted text-lg font-light mb-14 max-w-3xl leading-relaxed"
         >
-          Zero-trust CI/CD. Push to GitHub, container builds, encrypted tunnel,
-          auto-deploys to my private K8s cluster. No ports exposed. No cloud bills.{' '}
-          <span className="font-medium text-fg text-lg">Just vibes and YAML.</span>
+          GitPush → GitHub Actions builds container → Tailscale encrypted tunnel →
+          self-hosted K8s cluster. No cloud dashboard. No vendor lock-in.{' '}
+          <span className="font-medium text-fg text-lg">Just a homelab and a lot of YAML.</span>
+          <br />
+          <span className="text-sm text-fg-muted/60">Next: Terraform, then cloud. One step at a time.</span>
         </motion.p>
 
         {/* Flow */}
@@ -142,11 +144,12 @@ export default function InfraFlow() {
               </svg>
             </motion.div>
             <div>
-              <p className="text-sm font-semibold text-fg mb-1.5">The "Home Server"</p>
+              <p className="text-sm font-semibold text-fg mb-1.5">The Homelab Journey</p>
               <p className="text-sm text-fg-muted leading-relaxed">
-                A Sony VAIO on my desk running Arch Linux. Pi-hole for DNS,
-                PocketBase backends, and a full K8s cluster. Some people have gaming setups.
-                I have a <span className="font-medium text-fg">production environment in my bedroom.</span>
+                A Sony VAIO on my desk running Arch Linux. Full K8s cluster,
+                Pi-hole, PocketBase, Tailscale — all self-hosted. Some people have gaming setups.
+                I have a <span className="font-medium text-fg">real production environment I built from scratch.</span>
+                {" "}Still learning. Still growing.
               </p>
             </div>
           </div>

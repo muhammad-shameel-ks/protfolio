@@ -184,9 +184,7 @@ export default function Hero() {
             transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="text-[clamp(1rem,2.2vw,1.35rem)] text-fg-muted font-light leading-relaxed max-w-xl"
           >
-            Full-stack engineer, system administrator, and Kubernetes enthusiast from Kerala.
-            I build production systems, automate everything I touch, and use AI to stay
-            three steps ahead.
+            Full-stack engineer walking the DevOps path. From Arch Linux to Kubernetes — I build, run, and automate the systems I create.
           </motion.p>
         </div>
 
@@ -198,7 +196,7 @@ export default function Hero() {
           className="mb-10"
         >
           <span className="font-[Silkscreen] text-[18px] md:text-[20px] text-accent tracking-wider uppercase">
-            React / K8s / Linux / TypeScript / AI-Augmented
+            Linux / Kubernetes / CI/CD / Home Lab / Self-Hosted
           </span>
         </motion.div>
 
@@ -234,10 +232,10 @@ export default function Hero() {
           >
             <div className="flex items-center gap-2 text-purple-600">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-              <span className="font-[Silkscreen] text-[14px] tracking-wider uppercase font-bold">Deploy</span>
+              <span className="font-[Silkscreen] text-[14px] tracking-wider uppercase font-bold">DevOps</span>
             </div>
             <p className="text-[13px] text-fg-muted leading-snug">
-              Production-grade <span className="text-fg font-medium">Kubernetes & Linux</span> environments. Automated CI/CD pipelines.
+              Self-hosted <span className="text-fg font-medium">Kubernetes</span> cluster. GitHub Actions pipelines. Learning <span className="text-fg font-medium">Terraform</span> next.
             </p>
           </motion.div>
 

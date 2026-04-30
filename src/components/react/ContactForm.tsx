@@ -48,6 +48,7 @@ const CONTACT_LINKS = [
 ];
 
 export default function ContactForm() {
+  const [showNote, setShowNote] = useState(true);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [formData, setFormData] = useState({
     name: '',
@@ -189,8 +190,44 @@ export default function ContactForm() {
         </div>
 
         {/* Right Side — Form */}
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
+        <div className="relative">
+          {/* Silly Note + Arrow */}
+          <AnimatePresence>
+            {showNote && (
+              <motion.div
+                initial={{ opacity: 0, y: 10, rotate: -5 }}
+                whileInView={{ opacity: 1, y: 0, rotate: -2 }}
+                exit={{ opacity: 0, scale: 0.9, rotate: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+                className="absolute -top-20 -left-4 md:-left-8 z-20 pointer-events-auto sm:block"
+              >
+                <div className="bg-pastel-orange/90 backdrop-blur-sm border-2 border-orange-200 p-3 rounded-2xl shadow-lg transform -rotate-2 max-w-[160px] sm:max-w-[200px] relative">
+                  <button 
+                    onClick={() => setShowNote(false)}
+                    className="absolute -top-2 -right-2 w-5 h-5 bg-orange-800 text-white rounded-full flex items-center justify-center text-[10px] hover:bg-orange-900 transition-colors cursor-pointer shadow-sm"
+                    aria-label="Dismiss note"
+                  >
+                    ✕
+                  </button>
+                  <p className="font-[Silkscreen] text-[10px] text-orange-800 leading-tight">
+                    This form is handled by a <span className="font-bold underline">PocketBase</span> instance inside a <span className="font-bold text-orange-600">Kubernetes</span> pod, humming away on a <span className="italic">Sony VAIO</span> in my bedroom.
+                  </p>
+                  
+                  {/* Unique Arrow SVG */}
+                  <div className="absolute -bottom-10 right-4 text-orange-400 pointer-events-none">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 5C5 5 15 5 25 15C35 25 35 35 35 35" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="4 4" />
+                      <path d="M28 35H35V28" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           className="relative z-10 bg-white p-8 md:p-10 rounded-[2.5rem] border border-border shadow-xl shadow-accent/5"
@@ -303,6 +340,7 @@ export default function ContactForm() {
           </AnimatePresence>
         </motion.div>
       </div>
-    </section>
+    </div>
+  </section>
   );
 }

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import PocketBase from 'pocketbase';
+
+const pb = new PocketBase('https://pb.barchy.online');
 
 const CONTACT_LINKS = [
   {
@@ -45,12 +48,30 @@ const CONTACT_LINKS = [
 ];
 
 export default function ContactForm() {
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
-    setTimeout(() => setStatus('success'), 1500);
+    
+    try {
+      await pb.collection('messages').create(formData);
+      setStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setStatus('error');
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -194,6 +215,25 @@ export default function ContactForm() {
                   Send another?
                 </button>
               </motion.div>
+            ) : status === 'error' ? (
+              <motion.div
+                key="error"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="py-20 text-center"
+              >
+                <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6 text-red-600">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </div>
+                <h3 className="text-2xl font-bold text-fg mb-2">Submission Failed</h3>
+                <p className="text-fg-muted">Something went wrong. Please try again later.</p>
+                <button 
+                  onClick={() => setStatus('idle')}
+                  className="mt-8 text-sm font-bold text-accent underline underline-offset-4"
+                >
+                  Try again
+                </button>
+              </motion.div>
             ) : (
               <motion.form
                 key="form"
@@ -208,6 +248,9 @@ export default function ContactForm() {
                   <input 
                     required
                     type="text" 
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     placeholder="Your name"
                     className="w-full px-6 py-4 rounded-2xl bg-surface border border-border focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all placeholder:text-fg-faint text-fg font-medium"
                   />
@@ -217,6 +260,9 @@ export default function ContactForm() {
                   <input 
                     required
                     type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="your@email.com"
                     className="w-full px-6 py-4 rounded-2xl bg-surface border border-border focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all placeholder:text-fg-faint text-fg font-medium"
                   />
@@ -225,6 +271,9 @@ export default function ContactForm() {
                   <label className="text-[14px] font-[Silkscreen] uppercase tracking-wider text-fg-faint ml-1">Message</label>
                   <textarea 
                     required
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     rows={4}
                     placeholder="What's on your mind?"
                     className="w-full px-6 py-4 rounded-2xl bg-surface border border-border focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all placeholder:text-fg-faint text-fg font-medium resize-none"

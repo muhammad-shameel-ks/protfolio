@@ -11,8 +11,10 @@ export default defineConfig({
   adapter: node({ mode: 'standalone' }),
   site: 'https://shameel.barchy.online',
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    build: {
+      sourcemap: false // Security: don't expose source in prod
+    }
   },
-
   integrations: [react()]
 });

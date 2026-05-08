@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import PocketBase from 'pocketbase';
-
-const pb = new PocketBase('https://pb.barchy.online');
 
 const CONTACT_LINKS = [
   {
@@ -59,9 +56,15 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
-    
+
     try {
-      await pb.collection('messages').create(formData);
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      if (!res.ok) throw new Error('Failed to submit');
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {

@@ -2,13 +2,20 @@ import type { APIRoute } from 'astro';
 import PocketBase from 'pocketbase';
 
 export const POST: APIRoute = async ({ request }) => {
-  const pb = new PocketBase(import.meta.env.POCKETBASE_URL || 'https://pb.barchy.online');
+  const pb = new PocketBase(import.meta.env.POCKETBASE_URL);
 
   try {
     const data = await request.json();
 
     if (!data.name || !data.email || !data.message) {
       return new Response(JSON.stringify({ error: 'Missing required fields' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+      return new Response(JSON.stringify({ error: 'Invalid email format' }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' }
       });

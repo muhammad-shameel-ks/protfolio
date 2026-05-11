@@ -301,16 +301,3 @@ export const POST: APIRoute = async ({ request }) => {
       request
     );
   }
-};
-
-export const GET: APIRoute = async ({ request }) => {
-  const pbUrl = import.meta.env.POCKETBASE_URL;
-  return createSecureResponse(
-    JSON.stringify({
-      envSet: !!pbUrl,
-      envValue: pbUrl || null,
-      timestamp: new Date().toISOString(),
-    }),
-    200
-  );
-};

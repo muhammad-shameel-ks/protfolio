@@ -153,11 +153,15 @@ function createErrorResponse(
 /**
  * Validate PocketBase URL uses HTTPS (required for secure communication).
  */
-function validatePocketBaseURL(): void {
+function validatePocketBaseURL(): string {
   const pbUrl = import.meta.env.POCKETBASE_URL;
-  if (!pbUrl?.startsWith("https://")) {
+  if (!pbUrl) {
+    throw new Error("POCKETBASE_URL environment variable is not set");
+  }
+  if (!pbUrl.startsWith("https://")) {
     throw new Error("POCKETBASE_URL must use HTTPS");
   }
+  return pbUrl;
 }
 
 // ============================================================
@@ -194,7 +198,7 @@ export const OPTIONS: APIRoute = ({ request }) => {
 export const POST: APIRoute = async ({ request }) => {
   try {
     // 1. Verify PocketBase uses secure connection
-    validatePocketBaseURL();
+    const pbUrl = validatePocketBaseURL();
 
     // 2. Get client IP for rate limiting
     const clientIP = getClientIP(request);
@@ -271,7 +275,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // 8. Submit to PocketBase
-    const pb = new PocketBase(import.meta.env.POCKETBASE_URL);
+    const pb = new PocketBase(pbUrl);
     await pb.collection("messages").create(sanitizedData);
 
     // 9. Return success with rate limit info
@@ -284,17 +288,13 @@ export const POST: APIRoute = async ({ request }) => {
       headers,
     });
   } catch (error) {
-    // 10. Safe error logging without exposing internal details
-    console.error("Error submitting form:", {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    console.error("Contact form error:", {
       timestamp: new Date().toISOString(),
       errorType: error instanceof Error ? error.constructor.name : "Unknown",
-      message:
-        error instanceof Error && !error.message.includes("POCKETBASE_URL")
-          ? error.message
-          : undefined,
+      message: errorMessage,
     });
 
-    // Return generic error to client
     return createErrorResponse(
       "Failed to submit message",
       500,

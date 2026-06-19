@@ -1,0 +1,96 @@
+---
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="robots" content="noindex" />
+		<meta name="theme-color" content="#FDFCFA" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Silkscreen:wght@400;700&family=Fraunces:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
+		<title>404 — Pod Not Found · Shameel</title>
+	</head>
+	<body class="bg-bg text-fg">
+		<div class="dot-grid fixed inset-0 opacity-30" aria-hidden></div>
+		<div class="pointer-events-none fixed -left-40 -top-40 h-96 w-96 rounded-full bg-pastel-orange/20 blur-[120px]" aria-hidden></div>
+		<div class="pointer-events-none fixed -right-40 -bottom-40 h-96 w-96 rounded-full bg-pastel-blue/20 blur-[120px]" aria-hidden></div>
+
+		<main class="relative z-10 flex min-h-[100svh] items-center justify-center px-6 py-12">
+			<div class="w-full max-w-2xl text-center">
+				<!-- Big 404 — display type -->
+				<div class="mb-6 font-[Fraunces] text-[clamp(8rem,30vw,16rem)] font-medium leading-none tracking-[-0.04em] text-accent/15">
+					404
+				</div>
+
+				<!-- Mini terminal -->
+				<div
+					class="mx-auto mb-8 max-w-md overflow-hidden rounded-2xl border border-stone-800/60 text-left"
+					style="background: var(--color-terminal-bg); box-shadow: var(--shadow-terminal)"
+				>
+					<div class="flex items-center gap-1.5 border-b border-stone-800/70 px-4 py-2.5">
+						<span class="h-3 w-3 rounded-full bg-[#ff5f57]"></span>
+						<span class="h-3 w-3 rounded-full bg-[#febc2e]"></span>
+						<span class="h-3 w-3 rounded-full bg-[#28c840]"></span>
+						<span class="ml-2 font-[JetBrains_Mono] text-[11px] text-stone-500">shameel@vaio</span>
+						<span class="ml-auto inline-flex items-center gap-1.5 rounded-full bg-red-500/10 px-2 py-0.5">
+							<span class="h-1.5 w-1.5 rounded-full bg-red-400"></span>
+							<span class="font-[JetBrains_Mono] text-[10px] text-red-400">error</span>
+						</span>
+					</div>
+					<div class="px-4 py-3.5 font-[JetBrains_Mono] text-[11px] leading-relaxed sm:text-[12px]" style="color: var(--color-terminal-fg)">
+						<div><span class="text-orange-400">$</span> kubectl get route <span class="text-stone-500">/the-page-you-wanted</span></div>
+						<div class="text-red-400">Error from server (NotFound): routes "the-page-you-wanted" not found</div>
+						<div class="mt-2 text-stone-500">↳ did you mean: <a href="/" class="text-accent underline underline-offset-2">/home</a>?</div>
+						<div class="mt-2"><span class="text-orange-400">$</span> <span class="inline-block h-[1em] w-[7px] translate-y-[2px] bg-stone-300 align-middle animate-blink"></span></div>
+					</div>
+				</div>
+
+				<span class="font-[Silkscreen] text-[10px] uppercase tracking-[0.3em] text-accent">HTTP 404 · Pod Not Found</span>
+				<h1 class="mt-3 text-balance text-3xl font-semibold leading-[1.05] tracking-[-0.03em] md:text-5xl">
+					This pod never <span class="font-[Fraunces] italic text-accent">deployed.</span>
+				</h1>
+				<p class="mx-auto mt-4 max-w-sm font-light leading-relaxed text-fg-muted">
+					The route you hit isn't running on the cluster. Maybe it was rolled back, or maybe it never existed.
+				</p>
+
+				<div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+					<a
+						href="/"
+						class="group inline-flex items-center gap-2 rounded-full bg-fg px-5 py-3 text-sm font-bold text-white shadow-lg transition-shadow hover:shadow-xl"
+					>
+						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:-translate-x-0.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+						Return to base
+					</a>
+					<a
+						href="https://github.com/muhammad-shameel-ks"
+						target="_blank"
+						rel="noreferrer"
+						class="inline-flex items-center gap-2 rounded-full border border-fg/10 bg-white/70 px-5 py-3 text-sm font-bold text-fg backdrop-blur-md transition-colors hover:border-accent/40"
+					>
+						Or browse the repo
+					</a>
+				</div>
+
+				<p class="mt-10 font-[JetBrains_Mono] text-[10px] text-fg-faint">
+					<span class="text-accent">↳</span> tried kubectl describe route for clues
+				</p>
+			</div>
+		</main>
+
+		<style>
+			@keyframes blink {
+				0%, 49% { opacity: 1; }
+				50%, 100% { opacity: 0; }
+			}
+			.animate-blink { animation: blink 1s step-end infinite; }
+			@media (prefers-reduced-motion: reduce) {
+				.animate-blink { animation: none; }
+			}
+		</style>
+	</body>
+</html>

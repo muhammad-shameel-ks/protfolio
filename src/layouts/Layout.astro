@@ -8,7 +8,7 @@ interface Props {
 
 const { 
 	title, 
-	description = "Muhammad Shameel KS — Full-Stack Engineer, DevOps & System Administrator from Kerala. Building production systems, automating everything, and using AI to stay three steps ahead."
+	description = "Muhammad Shameel KS — Full-Stack Engineer, DevOps & System Administrator from Kerala. I design, build, deploy, and self-host production systems — then write about it."
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -19,7 +19,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<meta name="theme-color" content="#FDFCFA" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		
@@ -28,53 +29,54 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<meta property="og:url" content={canonicalURL} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		
+		<meta property="og:image" content={new URL('/og-image.svg', Astro.site)} />
+		<meta property="og:image:alt" content={`${title} — portfolio`} />
+		<meta property="og:site_name" content="Shameel" />
+		<meta property="og:locale" content="en_US" />
+
 		<!-- Twitter -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
-		
-		<!-- Fonts preload for performance -->
+		<meta name="twitter:image" content={new URL('/og-image.svg', Astro.site)} />
+		<meta name="twitter:creator" content="@muhammadshameel" />
+
+		<!-- Performance: preconnect to font CDN -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500;600&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&family=JetBrains+Mono:wght@400;500;600;700&family=Silkscreen:wght@400;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&display=swap" rel="stylesheet">
 		
 		<title>{title}</title>
 		
 		<!-- JSON-LD Structured Data for SEO -->
-		<script type="application/ld+json">
-			{
-				"@context": "https://schema.org",
-				"@type": "Person",
-				"name": "Muhammad Shameel KS",
-				"jobTitle": "Full-Stack Engineer",
-				"url": "https://shameel.barchy.online",
-				"image": "https://shameel.barchy.online/favicon.svg",
-				"address": {
-					"@type": "PostalAddress",
-					"addressLocality": "Palakkad",
-					"addressRegion": "Kerala",
-					"addressCountry": "IN"
-				},
-				"sameAs": [
-					"https://github.com/muhammad-shameel-ks",
-					"https://linkedin.com/in/muhammad-shameel-k-s"
-				],
-				"knowsAbout": [
-					"React",
-					"TypeScript",
-					"Kubernetes",
-					"Linux",
-					"DevOps",
-					"AI"
-				],
-				"contactPoint": {
-					"@type": "ContactPoint",
-					"contactType": "customer service",
-					"url": "https://shameel.barchy.online#contact"
-				}
+		<script is:inline type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Person",
+			"name": "Muhammad Shameel KS",
+			"jobTitle": "Full-Stack Engineer · DevOps · Sysadmin",
+			"url": "https://shameel.barchy.online",
+			"image": "https://shameel.barchy.online/og-image.svg",
+			"description": description,
+			"address": {
+				"@type": "PostalAddress",
+				"addressLocality": "Palakkad",
+				"addressRegion": "Kerala",
+				"addressCountry": "IN"
+			},
+			"sameAs": [
+				"https://github.com/muhammad-shameel-ks",
+				"https://linkedin.com/in/muhammad-shameel-k-s"
+			],
+			"knowsAbout": [
+				"React", "TypeScript", "Next.js", "Flutter", "Kubernetes", "Docker",
+				"Linux", "Arch Linux", "DevOps", "AI", "Supabase", "Python", "Node.js"
+			],
+			"contactPoint": {
+				"@type": "ContactPoint",
+				"contactType": "customer support",
+				"url": "https://shameel.barchy.online#contact"
 			}
-		</script>
+		})} />
 	</head>
 	<body class="bg-bg text-fg relative">
 		<slot />

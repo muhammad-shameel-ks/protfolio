@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-bg: #FDFCFA;
   --color-fg: #1a1a1a;
@@ -27,6 +29,29 @@
   --font-pixel: 'Silkscreen', cursive;
 }
 
+/* Dark mode variable overrides matching the warm light aesthetic */
+.dark {
+  --color-bg: #0D0C0B;
+  --color-fg: #F5F3F0;
+  --color-fg-muted: #A39E95;
+  --color-fg-faint: #5E5A52;
+
+  --color-accent-light: #331610;
+  --color-accent-dark: #FF734D;
+
+  --color-pastel-orange: #302116;
+  --color-pastel-blue: #14222E;
+  --color-pastel-green: #142E1F;
+  --color-pastel-purple: #23142E;
+  --color-pastel-pink: #2E1423;
+  --color-pastel-yellow: #2E2D14;
+
+  --color-surface: #141312;
+  --color-surface-warm: #1A1817;
+  --color-border: #262422;
+  --color-border-dark: #3E3A35;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -37,6 +62,7 @@ body {
   font-family: var(--font-sans);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body::before {

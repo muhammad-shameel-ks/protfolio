@@ -2,6 +2,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "protfolio",
   "main": "./dist/_worker.js/index.js",
+  "workers_dev": true,
   "compatibility_date": "2025-08-15",
   "compatibility_flags": [
     "nodejs_compat"

@@ -12,6 +12,11 @@ export default defineConfig({
   site: 'https://shameel.barchy.online',
   vite: {
     plugins: [tailwindcss()],
+    resolve: {
+      alias: import.meta.env.PROD ? {
+        'react-dom/server': 'react-dom/server.edge',
+      } : {},
+    },
     build: {
       sourcemap: false
     }

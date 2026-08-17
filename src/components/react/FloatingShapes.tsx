@@ -12,22 +12,22 @@ export default function FloatingShapes() {
 
   return (
     <div ref={ref} className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-      {/* Soft blobs — very muted */}
+      {/* Soft blobs - very muted */}
       <motion.div
         style={{ y: y1 }}
-        className="absolute -top-32 -right-48 w-[550px] h-[550px] rounded-full bg-pastel-orange/25 blur-[120px]"
+        className="absolute -top-32 -right-48 w-[550px] h-[550px] rounded-full bg-pastel-orange/25 blur-3xl"
       />
       <motion.div
         style={{ y: y2 }}
-        className="absolute top-[70vh] -left-48 w-[400px] h-[400px] rounded-full bg-pastel-blue/20 blur-[120px]"
+        className="absolute top-[70vh] -left-48 w-[400px] h-[400px] rounded-full bg-pastel-blue/20 blur-3xl"
       />
       <motion.div
         style={{ y: y3 }}
-        className="absolute top-[160vh] -right-32 w-[350px] h-[350px] rounded-full bg-pastel-purple/18 blur-[120px]"
+        className="absolute top-[160vh] -right-32 w-[350px] h-[350px] rounded-full bg-pastel-purple/18 blur-3xl"
       />
       <motion.div
         style={{ y: y2 }}
-        className="absolute top-[250vh] -left-40 w-[300px] h-[300px] rounded-full bg-pastel-green/15 blur-[120px]"
+        className="absolute top-[250vh] -left-40 w-[300px] h-[300px] rounded-full bg-pastel-green/15 blur-3xl"
       />
 
       {/* Small decorative elements — subtle */}

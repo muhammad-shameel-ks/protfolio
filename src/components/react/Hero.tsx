@@ -37,10 +37,10 @@ export default function Hero() {
   const floatingIcons = useMemo(() => {
     return FLOAT_ICONS.map((src, i) => ({
       src,
-      delay: i * 2,
+      delay: i * 1.5,
       position: {
-        top: `${15 + (Math.random() * 60)}%`,
-        left: `${65 + (Math.random() * 25)}%`,
+        top: `${15 + ((i * 19 + 7) % 65)}%`,
+        left: `${65 + ((i * 29 + 13) % 25)}%`,
       }
     }));
   }, []);

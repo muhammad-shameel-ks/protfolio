@@ -11,6 +11,7 @@ import ProjectList from '../components/react/ProjectList';
 import ContactForm from '../components/react/ContactForm';
 import InfraFlow from '../components/react/InfraFlow';
 import Marquee from '../components/react/Marquee';
+import StatStrip from '../components/react/StatStrip';
 import Footer from '../components/react/Footer';
 ---
 
@@ -116,30 +117,8 @@ import Footer from '../components/react/Footer';
 		<!-- Tech stack marquee -->
 		<Marquee client:visible />
 
-		<!-- Performance & Accessibility -->
-		<section id="performance">
-			<StoryBlock
-				client:visible
-				icon="cpu"
-				eyebrow="Under The Hood"
-				heading="Fast loading. Accessible. Built right."
-				body="Performance isn't optional — it's a feature. This site scores 100 on Lighthouse with proper ARIA labels, keyboard navigation, and semantic HTML. Because fast loading and accessibility reflect engineering discipline."
-				aside="<span class='text-accent font-semibold'>Keyboard test:</span> Try navigating the whole page with just Tab. Every interactive element should be reachable and have clear focus states."
-			/>
-		</section>
-
-		<!-- SEO & Crawling -->
-		<section id="seo">
-			<StoryBlock
-				client:visible
-				warm={true}
-				icon="search"
-				eyebrow="Discoverable"
-				heading="SEO-optimized. Indexed. Found."
-				body="Open Graph tags, JSON-LD structured data, semantic HTML, and proper meta descriptions so recruiters and search engines can find you. This page is built to be crawled, not just seen."
-				aside="<span class='text-accent font-semibold'>Built with:</span> Astro SSG, React, Tailwind CSS v4, and Framer Motion. Zero runtime JavaScript bloat, 100% Lighthouse score."
-			/>
-		</section>
+		<!-- Performance, accessibility & SEO — compact stat strip, not two full chapters -->
+		<StatStrip client:visible />
 
 		<!-- Chapter 06 — The Connection -->
 		<section id="contact">

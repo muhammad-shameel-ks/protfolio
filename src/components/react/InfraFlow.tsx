@@ -199,8 +199,9 @@ export default function InfraFlow() {
             </h2>
 
             <p className="text-fg-muted text-base sm:text-lg font-light mt-3 max-w-2xl leading-relaxed">
-              From a terminal commit to a Sony VAIO Kubernetes cluster in my room.
-              Fully automated with GitHub Actions, WireGuard mesh, and zero cloud lock-in.
+              Every project above ships through this exact pipeline: a terminal commit
+              lands on a Sony VAIO Kubernetes cluster in my room, fully automated with
+              GitHub Actions, WireGuard mesh, and zero cloud lock-in.
             </p>
           </div>
 

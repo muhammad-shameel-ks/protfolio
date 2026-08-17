@@ -1,23 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-interface Project {
-  index: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  funNote: string;
-  tags: { name: string; color: string }[];
-  stackIcons?: string[];
-  link: string;
-  highlights: string[];
-  cardBg: string;
-  iconColor: string;
-  showInternshipBadge?: boolean;
-  screenshot?: string;
-  isLive?: boolean;
-}
-
 // Modal Component
 function ImageModal({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
   // Hide dock and header when modal is open
@@ -78,6 +61,8 @@ interface Project {
   showInternshipBadge?: boolean;
   screenshot?: string;
   isLive?: boolean;
+  isWip?: boolean;
+  kind?: string;
 }
 
 const projects: Project[] = [
@@ -194,6 +179,71 @@ const projects: Project[] = [
     cardBg: "bg-gradient-to-br from-pastel-green/20 to-pastel-blue/10",
     iconColor: "bg-pastel-green/40 text-green-600",
   },
+  {
+    index: "06",
+    title: "MSSQL MCP Server",
+    subtitle: "Model Context Protocol server for SQL Server",
+    description: "Lets AI agents like Claude query and administer Microsoft SQL Server directly over MCP, with a configurable read-only mode so an agent can't accidentally mutate production data.",
+    funNote: "Built so the AI doing my devops chores can't accidentally DROP TABLE.",
+    tags: [
+      { name: "Python", color: "bg-pastel-yellow/50 text-yellow-700" },
+      { name: "MCP", color: "bg-pastel-purple/50 text-purple-700" },
+      { name: "SQL Server", color: "bg-pastel-blue/50 text-blue-700" },
+    ],
+    stackIcons: ["/python.svg", "/microsoft-sql-server.svg"],
+    link: "https://github.com/muhammad-shameel-ks/sql-server-mcp",
+    highlights: [
+      "Read-only mode guards against destructive queries",
+      "Exposes schema browsing and query tools over MCP to any compatible AI client",
+      "ODBC-based, works against self-hosted or cloud SQL Server",
+    ],
+    cardBg: "bg-gradient-to-br from-pastel-yellow/20 to-pastel-purple/10",
+    iconColor: "bg-pastel-yellow/40 text-yellow-700",
+    kind: "MCP SERVER",
+  },
+  {
+    index: "07",
+    title: "DMS Speech-to-Text",
+    subtitle: "Zero-idle dictation plugin for Hyprland",
+    description: "A minimal-resource dictation plugin for Dank Material Shell — records voice, transcribes it with Mistral Voxtral cloud STT, and auto-pastes the transcript into whatever window is focused. Nothing runs at idle.",
+    funNote: "Because reaching for the keyboard mid-thought kills the thought.",
+    tags: [
+      { name: "QML", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "Shell", color: "bg-pastel-green/50 text-green-700" },
+      { name: "Mistral API", color: "bg-pastel-orange/50 text-orange-700" },
+    ],
+    link: "https://github.com/muhammad-shameel-ks/dms-stt",
+    highlights: [
+      "No resident processes — just a ~15KB C mic-meter binary while recording",
+      "Global toggle bindable to any Hyprland keybind",
+      "Cloud STT at $0.003/min instead of a local model hogging RAM",
+    ],
+    cardBg: "bg-gradient-to-br from-pastel-blue/20 to-pastel-green/10",
+    iconColor: "bg-pastel-blue/40 text-blue-600",
+    kind: "HYPRLAND PLUGIN",
+  },
+  {
+    index: "08",
+    title: "Unified Agent Control",
+    subtitle: "One config layer for Claude, opencode, Gemini CLI agents",
+    description: "A Linux-first tool that unifies scattered AI-agent config files (~/.claude.json, ~/.config/opencode, ~/.gemini/config) into a single managed layout via symlinks, so switching between agent CLIs doesn't mean reconfiguring each one from scratch.",
+    funNote: "Pre-1.0 and it says so loudly — I'd rather ship an honest work-in-progress than a polished lie.",
+    tags: [
+      { name: "TypeScript", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "Linux", color: "bg-pastel-orange/50 text-orange-700" },
+      { name: "CLI", color: "bg-pastel-green/50 text-green-700" },
+    ],
+    link: "https://github.com/muhammad-shameel-ks/unified-agent-control",
+    highlights: [
+      "Symlinks scattered agent configs into a single ~/.config/uac source of truth",
+      "Tested on X11 and Wayland, including Hyprland",
+      "Ships its own data-safety warnings — it reads and rewrites real config files",
+    ],
+    cardBg: "bg-gradient-to-br from-pastel-orange/20 to-pastel-blue/10",
+    iconColor: "bg-pastel-orange/40 text-orange-600",
+    isWip: true,
+    kind: "CLI TOOL",
+  },
 ];
 
 const projectIcons: Record<string, React.ReactNode> = {
@@ -202,6 +252,9 @@ const projectIcons: Record<string, React.ReactNode> = {
   "03": <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>,
   "04": <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>,
   "05": <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/><path d="M2 2l20 20"/></svg>,
+  "06": <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4.03 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/></svg>,
+  "07": <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a3 3 0 00-3 3v6a3 3 0 006 0V5a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>,
+  "08": <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h6"/></svg>,
 };
 
 function ProjectCard({ project, onImageClick }: { project: Project; onImageClick: (src: string, title: string) => void }) {
@@ -238,15 +291,20 @@ function ProjectCard({ project, onImageClick }: { project: Project; onImageClick
                 <path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/><path d="M2 2l20 20"/>
               </svg>
             </div>
-            <span className="font-[Silkscreen] text-[10px] tracking-wider">CLI TOOL</span>
+            <span className="font-[Silkscreen] text-[10px] tracking-wider">{project.kind || 'CLI TOOL'}</span>
           </div>
         )}
-        
-        {/* Live Badge */}
+
+        {/* Live / WIP Badge */}
         {project.isLive && (
           <div className="absolute top-3 right-3 px-2 py-1 rounded-md bg-green-500/90 text-white text-[10px] font-bold font-[Silkscreen] tracking-wider flex items-center gap-1">
             <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
             LIVE
+          </div>
+        )}
+        {project.isWip && (
+          <div className="absolute top-3 right-3 px-2 py-1 rounded-md bg-amber-500/90 text-white text-[10px] font-bold font-[Silkscreen] tracking-wider">
+            WIP
           </div>
         )}
       </div>
@@ -263,8 +321,13 @@ function ProjectCard({ project, onImageClick }: { project: Project; onImageClick
         </div>
 
         {/* Subtitle */}
-        <p className="text-sm text-fg-muted font-light mb-3">
+        <p className="text-sm text-fg-muted font-light mb-2">
           {project.subtitle}
+        </p>
+
+        {/* Description — the actual problem/context, not just a tag list */}
+        <p className="text-[13px] text-fg leading-relaxed mb-3">
+          {project.description}
         </p>
 
         {/* Tech Stack Icons */}
@@ -321,6 +384,13 @@ function ProjectCard({ project, onImageClick }: { project: Project; onImageClick
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* Fun note — personality, not a spec sheet */}
+        {project.funNote && (
+          <p className="text-xs text-fg-faint italic leading-snug mt-3">
+            {project.funNote}
+          </p>
+        )}
 
         {/* Link */}
         <div className="mt-4 pt-3 border-t border-border/30">

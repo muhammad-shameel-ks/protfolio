@@ -73,6 +73,14 @@ function checkRateLimit(ip: string): {
   resetAt: Date;
 } {
   const now = Date.now();
+
+  // Lazy cleanup of expired entries
+  for (const [storedIp, entry] of rateLimitStore.entries()) {
+    if (now > entry.resetAt) {
+      rateLimitStore.delete(storedIp);
+    }
+  }
+
   const record = rateLimitStore.get(ip);
 
   // No existing record or window expired - create new record
@@ -163,18 +171,6 @@ function validatePocketBaseURL(): string {
   }
   return pbUrl;
 }
-
-// ============================================================
-// CLEANUP: Remove expired rate limit entries periodically
-// ============================================================
-setInterval(() => {
-  const now = Date.now();
-  for (const [ip, record] of rateLimitStore.entries()) {
-    if (now > record.resetAt) {
-      rateLimitStore.delete(ip);
-    }
-  }
-}, RATE_LIMIT_WINDOW_MS);
 
 // ============================================================
 // API HANDLERS

@@ -1,10 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Shell from '../components/Shell';
 import Hero from '../components/react/Hero';
 import FloatingShapes from '../components/react/FloatingShapes';
-import TopProgress from '../components/react/TopProgress';
-import PersistentNav from '../components/react/PersistentNav';
-import ChapterHeader from '../components/react/ChapterHeader';
 import StoryBlock from '../components/react/StoryBlock';
 import TextReveal from '../components/react/TextReveal';
 import ProjectList from '../components/react/ProjectList';
@@ -19,15 +17,7 @@ import Footer from '../components/react/Footer';
 	<!-- Decorative floating background shapes -->
 	<FloatingShapes client:load />
 
-	<!-- Progress bar (top line) -->
-	<TopProgress client:load />
-
-	<!-- Persistent chapter header (appears as you scroll) -->
-	<ChapterHeader client:load />
-
-	<!-- Bottom navigation dock -->
-	<PersistentNav client:load />
-
+	<Shell client:load>
 	<div class="relative z-10">
 		<!-- Hero section -->
 		<Hero client:load />
@@ -128,4 +118,5 @@ import Footer from '../components/react/Footer';
 		<!-- Footer -->
 		<Footer client:visible />
 	</div>
+	</Shell>
 </Layout>

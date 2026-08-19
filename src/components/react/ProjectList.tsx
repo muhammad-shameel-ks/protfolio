@@ -1,13 +1,25 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useModal } from "../../context/ModalContext";
+import { projects, projectIcons } from "../../data/projects";
+import type { Project } from "../../data/projects";
 
 // Modal Component
-function ImageModal({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
-  // Hide dock and header when modal is open
-  React.useEffect(() => {
-    document.body.setAttribute('data-modal-open', 'true');
-    return () => document.body.removeAttribute('data-modal-open');
-  }, []);
+function ImageModal({
+  src,
+  alt,
+  onClose,
+}: {
+  src: string;
+  alt: string;
+  onClose: () => void;
+}) {
+  const { open, close } = useModal();
+
+  useEffect(() => {
+    open();
+    return () => close();
+  }, [open, close]);
 
   return (
     <motion.div
@@ -22,8 +34,17 @@ function ImageModal({ src, alt, onClose }: { src: string; alt: string; onClose: 
         onClick={onClose}
         className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
       >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
-          <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="white"
+          strokeWidth="2"
+          strokeLinecap="round"
+        >
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
       </button>
 
@@ -46,234 +67,28 @@ function ImageModal({ src, alt, onClose }: { src: string; alt: string; onClose: 
   );
 }
 
-interface Project {
-  index: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  funNote: string;
-  tags: { name: string; color: string }[];
-  stackIcons?: string[];
-  link: string;
-  highlights: string[];
-  cardBg: string;
-  iconColor: string;
-  showInternshipBadge?: boolean;
-  screenshot?: string;
-  isLive?: boolean;
-  isWip?: boolean;
-  kind?: string;
-}
-
-const projects: Project[] = [
-  {
-    index: "01",
-    title: "Scentance",
-    subtitle: "Premium Fragrance E-commerce",
-    description: "A premium fragrance e-commerce platform built for a client. Live at scentenceparfum.com with real customers and orders.",
-    funNote: "This isn't a portfolio piece — it's a production business with real revenue.",
-    tags: [
-      { name: "Next.js 16", color: "bg-pastel-blue/50 text-blue-700" },
-      { name: "TypeScript", color: "bg-pastel-blue/50 text-blue-700" },
-      { name: "Three.js/R3F", color: "bg-pastel-purple/50 text-purple-700" },
-      { name: "Supabase", color: "bg-pastel-green/50 text-green-700" },
-    ],
-    stackIcons: ["/nextjs-light.svg", "/typescript.svg", "/supabase.svg", "/resend.svg"],
-    link: "https://scentenceparfum.com",
-    highlights: [
-      "Live production with real customers",
-      "3D interactive mesh background",
-      "Admin dashboard with order tracking",
-    ],
-    cardBg: "bg-gradient-to-br from-pastel-purple/25 to-pastel-pink/10",
-    iconColor: "bg-pastel-purple/40 text-purple-600",
-    screenshot: "/projects/scentence.png",
-    isLive: true,
-  },
-  {
-    index: "02",
-    title: "Stock Salt",
-    subtitle: "Real-time Inventory SaaS",
-    description: "Multi-outlet inventory management with real-time sync across all POS terminals.",
-    funNote: "Because spreadsheets shouldn't be the backbone of a business.",
-    tags: [
-      { name: "Next.js 15", color: "bg-pastel-blue/50 text-blue-700" },
-      { name: "TypeScript", color: "bg-pastel-blue/50 text-blue-700" },
-      { name: "Supabase Realtime", color: "bg-pastel-green/50 text-green-700" },
-    ],
-    stackIcons: ["/nextjs-light.svg", "/typescript.svg", "/supabase.svg", "/reactjs.svg"],
-    link: "https://github.com/muhammad-shameel-ks/stock-salt",
-    highlights: [
-      "Real-time stock sync across terminals",
-      "Centralized master stock management",
-      "Revenue analytics dashboard",
-    ],
-    cardBg: "bg-gradient-to-br from-pastel-blue/25 to-pastel-green/10",
-    iconColor: "bg-pastel-blue/40 text-blue-600",
-    screenshot: "/projects/stock-salt.png",
-    isLive: true,
-  },
-  {
-    index: "03",
-    title: "Office Pal",
-    subtitle: "College Management System",
-    description: "Replaces paperwork with automated exam seating and administration.",
-    funNote: "Yes, I automated away someone's entire job. They thanked me.",
-    tags: [
-      { name: "Flutter", color: "bg-pastel-purple/50 text-purple-700" },
-      { name: "Supabase", color: "bg-pastel-green/50 text-green-700" },
-      { name: "Riverpod", color: "bg-pastel-orange/50 text-orange-700" },
-    ],
-    stackIcons: ["/flutter.svg", "/supabase.svg"],
-    link: "https://github.com/muhammad-shameel-ks/office_pal",
-    highlights: [
-      "Anti-cheat seating algorithm",
-      "Print-ready PDF generation",
-      "4 role-based dashboards",
-    ],
-    cardBg: "bg-gradient-to-br from-pastel-purple/25 to-pastel-pink/10",
-    iconColor: "bg-pastel-purple/40 text-purple-600",
-    screenshot: "/projects/office-pal.png",
-  },
-  {
-    index: "04",
-    title: "KSDC Smart Helper",
-    subtitle: "SQL Command Generator",
-    description: "Auto-generates SQL commands for non-technical staff.",
-    funNote: "Making SQL accessible to everyone, one query at a time.",
-    tags: [
-      { name: "React", color: "bg-pastel-blue/50 text-blue-700" },
-      { name: "TypeScript", color: "bg-pastel-blue/50 text-blue-700" },
-      { name: "Node.js", color: "bg-pastel-green/50 text-green-700" },
-    ],
-    stackIcons: ["/reactjs.svg", "/typescript.svg", "/nodejs.svg", "/microsoft-sql-server.svg"],
-    link: "https://github.com/muhammad-shameel-ks/ksdc-smart-helper",
-    highlights: [
-      "Auto SQL query generation",
-      "Simplified UI for non-tech users",
-      "Query validation",
-    ],
-    cardBg: "bg-gradient-to-br from-pastel-orange/20 to-pastel-yellow/10",
-    iconColor: "bg-pastel-orange/40 text-orange-600",
-    showInternshipBadge: true,
-    screenshot: "/projects/ksdc-smart.png",
-  },
-  {
-    index: "05",
-    title: "n8n Easy Webhooks",
-    subtitle: "Zero-Config Tunneling",
-    description: "Auto Cloudflare Tunnel for local n8n development.",
-    funNote: "I was too lazy to configure tunnels manually. So I automated it.",
-    tags: [
-      { name: "Python", color: "bg-pastel-yellow/50 text-yellow-700" },
-      { name: "Docker", color: "bg-pastel-blue/50 text-blue-700" },
-      { name: "Cloudflare", color: "bg-pastel-orange/50 text-orange-700" },
-    ],
-    stackIcons: ["/python.svg", "/docker-engine.svg", "/cloudflare.svg"],
-    link: "https://github.com/muhammad-shameel-ks/n8n-easy-webhook",
-    highlights: [
-      "Auto Cloudflare Tunnel provisioning",
-      "Dynamic webhook URL config",
-      "Dual CLI + TUI interface",
-    ],
-    cardBg: "bg-gradient-to-br from-pastel-green/20 to-pastel-blue/10",
-    iconColor: "bg-pastel-green/40 text-green-600",
-  },
-  {
-    index: "06",
-    title: "MSSQL MCP Server",
-    subtitle: "Model Context Protocol server for SQL Server",
-    description: "Lets AI agents like Claude query and administer Microsoft SQL Server directly over MCP, with a configurable read-only mode so an agent can't accidentally mutate production data.",
-    funNote: "Built so the AI doing my devops chores can't accidentally DROP TABLE.",
-    tags: [
-      { name: "Python", color: "bg-pastel-yellow/50 text-yellow-700" },
-      { name: "MCP", color: "bg-pastel-purple/50 text-purple-700" },
-      { name: "SQL Server", color: "bg-pastel-blue/50 text-blue-700" },
-    ],
-    stackIcons: ["/python.svg", "/microsoft-sql-server.svg"],
-    link: "https://github.com/muhammad-shameel-ks/sql-server-mcp",
-    highlights: [
-      "Read-only mode guards against destructive queries",
-      "Exposes schema browsing and query tools over MCP to any compatible AI client",
-      "ODBC-based, works against self-hosted or cloud SQL Server",
-    ],
-    cardBg: "bg-gradient-to-br from-pastel-yellow/20 to-pastel-purple/10",
-    iconColor: "bg-pastel-yellow/40 text-yellow-700",
-    kind: "MCP SERVER",
-  },
-  {
-    index: "07",
-    title: "DMS Speech-to-Text",
-    subtitle: "Zero-idle dictation plugin for Hyprland",
-    description: "A minimal-resource dictation plugin for Dank Material Shell — records voice, transcribes it with Mistral Voxtral cloud STT, and auto-pastes the transcript into whatever window is focused. Nothing runs at idle.",
-    funNote: "Because reaching for the keyboard mid-thought kills the thought.",
-    tags: [
-      { name: "QML", color: "bg-pastel-blue/50 text-blue-700" },
-      { name: "Shell", color: "bg-pastel-green/50 text-green-700" },
-      { name: "Mistral API", color: "bg-pastel-orange/50 text-orange-700" },
-    ],
-    link: "https://github.com/muhammad-shameel-ks/dms-stt",
-    highlights: [
-      "No resident processes — just a ~15KB C mic-meter binary while recording",
-      "Global toggle bindable to any Hyprland keybind",
-      "Cloud STT at $0.003/min instead of a local model hogging RAM",
-    ],
-    cardBg: "bg-gradient-to-br from-pastel-blue/20 to-pastel-green/10",
-    iconColor: "bg-pastel-blue/40 text-blue-600",
-    kind: "HYPRLAND PLUGIN",
-  },
-  {
-    index: "08",
-    title: "Unified Agent Control",
-    subtitle: "One config layer for Claude, opencode, Gemini CLI agents",
-    description: "A Linux-first tool that unifies scattered AI-agent config files (~/.claude.json, ~/.config/opencode, ~/.gemini/config) into a single managed layout via symlinks, so switching between agent CLIs doesn't mean reconfiguring each one from scratch.",
-    funNote: "Pre-1.0 and it says so loudly — I'd rather ship an honest work-in-progress than a polished lie.",
-    tags: [
-      { name: "TypeScript", color: "bg-pastel-blue/50 text-blue-700" },
-      { name: "Linux", color: "bg-pastel-orange/50 text-orange-700" },
-      { name: "CLI", color: "bg-pastel-green/50 text-green-700" },
-    ],
-    link: "https://github.com/muhammad-shameel-ks/unified-agent-control",
-    highlights: [
-      "Symlinks scattered agent configs into a single ~/.config/uac source of truth",
-      "Tested on X11 and Wayland, including Hyprland",
-      "Ships its own data-safety warnings — it reads and rewrites real config files",
-    ],
-    cardBg: "bg-gradient-to-br from-pastel-orange/20 to-pastel-blue/10",
-    iconColor: "bg-pastel-orange/40 text-orange-600",
-    isWip: true,
-    kind: "CLI TOOL",
-  },
-];
-
-const projectIcons: Record<string, React.ReactNode> = {
-  "01": <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>,
-  "02": <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>,
-  "03": <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>,
-  "04": <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>,
-  "05": <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/><path d="M2 2l20 20"/></svg>,
-  "06": <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4.03 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/></svg>,
-  "07": <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a3 3 0 00-3 3v6a3 3 0 006 0V5a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>,
-  "08": <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h6"/></svg>,
-};
-
-function ProjectCard({ project, onImageClick }: { project: Project; onImageClick: (src: string, title: string) => void }) {
+function ProjectCard({
+  project,
+  onImageClick,
+}: {
+  project: Project;
+  onImageClick: (src: string, title: string) => void;
+}) {
   const [isOpen, setIsOpen] = useState(false);
-  const [showInternshipNote, setShowInternshipNote] = useState(false);
 
   return (
-    <motion.div
-      className="group rounded-2xl border border-border/50 bg-white hover:shadow-xl hover:shadow-black/[0.05] transition-all duration-300 overflow-hidden"
-    >
+    <motion.div className="group rounded-2xl border border-border/50 bg-white hover:shadow-xl hover:shadow-black/[0.05] transition-all duration-300 overflow-hidden">
       {/* Screenshot or Placeholder - Clickable */}
-      <div 
-        className={`relative h-40 ${project.screenshot ? 'cursor-zoom-in' : 'flex items-center justify-center'} bg-surface`}
-        onClick={() => project.screenshot && onImageClick(project.screenshot, project.title)}
+      <div
+        className={`relative h-40 ${project.screenshot ? "cursor-zoom-in" : "flex items-center justify-center"} bg-surface`}
+        onClick={() =>
+          project.screenshot && onImageClick(project.screenshot, project.title)
+        }
       >
         {project.screenshot ? (
           <>
-            <img 
-              src={project.screenshot} 
+            <img
+              src={project.screenshot}
               alt={project.title}
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
             />
@@ -287,11 +102,23 @@ function ProjectCard({ project, onImageClick }: { project: Project; onImageClick
         ) : (
           <div className="flex flex-col items-center justify-center gap-2 text-fg-faint">
             <div className="w-16 h-16 rounded-xl bg-pastel-green/30 flex items-center justify-center">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-green-600">
-                <path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/><path d="M2 2l20 20"/>
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                className="text-green-600"
+              >
+                <path d="M12 2v20M2 12h20" />
+                <circle cx="12" cy="12" r="4" />
+                <path d="M2 2l20 20" />
               </svg>
             </div>
-            <span className="font-[Silkscreen] text-[10px] tracking-wider">{project.kind || 'CLI TOOL'}</span>
+            <span className="font-[Silkscreen] text-[10px] tracking-wider">
+              {project.kind || "CLI TOOL"}
+            </span>
           </div>
         )}
 
@@ -313,7 +140,9 @@ function ProjectCard({ project, onImageClick }: { project: Project; onImageClick
         {/* Header */}
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-2">
-            <div className={`w-8 h-8 rounded-lg ${project.iconColor} flex items-center justify-center`}>
+            <div
+              className={`w-8 h-8 rounded-lg ${project.iconColor} flex items-center justify-center`}
+            >
               {projectIcons[project.index]}
             </div>
             <span className="font-bold text-fg">{project.title}</span>
@@ -325,7 +154,7 @@ function ProjectCard({ project, onImageClick }: { project: Project; onImageClick
           {project.subtitle}
         </p>
 
-        {/* Description — the actual problem/context, not just a tag list */}
+        {/* Description */}
         <p className="text-[13px] text-fg leading-relaxed mb-3">
           {project.description}
         </p>
@@ -334,18 +163,26 @@ function ProjectCard({ project, onImageClick }: { project: Project; onImageClick
         {project.stackIcons && (
           <div className="flex flex-wrap gap-2 mb-4">
             {project.stackIcons.map((icon, i) => (
-              <div key={i} className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-surface border border-border/50">
+              <div
+                key={i}
+                className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-surface border border-border/50"
+              >
                 <img src={icon} alt="" className="w-4 h-4 object-contain" />
-                <span className="text-[10px] text-fg-muted">{project.tags[i]?.name}</span>
+                <span className="text-[10px] text-fg-muted">
+                  {project.tags[i]?.name}
+                </span>
               </div>
             ))}
           </div>
         )}
 
-        {/* Quick Highlights - Visible without click */}
+        {/* Quick Highlights */}
         <div className="space-y-1.5 mb-4">
           {project.highlights.slice(0, 2).map((h, i) => (
-            <div key={i} className="flex items-start gap-2 text-xs text-fg-muted">
+            <div
+              key={i}
+              className="flex items-start gap-2 text-xs text-fg-muted"
+            >
               <span className="w-1 h-1 rounded-full bg-accent mt-1.5 shrink-0" />
               {h}
             </div>
@@ -354,14 +191,14 @@ function ProjectCard({ project, onImageClick }: { project: Project; onImageClick
 
         {/* Expandable More */}
         {project.highlights.length > 2 && (
-          <button 
+          <button
             onClick={(e) => {
               e.stopPropagation();
               setIsOpen(!isOpen);
             }}
             className="text-xs text-accent font-medium hover:underline"
           >
-            {isOpen ? 'Less' : `+${project.highlights.length - 2} more`}
+            {isOpen ? "Less" : `+${project.highlights.length - 2} more`}
           </button>
         )}
 
@@ -369,13 +206,16 @@ function ProjectCard({ project, onImageClick }: { project: Project; onImageClick
           {isOpen && (
             <motion.div
               initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
+              animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               className="overflow-hidden"
             >
               <div className="pt-3 space-y-1.5">
                 {project.highlights.slice(2).map((h, i) => (
-                  <div key={i} className="flex items-start gap-2 text-xs text-fg-muted">
+                  <div
+                    key={i}
+                    className="flex items-start gap-2 text-xs text-fg-muted"
+                  >
                     <span className="w-1 h-1 rounded-full bg-accent mt-1.5 shrink-0" />
                     {h}
                   </div>
@@ -385,7 +225,7 @@ function ProjectCard({ project, onImageClick }: { project: Project; onImageClick
           )}
         </AnimatePresence>
 
-        {/* Fun note — personality, not a spec sheet */}
+        {/* Fun note */}
         {project.funNote && (
           <p className="text-xs text-fg-faint italic leading-snug mt-3">
             {project.funNote}
@@ -400,9 +240,15 @@ function ProjectCard({ project, onImageClick }: { project: Project; onImageClick
             rel="noreferrer"
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-dark transition-colors"
           >
-            {project.isLive ? 'View Live Site' : 'View on GitHub'}
+            {project.isLive ? "View Live Site" : "View on GitHub"}
             <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
-              <path d="M1 13L13 1M13 1H5M13 1V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path
+                d="M1 13L13 1M13 1H5M13 1V9"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </a>
         </div>
@@ -412,16 +258,19 @@ function ProjectCard({ project, onImageClick }: { project: Project; onImageClick
 }
 
 export default function ProjectList() {
-  const [modalImage, setModalImage] = useState<{ src: string; title: string } | null>(null);
+  const [modalImage, setModalImage] = useState<{
+    src: string;
+    title: string;
+  } | null>(null);
 
   return (
     <section className="px-6 md:px-12 lg:px-20 py-20 md:py-32 relative">
       <AnimatePresence>
         {modalImage && (
-          <ImageModal 
-            src={modalImage.src} 
-            alt={modalImage.title} 
-            onClose={() => setModalImage(null)} 
+          <ImageModal
+            src={modalImage.src}
+            alt={modalImage.title}
+            onClose={() => setModalImage(null)}
           />
         )}
       </AnimatePresence>
@@ -432,8 +281,17 @@ export default function ProjectList() {
             whileHover={{ rotate: -8 }}
             className="w-10 h-10 rounded-xl bg-pastel-orange/40 flex items-center justify-center text-accent shrink-0"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
             </svg>
           </motion.div>
           <span className="font-[Silkscreen] text-[18px] text-accent tracking-widest uppercase">
@@ -448,7 +306,8 @@ export default function ProjectList() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-2xl md:text-4xl font-bold tracking-tight mb-3"
         >
-          Things I've built that <span className="text-accent">actually ship.</span>
+          Things I've built that{" "}
+          <span className="text-accent">actually ship.</span>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 15 }}
@@ -457,14 +316,15 @@ export default function ProjectList() {
           transition={{ delay: 0.15, duration: 0.8 }}
           className="text-fg-muted text-base font-light mb-14 max-w-lg"
         >
-          Real tools solving real problems for real people. Not proof-of-concepts that never launched.
+          Real tools solving real problems for real people. Not
+          proof-of-concepts that never launched.
         </motion.p>
 
         <div className="grid md:grid-cols-2 gap-5">
           {projects.map((project) => (
-            <ProjectCard 
-              key={project.index} 
-              project={project} 
+            <ProjectCard
+              key={project.index}
+              project={project}
               onImageClick={(src, title) => setModalImage({ src, title })}
             />
           ))}

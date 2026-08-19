@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { SITE } from '../data/site';
 
 interface Props {
 	title: string;
@@ -8,7 +9,7 @@ interface Props {
 
 const { 
 	title, 
-	description = "Muhammad Shameel KS — Full-Stack Engineer, DevOps & System Administrator from Kerala. Building production systems, automating everything, and using AI to stay three steps ahead."
+	description = `${SITE.name} — ${SITE.title} from Kerala. Building production systems, automating everything, and using AI to stay three steps ahead.`
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -42,39 +43,27 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<title>{title}</title>
 		
 		<!-- JSON-LD Structured Data for SEO -->
-		<script type="application/ld+json">
-			{
-				"@context": "https://schema.org",
-				"@type": "Person",
-				"name": "Muhammad Shameel KS",
-				"jobTitle": "Full-Stack Engineer",
-				"url": "https://shameel.barchy.online",
-				"image": "https://shameel.barchy.online/favicon.svg",
-				"address": {
-					"@type": "PostalAddress",
-					"addressLocality": "Palakkad",
-					"addressRegion": "Kerala",
-					"addressCountry": "IN"
-				},
-				"sameAs": [
-					"https://github.com/muhammad-shameel-ks",
-					"https://linkedin.com/in/muhammad-shameel-k-s"
-				],
-				"knowsAbout": [
-					"React",
-					"TypeScript",
-					"Kubernetes",
-					"Linux",
-					"DevOps",
-					"AI"
-				],
-				"contactPoint": {
-					"@type": "ContactPoint",
-					"contactType": "customer service",
-					"url": "https://shameel.barchy.online#contact"
-				}
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Person",
+			"name": SITE.name,
+			"jobTitle": "Full-Stack Engineer",
+			"url": SITE.siteUrl,
+			"image": `${SITE.siteUrl}/favicon.svg`,
+			"address": {
+				"@type": "PostalAddress",
+				"addressLocality": "Palakkad",
+				"addressRegion": "Kerala",
+				"addressCountry": "IN"
+			},
+			"sameAs": [SITE.github, SITE.linkedin],
+			"knowsAbout": ["React", "TypeScript", "Kubernetes", "Linux", "DevOps", "AI"],
+			"contactPoint": {
+				"@type": "ContactPoint",
+				"contactType": "customer service",
+				"url": `${SITE.siteUrl}#contact`
 			}
-		</script>
+		})} />
 	</head>
 	<body class="bg-bg text-fg relative">
 		<slot />

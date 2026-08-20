@@ -4,6 +4,14 @@ import { useModal } from "../../context/ModalContext";
 import { projects, projectIcons } from "../../data/projects";
 import type { Project } from "../../data/projects";
 
+const CASE_STUDY_SLUGS: Record<string, string> = {
+  Scentance: "scentance",
+  "Stock Salt": "stock-salt",
+  "Office Pal": "office-pal",
+  "SpeeHive Social": "speehive-social",
+  "ExpenseHive Modernization": "expence-hive",
+};
+
 // Modal Component
 function ImageModal({
   src,
@@ -89,7 +97,11 @@ function ProjectCard({
           <>
             <img
               src={project.screenshot}
-              alt={project.title}
+              alt={`${project.title} — ${project.subtitle} screenshot showing the live product interface`}
+              width={600}
+              height={340}
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
             />
             {/* Click hint */}
@@ -167,7 +179,15 @@ function ProjectCard({
                 key={i}
                 className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-surface border border-border/50"
               >
-                <img src={icon} alt="" className="w-4 h-4 object-contain" />
+                <img
+                  src={icon}
+                  alt={`${project.tags[i]?.name ?? "tech"} logo`}
+                  width={16}
+                  height={16}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-4 h-4 object-contain"
+                />
                 <span className="text-[10px] text-fg-muted">
                   {project.tags[i]?.name}
                 </span>
@@ -232,8 +252,25 @@ function ProjectCard({
           </p>
         )}
 
-        {/* Link */}
-        <div className="mt-4 pt-3 border-t border-border/30">
+        {/* Links — internal case study + external */}
+        <div className="mt-4 pt-3 border-t border-border/30 flex flex-wrap items-center gap-3">
+          {CASE_STUDY_SLUGS[project.title] && (
+            <a
+              href={`/projects/${CASE_STUDY_SLUGS[project.title]}`}
+              className="inline-flex items-center gap-1.5 text-sm font-bold text-fg hover:text-accent transition-colors"
+            >
+              Read case study
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                <path
+                  d="M1 7h12M9 3l4 4-4 4"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
+          )}
           <a
             href={project.link}
             target="_blank"

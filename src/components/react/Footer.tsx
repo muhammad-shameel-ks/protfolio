@@ -80,6 +80,80 @@ export default function Footer() {
             © {new Date().getFullYear()} — Crafted with chai ☕
           </p>
         </div>
+
+        {/* Internal links — checklist #11 + legal #19 */}
+        <div className="mt-8 pt-6 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
+          <nav
+            aria-label="Footer"
+            className="flex flex-wrap items-center gap-3 text-fg-faint"
+          >
+            <a
+              href="/"
+              className="hover:text-accent hover:underline underline-offset-4"
+            >
+              Home
+            </a>
+            <span className="text-border">·</span>
+            <a
+              href="/#projects"
+              className="hover:text-accent hover:underline underline-offset-4"
+            >
+              Work
+            </a>
+            <span className="text-border">·</span>
+            <a
+              href="/projects/scentance"
+              className="hover:text-accent hover:underline underline-offset-4"
+            >
+              Scentance
+            </a>
+            <span className="text-border">·</span>
+            <a
+              href="/projects/stock-salt"
+              className="hover:text-accent hover:underline underline-offset-4"
+            >
+              Stock Salt
+            </a>
+            <span className="text-border">·</span>
+            <a
+              href="/projects/office-pal"
+              className="hover:text-accent hover:underline underline-offset-4"
+            >
+              Office Pal
+            </a>
+            <span className="text-border">·</span>
+            <a
+              href="/#faq"
+              className="hover:text-accent hover:underline underline-offset-4"
+            >
+              FAQ
+            </a>
+            <span className="text-border">·</span>
+            <a
+              href="/privacy"
+              className="hover:text-accent hover:underline underline-offset-4"
+            >
+              Privacy
+            </a>
+            <span className="text-border">·</span>
+            <a
+              href="/sitemap.xml"
+              className="hover:text-accent hover:underline underline-offset-4"
+            >
+              Sitemap
+            </a>
+            <span className="text-border">·</span>
+            <a
+              href="/#contact"
+              className="hover:text-accent hover:underline underline-offset-4"
+            >
+              Hire me
+            </a>
+          </nav>
+          <p className="text-fg-faint/70 font-mono text-[11px]">
+            Palakkad, Kerala — remote worldwide · Reply in 12h
+          </p>
+        </div>
       </div>
     </footer>
   );

@@ -52,7 +52,7 @@ export const projects: Project[] = [
     ],
     cardBg: "bg-gradient-to-br from-pastel-purple/25 to-pastel-pink/10",
     iconColor: "bg-pastel-purple/40 text-purple-600",
-    screenshot: "/projects/scentence.png",
+    screenshot: "/projects/scentence.webp",
     isLive: true,
   },
   {
@@ -81,7 +81,7 @@ export const projects: Project[] = [
     ],
     cardBg: "bg-gradient-to-br from-pastel-blue/25 to-pastel-green/10",
     iconColor: "bg-pastel-blue/40 text-blue-600",
-    screenshot: "/projects/stock-salt.png",
+    screenshot: "/projects/stock-salt.webp",
     isLive: true,
   },
   {
@@ -105,14 +105,16 @@ export const projects: Project[] = [
     ],
     cardBg: "bg-gradient-to-br from-pastel-purple/25 to-pastel-pink/10",
     iconColor: "bg-pastel-purple/40 text-purple-600",
-    screenshot: "/projects/office-pal.png",
+    screenshot: "/projects/office-pal.webp",
   },
   {
     index: "04",
     title: "KSDC Smart Helper",
-    subtitle: "SQL Command Generator",
-    description: "Auto-generates SQL commands for non-technical staff.",
-    funNote: "Making SQL accessible to everyone, one query at a time.",
+    subtitle: "SQL tooling for non-technical staff",
+    description:
+      "Tooling built for the Kerala State Development Corporation for SC/ST: auto-generates SQL commands for non-tech staff and includes an EMI + GST calculator. Ships a solved production bug in duplicate-receipt checks.",
+    funNote:
+      "Making SQL and numbers accessible to everyone — staff use it daily.",
     tags: [
       { name: "React", color: "bg-pastel-blue/50 text-blue-700" },
       { name: "TypeScript", color: "bg-pastel-blue/50 text-blue-700" },
@@ -127,13 +129,14 @@ export const projects: Project[] = [
     link: "https://github.com/muhammad-shameel-ks/ksdc-smart-helper",
     highlights: [
       "Auto SQL query generation",
+      "EMI + GST calculator",
+      "Solved duplicate-receipt production bug",
       "Simplified UI for non-tech users",
-      "Query validation",
     ],
     cardBg: "bg-gradient-to-br from-pastel-orange/20 to-pastel-yellow/10",
     iconColor: "bg-pastel-orange/40 text-orange-600",
     showInternshipBadge: true,
-    screenshot: "/projects/ksdc-smart.png",
+    screenshot: "/projects/ksdc-smart.webp",
   },
   {
     index: "05",
@@ -158,30 +161,6 @@ export const projects: Project[] = [
   },
   {
     index: "06",
-    title: "MSSQL MCP Server",
-    subtitle: "Model Context Protocol server for SQL Server",
-    description:
-      "Lets AI agents like Claude query and administer Microsoft SQL Server directly over MCP, with a configurable read-only mode so an agent can't accidentally mutate production data.",
-    funNote:
-      "Built so the AI doing my devops chores can't accidentally DROP TABLE.",
-    tags: [
-      { name: "Python", color: "bg-pastel-yellow/50 text-yellow-700" },
-      { name: "MCP", color: "bg-pastel-purple/50 text-purple-700" },
-      { name: "SQL Server", color: "bg-pastel-blue/50 text-blue-700" },
-    ],
-    stackIcons: ["/python.svg", "/microsoft-sql-server.svg"],
-    link: "https://github.com/muhammad-shameel-ks/sql-server-mcp",
-    highlights: [
-      "Read-only mode guards against destructive queries",
-      "Exposes schema browsing and query tools over MCP to any compatible AI client",
-      "ODBC-based, works against self-hosted or cloud SQL Server",
-    ],
-    cardBg: "bg-gradient-to-br from-pastel-yellow/20 to-pastel-purple/10",
-    iconColor: "bg-pastel-yellow/40 text-yellow-700",
-    kind: "MCP SERVER",
-  },
-  {
-    index: "07",
     title: "DMS Speech-to-Text",
     subtitle: "Zero-idle dictation plugin for Hyprland",
     description:
@@ -203,7 +182,7 @@ export const projects: Project[] = [
     kind: "HYPRLAND PLUGIN",
   },
   {
-    index: "08",
+    index: "07",
     title: "Unified Agent Control",
     subtitle: "One config layer for Claude, opencode, Gemini CLI agents",
     description:
@@ -225,6 +204,201 @@ export const projects: Project[] = [
     iconColor: "bg-pastel-orange/40 text-orange-600",
     isWip: true,
     kind: "CLI TOOL",
+  },
+  {
+    index: "08",
+    title: "SpeeHive Social",
+    subtitle: "Agentic AI Social Media Planner",
+    description:
+      "Flutter app with Clean Architecture that lets an agentic AI core decide when to query calendars and post to LinkedIn. Tool-calling AI, OAuth, multi-tone drafts.",
+    funNote:
+      "The agent stops reminding you to post — it just reads your calendar and drafts.",
+    tags: [
+      { name: "Flutter", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "Dart", color: "bg-pastel-green/50 text-green-700" },
+      { name: "Riverpod", color: "bg-pastel-orange/50 text-orange-700" },
+      { name: "OpenAI", color: "bg-pastel-purple/50 text-purple-700" },
+    ],
+    stackIcons: ["/flutter.svg", "/reactjs.svg"],
+    link: "https://github.com/muhammad-shameel-ks/speehive_social",
+    highlights: [
+      "Agentic AI tool-calling core",
+      "Clean Architecture + Riverpod",
+      "Google / Outlook → LinkedIn automation",
+    ],
+    cardBg: "bg-gradient-to-br from-pastel-blue/20 to-pastel-green/10",
+    iconColor: "bg-pastel-blue/40 text-blue-600",
+    kind: "AGENTIC APP",
+  },
+  {
+    index: "09",
+    title: "ExpenseHive Modernization",
+    subtitle: "Domain-driven Greenfield Rewrite",
+    description:
+      "Documented greenfield modernization — formal spec, UX research, approval-workflow domain model, ADR-driven architecture (Azure-native + Next.js), scheduled sweep worker.",
+    funNote:
+      "The repo is a spec-first thesis on how to modernize a legacy app without guessing.",
+    tags: [
+      { name: "Next.js", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "TypeScript", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "PostgreSQL", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "Azure", color: "bg-pastel-orange/50 text-orange-700" },
+    ],
+    stackIcons: ["/nextjs-light.svg", "/typescript.svg", "/postgresql.svg"],
+    link: "https://github.com/muhammad-shameel-ks/expence-hive-modernization",
+    highlights: [
+      "Formal spec + ADRs",
+      "Approval-workflow domain model",
+      "Scheduled sweep worker (ADR-0018)",
+    ],
+    cardBg: "bg-gradient-to-br from-pastel-purple/20 to-pastel-blue/10",
+    iconColor: "bg-pastel-purple/40 text-purple-600",
+    kind: "ARCHITECTURE",
+  },
+  {
+    index: "10",
+    title: "Menma Catering & Events",
+    subtitle: "Premium Event Company Landing",
+    description:
+      "Astro static landing for a high-end wedding and event company — video hero, masonry gallery, testimonials, 19-service accordion.",
+    funNote:
+      "Full-viewport auto-cycling video hero with a mobile static fallback.",
+    tags: [
+      { name: "Astro", color: "bg-pastel-purple/50 text-purple-700" },
+      { name: "CSS", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "Bun", color: "bg-pastel-yellow/50 text-yellow-700" },
+    ],
+    stackIcons: ["/typescript.svg"],
+    link: "https://menma-catering-and-events.vercel.app",
+    highlights: [
+      "Video hero with mobile fallback",
+      "Masonry gallery + testimonials",
+      "19-service accordion",
+    ],
+    cardBg: "bg-gradient-to-br from-pastel-orange/20 to-pastel-yellow/10",
+    iconColor: "bg-pastel-orange/40 text-orange-600",
+    screenshot: "/projects/menma.webp",
+    isLive: true,
+    kind: "LANDING PAGE",
+  },
+  {
+    index: "11",
+    title: "Chemmeenz",
+    subtitle: "Kerala Seafood Restaurant Landing",
+    description:
+      "Astro site for a Palakkad restaurant — cinematic hero, signature dish gallery, reviews carousel, contact/location.",
+    funNote: "Seafood photography you could almost smell.",
+    tags: [
+      { name: "Astro", color: "bg-pastel-purple/50 text-purple-700" },
+      { name: "CSS", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "Bun", color: "bg-pastel-yellow/50 text-yellow-700" },
+    ],
+    stackIcons: ["/typescript.svg"],
+    link: "https://chemmeenz.vercel.app",
+    highlights: [
+      "Cinematic vignette hero",
+      "Dish gallery + reviews carousel",
+      "Responsive single-page",
+    ],
+    cardBg: "bg-gradient-to-br from-pastel-blue/20 to-pastel-green/10",
+    iconColor: "bg-pastel-blue/40 text-blue-600",
+    screenshot: "/projects/chemmeenz.webp",
+    isLive: true,
+    kind: "LANDING PAGE",
+  },
+  {
+    index: "12",
+    title: "SpeeHive Linear Bot",
+    subtitle: "Cloudflare Worker AI Agent",
+    description:
+      "OpenAI-powered Cloudflare Worker agent that integrates with Linear — responds to AgentSession webhooks, answers from a tool set, writes AgentActivity entries.",
+    funNote:
+      "An agent that lives in Linear and answers weather/time questions from your team.",
+    tags: [
+      { name: "TypeScript", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "Cloudflare", color: "bg-pastel-orange/50 text-orange-700" },
+      { name: "OpenAI", color: "bg-pastel-purple/50 text-purple-700" },
+    ],
+    stackIcons: ["/typescript.svg", "/cloudflare.svg"],
+    link: "https://github.com/muhammad-shameel-ks/speehive-linear-bot",
+    highlights: [
+      "Linear webhook + OAuth integration",
+      "Tool-based agent on Cloudflare Workers",
+      "Runs free on the edge, no server",
+    ],
+    cardBg: "bg-gradient-to-br from-pastel-orange/20 to-pastel-blue/10",
+    iconColor: "bg-pastel-orange/40 text-orange-600",
+    kind: "AGENT",
+  },
+  {
+    index: "13",
+    title: "Clinic Management",
+    subtitle: "Tauri Desktop App",
+    description:
+      "Tauri + React + TypeScript desktop app with a GitHub Actions pipeline that builds and releases Windows + Linux binaries on version tags.",
+    funNote:
+      "Native desktop from web tech — with CI that ships real installers.",
+    tags: [
+      { name: "Tauri", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "React", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "Rust", color: "bg-pastel-orange/50 text-orange-700" },
+    ],
+    stackIcons: ["/reactjs.svg", "/typescript.svg"],
+    link: "https://github.com/muhammad-shameel-ks/clinic-management",
+    highlights: [
+      "Tauri + React desktop app",
+      "Automated Win/Linux release pipeline",
+      "GitHub Releases per version tag",
+    ],
+    cardBg: "bg-gradient-to-br from-pastel-green/20 to-pastel-blue/10",
+    iconColor: "bg-pastel-green/40 text-green-600",
+    kind: "DESKTOP",
+  },
+  {
+    index: "14",
+    title: "Bakery POS",
+    subtitle: "Tauri Desktop POS",
+    description:
+      "Tauri + React + TypeScript point-of-sale desktop app with the same CI/CD release pipeline for Windows and Linux.",
+    funNote: "Inventory on your coffee counter, not a cloud you don't control.",
+    tags: [
+      { name: "Tauri", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "React", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "Rust", color: "bg-pastel-orange/50 text-orange-700" },
+    ],
+    stackIcons: ["/reactjs.svg", "/typescript.svg"],
+    link: "https://github.com/muhammad-shameel-ks/bakery-pos",
+    highlights: [
+      "Tauri desktop POS",
+      "Cross-platform installers",
+      "Local-first, no cloud dependency",
+    ],
+    cardBg: "bg-gradient-to-br from-pastel-yellow/20 to-pastel-orange/10",
+    iconColor: "bg-pastel-yellow/40 text-yellow-700",
+    kind: "DESKTOP",
+  },
+  {
+    index: "15",
+    title: "Asana Agent",
+    subtitle: "Asana MCP Agent",
+    description:
+      "Python MCP setup that wires Asana into OpenAI-compatible agents (opencode/Claude) via OAuth or PAT, so AI can read tasks and take actions.",
+    funNote: "The agent does Asana — you keep the meetings.",
+    tags: [
+      { name: "Python", color: "bg-pastel-yellow/50 text-yellow-700" },
+      { name: "MCP", color: "bg-pastel-purple/50 text-purple-700" },
+      { name: "Asana", color: "bg-pastel-blue/50 text-blue-700" },
+    ],
+    stackIcons: ["/python.svg"],
+    link: "https://github.com/muhammad-shameel-ks/asana-agent",
+    highlights: [
+      "OAuth + PAT auth flows",
+      "MCP for AI tool access",
+      "Task read/action via agent",
+    ],
+    cardBg: "bg-gradient-to-br from-pastel-yellow/20 to-pastel-green/10",
+    iconColor: "bg-pastel-yellow/40 text-yellow-700",
+    kind: "AGENT",
   },
 ];
 
@@ -319,9 +493,9 @@ export const projectIcons: Record<string, React.ReactNode> = {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <ellipse cx="12" cy="5" rx="9" ry="3" />
-      <path d="M21 12c0 1.66-4.03 3-9 3s-9-1.34-9-3" />
-      <path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5" />
+      <path d="M12 2a3 3 0 00-3 3v6a3 3 0 006 0V5a3 3 0 00-3-3z" />
+      <path d="M19 10v2a7 7 0 01-14 0v-2" />
+      <line x1="12" y1="19" x2="12" y2="22" />
     </svg>
   ),
   "07": (
@@ -335,9 +509,8 @@ export const projectIcons: Record<string, React.ReactNode> = {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <path d="M12 2a3 3 0 00-3 3v6a3 3 0 006 0V5a3 3 0 00-3-3z" />
-      <path d="M19 10v2a7 7 0 01-14 0v-2" />
-      <line x1="12" y1="19" x2="12" y2="22" />
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <path d="M7 8h10M7 12h6" />
     </svg>
   ),
   "08": (
@@ -351,8 +524,112 @@ export const projectIcons: Record<string, React.ReactNode> = {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <rect x="3" y="4" width="18" height="16" rx="2" />
-      <path d="M7 8h10M7 12h6" />
+      <path d="M12 2a4 4 0 00-4 4v1a3 3 0 00-3 3 3 3 0 000 6 3 3 0 003 3v1a4 4 0 008 0v-1a3 3 0 003-3 3 3 0 000-6 3 3 0 00-3-3V6a4 4 0 00-4-4z" />
+      <path d="M12 2v20" />
+    </svg>
+  ),
+  "09": (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M2 3h20v14H2z" />
+      <path d="M8 21h8M12 17v4" />
+    </svg>
+  ),
+  "10": (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M3 9l9-6 9 6v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+      <path d="M9 22V12h6v10" />
+    </svg>
+  ),
+  "11": (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M3 11l19-9-9 19-2-8-8-2z" />
+    </svg>
+  ),
+  "12": (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <polyline points="16 18 22 12 16 6" />
+      <polyline points="8 6 2 12 8 18" />
+    </svg>
+  ),
+  "13": (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="2" y="3" width="20" height="14" rx="2" />
+      <path d="M8 21h8M12 17v4" />
+    </svg>
+  ),
+  "14": (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <path d="M9 17l6-6" />
+    </svg>
+  ),
+  "15": (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M12 2l3 7 7 1-5 5 1.5 7L12 18l-6.5 4L7 15l-5-5 7-1z" />
     </svg>
   ),
 };

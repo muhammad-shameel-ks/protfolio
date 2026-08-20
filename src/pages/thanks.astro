@@ -1,0 +1,46 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+---
+
+<Layout title="Thanks — message received | Shameel" description="Thanks for reaching out — I reply within 12 hours, usually same day. Here’s what happens next.">
+  <main class="min-h-[70svh] px-6 md:px-12 lg:px-20 py-10">
+    <div class="max-w-3xl mx-auto">
+      <Breadcrumbs crumbs={[{label:"Home", href:"/"}, {label:"Thanks"}]} />
+      <div class="mt-12 bg-white rounded-[2rem] border border-border shadow-xl p-8 md:p-10 text-center">
+        <div class="w-20 h-20 rounded-full bg-pastel-green/60 border border-green-200 flex items-center justify-center mx-auto text-green-600 mb-6">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-fg mb-3">Message received — thank you!</h1>
+        <p class="text-fg-muted leading-relaxed max-w-xl mx-auto">
+          I’ve got your hire inquiry via <span class="font-semibold text-fg">shameel.barchy.online</span>. I reply within <span class="font-bold text-accent">12 hours</span> — usually same day. Check your inbox (and spam) for a reply from <span class="font-mono text-sm">muhammadshameelks@gmail.com</span>.
+        </p>
+
+        <div class="mt-8 grid sm:grid-cols-3 gap-3 text-left">
+          <div class="rounded-2xl bg-surface border border-border p-4">
+            <div class="font-[Silkscreen] text-[11px] tracking-widest uppercase text-fg-faint mb-1">Step 1</div>
+            <div class="text-sm font-semibold text-fg">I read your brief</div>
+            <div class="text-xs text-fg-muted leading-snug mt-1">No bots. I read every word and check your links.</div>
+          </div>
+          <div class="rounded-2xl bg-surface border border-border p-4">
+            <div class="font-[Silkscreen] text-[11px] tracking-widest uppercase text-fg-faint mb-1">Step 2</div>
+            <div class="text-sm font-semibold text-fg">Reply with next steps</div>
+            <div class="text-xs text-fg-muted leading-snug mt-1">Clarifying questions + a first scope or call link.</div>
+          </div>
+          <div class="rounded-2xl bg-surface border border-border p-4">
+            <div class="font-[Silkscreen] text-[11px] tracking-widest uppercase text-fg-faint mb-1">Step 3</div>
+            <div class="text-sm font-semibold text-fg">We ship</div>
+            <div class="text-xs text-fg-muted leading-snug mt-1">Milestone plan, repo access, and a deployment pipeline.</div>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          <a href="/" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent text-white font-bold shadow-lg hover:bg-accent-dark transition-colors">Back to home</a>
+          <a href="/#projects" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-border text-fg font-semibold hover:border-accent/40 transition-colors">View work</a>
+        </div>
+
+        <p class="text-xs text-fg-faint mt-8">Didn’t get an email? <a href="/#contact" class="underline underline-offset-4 hover:text-accent">Send again</a> or email <a href="mailto:muhammadshameelks@gmail.com" class="underline underline-offset-4 hover:text-accent">muhammadshameelks@gmail.com</a> directly.</p>
+      </div>
+    </div>
+  </main>
+</Layout>

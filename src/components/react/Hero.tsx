@@ -210,10 +210,62 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.8 }}
-          className="mb-10"
+          className="mb-6"
         >
           <span className="font-[Silkscreen] text-[18px] md:text-[20px] text-accent tracking-wider uppercase">
             Linux / Kubernetes / CI/CD / Home Lab / Self-Hosted
+          </span>
+        </motion.div>
+
+        {/* Primary CTA — above the fold */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.82, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col gap-3 mb-8"
+        >
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                document
+                  .getElementById("contact")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-accent text-white text-[15px] font-bold shadow-lg shadow-accent/20 hover:bg-accent-dark hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all"
+            >
+              Hire Me — Start a Project
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+            <a
+              href="#projects"
+              onClick={(e) => {
+                e.preventDefault();
+                document
+                  .getElementById("projects")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white border border-border text-fg text-[15px] font-semibold hover:border-accent/40 hover:bg-pastel-orange/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
+            >
+              View Work
+            </a>
+          </div>
+          <span className="text-xs text-fg-muted flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+            I reply within 12 hours — usually same day
           </span>
         </motion.div>
 

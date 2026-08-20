@@ -12,6 +12,7 @@ export default function ContactForm() {
     name: "",
     email: "",
     message: "",
+    _honeypot: "",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -25,9 +26,16 @@ export default function ContactForm() {
         body: JSON.stringify(formData),
       });
 
-      if (!res.ok) throw new Error("Failed to submit");
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        throw new Error(data?.error || "Failed to submit");
+      }
       setStatus("success");
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", email: "", message: "", _honeypot: "" });
+      // Redirect to thank-you page after brief success flash for #4
+      setTimeout(() => {
+        window.location.href = "/thanks";
+      }, 900);
     } catch (error) {
       console.error("Error submitting form:", error);
       setStatus("error");
@@ -280,14 +288,10 @@ export default function ContactForm() {
                     ✕
                   </button>
                   <p className="font-[Silkscreen] text-[10px] text-orange-800 leading-tight">
-                    This form is handled by a{" "}
-                    <span className="font-bold underline">PocketBase</span>{" "}
-                    instance inside a{" "}
-                    <span className="font-bold text-orange-600">
-                      Kubernetes
-                    </span>{" "}
-                    pod, humming away on a{" "}
-                    <span className="italic">Sony VAIO</span> in my bedroom.
+                    This form sends via{" "}
+                    <span className="font-bold underline">Resend</span> directly
+                    to my inbox — no database, email only. I reply within{" "}
+                    <span className="font-bold text-orange-600">12 hours</span>.
                   </p>
 
                   {/* Unique Arrow SVG */}
@@ -443,9 +447,23 @@ export default function ContactForm() {
                       value={formData.message}
                       onChange={handleChange}
                       rows={4}
-                      placeholder="What's on your mind?"
+                      placeholder="What are you looking to build? Budget/timeline helps me reply faster."
                       className="w-full px-6 py-4 rounded-2xl bg-surface border border-border focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all placeholder:text-fg-faint text-fg font-medium resize-none"
                     ></textarea>
+                  </div>
+
+                  {/* Honeypot — hidden from users, catches bots */}
+                  <div className="hidden" aria-hidden="true">
+                    <label htmlFor="website">Website</label>
+                    <input
+                      type="text"
+                      id="website"
+                      name="_honeypot"
+                      value={formData._honeypot}
+                      onChange={handleChange}
+                      autoComplete="off"
+                      tabIndex={-1}
+                    />
                   </div>
 
                   <motion.button

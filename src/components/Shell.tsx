@@ -12,14 +12,16 @@ import { ModalProvider } from "../context/ModalContext";
 import TopProgress from "./react/TopProgress";
 import PersistentNav from "./react/PersistentNav";
 import ChapterHeader from "./react/ChapterHeader";
+import StickyMobileCTA from "./react/StickyMobileCTA";
 
 export default function Shell({ children }: { children: React.ReactNode }) {
-     return (
-          <ModalProvider>
-               <TopProgress />
-               <ChapterHeader />
-               <PersistentNav />
-               {children}
-          </ModalProvider>
-     );
+  return (
+    <ModalProvider>
+      <TopProgress />
+      <ChapterHeader />
+      <PersistentNav />
+      <StickyMobileCTA />
+      {children}
+    </ModalProvider>
+  );
 }

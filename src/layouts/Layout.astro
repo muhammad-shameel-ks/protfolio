@@ -5,14 +5,19 @@ import { SITE } from '../data/site';
 interface Props {
 	title: string;
 	description?: string;
+	ogImage?: string;
+	ogUrl?: string;
 }
 
 const { 
 	title, 
-	description = `${SITE.name} — ${SITE.title} from Kerala. Building production systems, automating everything, and using AI to stay three steps ahead.`
+	description = `${SITE.name} — ${SITE.title} from Kerala. Building production systems, automating everything, and using AI to stay three steps ahead.`,
+	ogImage,
+	ogUrl,
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const canonicalURL = ogUrl ? new URL(ogUrl) : new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = ogImage ?? new URL("/og-image.svg", Astro.site).toString();
 ---
 
 <!doctype html>
@@ -24,16 +29,22 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		
+		<!-- Canonical -->
+		<link rel="canonical" href={canonicalURL} />
+		
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={canonicalURL} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImageURL} />
+		<meta property="og:image:alt" content={title} />
 		
 		<!-- Twitter -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImageURL} />
 		
 		<!-- Fonts preload for performance -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,6 +52,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500;600&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
 		
 		<title>{title}</title>
+		
+		<!-- Cloudflare Web Analytics — enable in dashboard: barchy.online → Analytics → Web Analytics → Add site (privacy-first, no code needed) -->
+		<!-- If you prefer token injection, uncomment and set your token: -->
+		<!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "YOUR_TOKEN"}'></script> -->
 		
 		<!-- JSON-LD Structured Data for SEO -->
 		<script type="application/ld+json" set:html={JSON.stringify({

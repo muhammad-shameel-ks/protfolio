@@ -17,7 +17,8 @@ const {
 } = Astro.props;
 
 const canonicalURL = ogUrl ? new URL(ogUrl) : new URL(Astro.url.pathname, Astro.site);
-const ogImageURL = ogImage ?? new URL("/og-image.svg", Astro.site).toString();
+// PNG — social crawlers (FB/Twitter/LinkedIn/Slack) don't render SVG og:images
+const ogImageURL = ogImage ?? new URL("/og-image.png", Astro.site).toString();
 ---
 
 <!doctype html>
@@ -64,7 +65,7 @@ const ogImageURL = ogImage ?? new URL("/og-image.svg", Astro.site).toString();
 			"name": SITE.name,
 			"jobTitle": "Full-Stack Engineer",
 			"url": SITE.siteUrl,
-			"image": `${SITE.siteUrl}/favicon.svg`,
+			"image": `${SITE.siteUrl}/og-image.png`,
 			"address": {
 				"@type": "PostalAddress",
 				"addressLocality": "Palakkad",

@@ -82,7 +82,6 @@ export const projects: Project[] = [
     cardBg: "bg-gradient-to-br from-pastel-blue/25 to-pastel-green/10",
     iconColor: "bg-pastel-blue/40 text-blue-600",
     screenshot: "/projects/stock-salt.webp",
-    isLive: true,
   },
   {
     index: "03",
@@ -137,6 +136,56 @@ export const projects: Project[] = [
     iconColor: "bg-pastel-orange/40 text-orange-600",
     showInternshipBadge: true,
     screenshot: "/projects/ksdc-smart.webp",
+  },
+  {
+    index: "08",
+    title: "SpeeHive Social",
+    subtitle: "Agentic AI Social Media Planner",
+    description:
+      "Flutter app with Clean Architecture that lets an agentic AI core decide when to query calendars and post to LinkedIn. Tool-calling AI, OAuth, multi-tone drafts.",
+    funNote:
+      "The agent stops reminding you to post — it just reads your calendar and drafts.",
+    tags: [
+      { name: "Flutter", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "Dart", color: "bg-pastel-green/50 text-green-700" },
+      { name: "Riverpod", color: "bg-pastel-orange/50 text-orange-700" },
+      { name: "OpenAI", color: "bg-pastel-purple/50 text-purple-700" },
+    ],
+    stackIcons: ["/flutter.svg", "/reactjs.svg"],
+    link: "https://github.com/muhammad-shameel-ks/speehive_social",
+    highlights: [
+      "Agentic AI tool-calling core",
+      "Clean Architecture + Riverpod",
+      "Google / Outlook → LinkedIn automation",
+    ],
+    cardBg: "bg-gradient-to-br from-pastel-blue/20 to-pastel-green/10",
+    iconColor: "bg-pastel-blue/40 text-blue-600",
+    kind: "AGENTIC APP",
+  },
+  {
+    index: "09",
+    title: "ExpenseHive Modernization",
+    subtitle: "Domain-driven Greenfield Rewrite",
+    description:
+      "Documented greenfield modernization — formal spec, UX research, approval-workflow domain model, ADR-driven architecture (Azure-native + Next.js), scheduled sweep worker.",
+    funNote:
+      "The repo is a spec-first thesis on how to modernize a legacy app without guessing.",
+    tags: [
+      { name: "Next.js", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "TypeScript", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "PostgreSQL", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "Azure", color: "bg-pastel-orange/50 text-orange-700" },
+    ],
+    stackIcons: ["/nextjs-light.svg", "/typescript.svg", "/postgresql.svg"],
+    link: "https://github.com/muhammad-shameel-ks/expence-hive-modernization",
+    highlights: [
+      "Formal spec + ADRs",
+      "Approval-workflow domain model",
+      "Scheduled sweep worker (ADR-0018)",
+    ],
+    cardBg: "bg-gradient-to-br from-pastel-purple/20 to-pastel-blue/10",
+    iconColor: "bg-pastel-purple/40 text-purple-600",
+    kind: "ARCHITECTURE",
   },
   {
     index: "05",
@@ -204,56 +253,6 @@ export const projects: Project[] = [
     iconColor: "bg-pastel-orange/40 text-orange-600",
     isWip: true,
     kind: "CLI TOOL",
-  },
-  {
-    index: "08",
-    title: "SpeeHive Social",
-    subtitle: "Agentic AI Social Media Planner",
-    description:
-      "Flutter app with Clean Architecture that lets an agentic AI core decide when to query calendars and post to LinkedIn. Tool-calling AI, OAuth, multi-tone drafts.",
-    funNote:
-      "The agent stops reminding you to post — it just reads your calendar and drafts.",
-    tags: [
-      { name: "Flutter", color: "bg-pastel-blue/50 text-blue-700" },
-      { name: "Dart", color: "bg-pastel-green/50 text-green-700" },
-      { name: "Riverpod", color: "bg-pastel-orange/50 text-orange-700" },
-      { name: "OpenAI", color: "bg-pastel-purple/50 text-purple-700" },
-    ],
-    stackIcons: ["/flutter.svg", "/reactjs.svg"],
-    link: "https://github.com/muhammad-shameel-ks/speehive_social",
-    highlights: [
-      "Agentic AI tool-calling core",
-      "Clean Architecture + Riverpod",
-      "Google / Outlook → LinkedIn automation",
-    ],
-    cardBg: "bg-gradient-to-br from-pastel-blue/20 to-pastel-green/10",
-    iconColor: "bg-pastel-blue/40 text-blue-600",
-    kind: "AGENTIC APP",
-  },
-  {
-    index: "09",
-    title: "ExpenseHive Modernization",
-    subtitle: "Domain-driven Greenfield Rewrite",
-    description:
-      "Documented greenfield modernization — formal spec, UX research, approval-workflow domain model, ADR-driven architecture (Azure-native + Next.js), scheduled sweep worker.",
-    funNote:
-      "The repo is a spec-first thesis on how to modernize a legacy app without guessing.",
-    tags: [
-      { name: "Next.js", color: "bg-pastel-blue/50 text-blue-700" },
-      { name: "TypeScript", color: "bg-pastel-blue/50 text-blue-700" },
-      { name: "PostgreSQL", color: "bg-pastel-blue/50 text-blue-700" },
-      { name: "Azure", color: "bg-pastel-orange/50 text-orange-700" },
-    ],
-    stackIcons: ["/nextjs-light.svg", "/typescript.svg", "/postgresql.svg"],
-    link: "https://github.com/muhammad-shameel-ks/expence-hive-modernization",
-    highlights: [
-      "Formal spec + ADRs",
-      "Approval-workflow domain model",
-      "Scheduled sweep worker (ADR-0018)",
-    ],
-    cardBg: "bg-gradient-to-br from-pastel-purple/20 to-pastel-blue/10",
-    iconColor: "bg-pastel-purple/40 text-purple-600",
-    kind: "ARCHITECTURE",
   },
   {
     index: "10",

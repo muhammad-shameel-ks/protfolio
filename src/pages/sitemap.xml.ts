@@ -5,7 +5,6 @@ export const prerender = true;
 const staticPaths = [
   "/",
   "/minimal",
-  "/story",
   "/privacy",
   "/thanks",
   "/projects/scentance",

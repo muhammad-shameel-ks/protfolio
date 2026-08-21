@@ -22,7 +22,7 @@ const tools = [
   { name: "n8n", desc: "Workflow automation", color: "bg-pastel-pink/50 text-pink-600 border-pink-100/80", icon: "/n8n.svg" },
 ];
 
-export default function Marquee() {
+export default function TechStack() {
   return (
     <div className="py-20 md:py-28 overflow-hidden relative">
       {/* Decorative blobs — muted */}

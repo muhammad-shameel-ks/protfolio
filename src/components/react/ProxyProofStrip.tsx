@@ -1,16 +1,16 @@
 import { motion } from "framer-motion";
 
 const proofs = [
-  { value: "8", label: "projects shipped", sub: "2 live in production" },
+  { value: "15", label: "projects shipped", sub: "6 featured above, all on GitHub" },
   {
     value: "Scentance",
     label: "live e-commerce",
     sub: "real revenue at scentenceparfum.com",
   },
   {
-    value: "100%",
-    label: "Lighthouse",
-    sub: "perf + a11y, 0kb JS bloat claim",
+    value: "KSDC",
+    label: "govt corp tooling",
+    sub: "used daily by non-technical staff",
   },
   {
     value: "Self-hosted",

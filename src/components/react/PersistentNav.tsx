@@ -57,7 +57,7 @@ export default function PersistentNav() {
         y: isModalOpen ? 20 : dockY,
         pointerEvents: isModalOpen ? "none" : "auto",
       }}
-      className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 transition-opacity duration-200"
+      className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 transition-opacity duration-200 hidden md:block"
     >
       <ul className="bg-white/90 backdrop-blur-md border border-border px-2 py-1.5 md:px-3 md:py-2 rounded-xl md:rounded-2xl shadow-lg flex items-center gap-0.5 md:gap-1.5 pointer-events-auto list-none">
         {NAV_ITEMS.map((item) => {
@@ -69,13 +69,13 @@ export default function PersistentNav() {
                 onClick={() => scrollTo(item.id)}
                 aria-current={isActive ? "true" : undefined}
                 className={`
-                  relative px-1.5 py-1 md:px-3 md:py-1.5 rounded-md md:rounded-xl transition-all duration-300 group
+                  relative px-3 py-1.5 rounded-xl transition-all duration-300 group
                   ${isActive ? "text-accent" : "text-fg-muted hover:text-fg hover:bg-pastel-orange/30"}
                   focus-visible:ring-2 focus-visible:ring-accent outline-none
                 `}
               >
                 <span
-                  className={`font-[Silkscreen] text-[8px] md:text-[11px] tracking-tight uppercase relative z-10 font-bold`}
+                  className={`font-[Silkscreen] text-[11px] tracking-tight uppercase relative z-10 font-bold`}
                 >
                   {item.label}
                 </span>

@@ -20,7 +20,7 @@ if (!study) {
 const title = `${study.title} — Case Study | Shameel | DevOps in Progress`;
 const description = study.subtitle;
 const canonical = new URL(`/projects/${study.slug}`, Astro.site).toString();
-const ogImage = study.heroImage ? new URL(study.heroImage, Astro.site).toString() : `${SITE.siteUrl}/og-image.svg`;
+const ogImage = study.heroImage ? new URL(study.heroImage, Astro.site).toString() : `${SITE.siteUrl}/og-image.png`;
 
 const otherStudies = Object.values(caseStudies).filter((s) => s.slug !== study.slug).slice(0,2);
 ---

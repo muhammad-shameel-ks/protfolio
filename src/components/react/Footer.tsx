@@ -123,6 +123,13 @@ export default function Footer() {
             </a>
             <span className="text-border">·</span>
             <a
+              href="/minimal"
+              className="hover:text-accent hover:underline underline-offset-4"
+            >
+              Minimal
+            </a>
+            <span className="text-border">·</span>
+            <a
               href="/#faq"
               className="hover:text-accent hover:underline underline-offset-4"
             >

@@ -25,6 +25,15 @@ export default function TopNav() {
         <motion.a
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7, duration: 0.8 }}
+          href="/minimal"
+          className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-white text-fg text-sm font-medium hover:scale-105 hover:border-accent/50 transition-all"
+        >
+          Minimal
+        </motion.a>
+        <motion.a
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.75, duration: 0.8 }}
           href={SITE.resumePath}
           download={SITE.resumeFilename}

@@ -36,7 +36,7 @@ export default function InfraFlow() {
                 />
               </div>
               <span className="font-[Silkscreen] text-[13px] sm:text-[15px] text-accent tracking-widest uppercase">
-                04 - Infrastructure Pipeline
+                Infrastructure Pipeline
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-fg">

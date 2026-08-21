@@ -410,12 +410,13 @@ export default function ContactForm() {
                   className="space-y-6"
                 >
                   <div className="space-y-2">
-                    <label className="text-[14px] font-[Silkscreen] uppercase tracking-wider text-fg-faint ml-1">
+                    <label htmlFor="contact-name" className="text-[14px] font-[Silkscreen] uppercase tracking-wider text-fg-faint ml-1">
                       Name
                     </label>
                     <input
                       required
                       type="text"
+                      id="contact-name"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
@@ -424,12 +425,13 @@ export default function ContactForm() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[14px] font-[Silkscreen] uppercase tracking-wider text-fg-faint ml-1">
+                    <label htmlFor="contact-email" className="text-[14px] font-[Silkscreen] uppercase tracking-wider text-fg-faint ml-1">
                       Email
                     </label>
                     <input
                       required
                       type="email"
+                      id="contact-email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
@@ -438,11 +440,12 @@ export default function ContactForm() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[14px] font-[Silkscreen] uppercase tracking-wider text-fg-faint ml-1">
+                    <label htmlFor="contact-message" className="text-[14px] font-[Silkscreen] uppercase tracking-wider text-fg-faint ml-1">
                       Message
                     </label>
                     <textarea
                       required
+                      id="contact-message"
                       name="message"
                       value={formData.message}
                       onChange={handleChange}

@@ -3,14 +3,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useModal } from "../../context/ModalContext";
 import { projects, projectIcons } from "../../data/projects";
 import type { Project } from "../../data/projects";
+import { caseStudies } from "../../data/caseStudies";
 
-const CASE_STUDY_SLUGS: Record<string, string> = {
-  Scentance: "scentance",
-  "Stock Salt": "stock-salt",
-  "Office Pal": "office-pal",
-  "SpeeHive Social": "speehive-social",
-  "ExpenseHive Modernization": "expence-hive",
-};
+/** Case-study slugs keyed by project title — derived from caseStudies data */
+const CASE_STUDY_SLUGS: Record<string, string> = Object.fromEntries(
+  Object.values(caseStudies).map((study) => [study.title, study.slug]),
+);
+
+/** How many projects get a full card before the list collapses to rows */
+const FEATURED_COUNT = 6;
 
 // Modal Component
 function ImageModal({
@@ -26,8 +27,15 @@ function ImageModal({
 
   useEffect(() => {
     open();
-    return () => close();
-  }, [open, close]);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      close();
+    };
+  }, [open, close, onClose]);
 
   return (
     <motion.div
@@ -294,6 +302,38 @@ function ProjectCard({
   );
 }
 
+function CompactProjectRow({ project }: { project: Project }) {
+  const slug = CASE_STUDY_SLUGS[project.title];
+  const href = slug ? `/projects/${slug}` : project.link;
+
+  return (
+    <li>
+      <a
+        href={href}
+        target={slug ? undefined : "_blank"}
+        rel={slug ? undefined : "noreferrer"}
+        className="flex items-center gap-3 py-3 group"
+      >
+        <span className="px-1.5 py-0.5 rounded bg-surface border border-border/50 font-[Silkscreen] text-[9px] tracking-wider text-fg-faint shrink-0 min-w-[5.5rem] text-center">
+          {project.kind || "TOOL"}
+        </span>
+        <span className="text-sm font-semibold text-fg group-hover:text-accent transition-colors shrink-0">
+          {project.title}
+        </span>
+        <span className="text-xs text-fg-muted truncate flex-1 min-w-0">
+          {project.subtitle}
+        </span>
+        <span
+          className="text-xs text-fg-faint group-hover:text-accent shrink-0"
+          aria-hidden="true"
+        >
+          ↗
+        </span>
+      </a>
+    </li>
+  );
+}
+
 export default function ProjectList() {
   const [modalImage, setModalImage] = useState<{
     src: string;
@@ -358,13 +398,36 @@ export default function ProjectList() {
         </motion.p>
 
         <div className="grid md:grid-cols-2 gap-5">
-          {projects.map((project) => (
+          {projects.slice(0, FEATURED_COUNT).map((project) => (
             <ProjectCard
               key={project.index}
               project={project}
               onImageClick={(src, title) => setModalImage({ src, title })}
             />
           ))}
+        </div>
+
+        {/* Everything else — compact rows so the strongest work stays on top */}
+        <div className="mt-12">
+          <div className="flex items-center gap-3 mb-2">
+            <span className="font-[Silkscreen] text-[11px] tracking-widest uppercase text-fg-faint">
+              More experiments & open source
+            </span>
+            <span className="h-px flex-1 bg-border/60" />
+            <a
+              href="https://github.com/muhammad-shameel-ks"
+              target="_blank"
+              rel="noreferrer"
+              className="text-xs font-semibold text-accent hover:underline underline-offset-4 shrink-0"
+            >
+              All on GitHub
+            </a>
+          </div>
+          <ul className="divide-y divide-border/50">
+            {projects.slice(FEATURED_COUNT).map((project) => (
+              <CompactProjectRow key={project.index} project={project} />
+            ))}
+          </ul>
         </div>
       </div>
     </section>

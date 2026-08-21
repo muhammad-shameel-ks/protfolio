@@ -45,16 +45,19 @@ export const CHAPTERS: Chapter[] = [
   },
   { id: "chapter-03", number: "03", label: "The Sysadmin", navLabel: "Admin" },
   { id: "projects", number: "WORK", label: "The Work", navLabel: "Work" },
+  { id: "infra", number: "PIPE", label: "The Pipeline", navLabel: "Infra" },
   { id: "chapter-04", number: "04", label: "The Multiplier", navLabel: "AI" },
-  { id: "chapter-05", number: "05", label: "The Toolkit", navLabel: "Tools" },
+  { id: "chapter-05", number: "05", label: "The Now", navLabel: "Now" },
   { id: "contact", number: "06", label: "The Connection", navLabel: "Reach" },
 ] as const;
 
-/** Navigation items for PersistentNav (derived from CHAPTERS) */
-export const NAV_ITEMS = CHAPTERS.map(({ id, navLabel }) => ({
-  id,
-  label: navLabel,
-}));
+/** Navigation items for PersistentNav — a focused subset of CHAPTERS */
+export const NAV_ITEMS = [
+  { id: "chapter-01", label: "Story" },
+  { id: "projects", label: "Work" },
+  { id: "infra", label: "Infra" },
+  { id: "contact", label: "Contact" },
+];
 
 /** Chapter items for ChapterHeader (derived from CHAPTERS) */
 export const CHAPTER_ITEMS = CHAPTERS.map(({ id, number, label }) => ({

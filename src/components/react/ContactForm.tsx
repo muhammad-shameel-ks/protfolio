@@ -19,7 +19,9 @@ declare global {
   }
 }
 
-const TURNSTILE_SITEKEY = import.meta.env.PUBLIC_TURNSTILE_SITEKEY;
+const TURNSTILE_SITEKEY =
+  import.meta.env.PUBLIC_TURNSTILE_SITEKEY ??
+  "0x4AAAAAAEX5zQKd01A7oVgm";
 
 export default function ContactForm() {
   const [showNote, setShowNote] = useState(true);

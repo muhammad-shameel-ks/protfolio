@@ -14,6 +14,10 @@
   "observability": {
     "enabled": true
   },
+  "vars": {
+    "PUBLIC_TURNSTILE_SITEKEY": "0x4AAAAAAEX5zQKd01A7oVgm",
+    "TURNSTILE_HOSTNAMES": "localhost,127.0.0.1,shameel.barchy.online"
+  },
   "routes": [
     {
       "pattern": "shameel.barchy.online",

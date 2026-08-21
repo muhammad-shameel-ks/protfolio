@@ -36,6 +36,14 @@ const ALLOWED_ORIGINS = [
   "https://barchy.online",
 ] as const;
 
+const TURNSTILE_ACTION = "contact";
+const TURNSTILE_HOSTNAMES = new Set(
+  (import.meta.env.TURNSTILE_HOSTNAMES ?? "")
+    .split(",")
+    .map((h) => h.trim())
+    .filter(Boolean),
+);
+
 const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
 
 function getClientIP(request: Request): string {
@@ -184,6 +192,47 @@ export const POST: APIRoute = async ({ request }) => {
 
     if (!data.name || !data.email || !data.message) {
       return createErrorResponse("Missing required fields", 400, request);
+    }
+
+    // Turnstile siteverify
+    const turnstileToken = String(
+      (data as Record<string, unknown>)["cf-turnstile-response"] ?? "",
+    ).trim();
+    if (
+      typeof turnstileToken !== "string" ||
+      turnstileToken.length === 0 ||
+      turnstileToken.length > 2048 ||
+      TURNSTILE_HOSTNAMES.size === 0
+    ) {
+      return createErrorResponse("forbidden", 403, request);
+    }
+
+    let turnstileResult;
+    try {
+      const r = await fetch(
+        "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          signal: AbortSignal.timeout(10_000),
+          body: new URLSearchParams({
+            secret: import.meta.env.TURNSTILE_SECRET ?? "",
+            response: turnstileToken,
+            remoteip: clientIP,
+          }),
+        },
+      );
+      if (!r.ok) throw new Error(`siteverify ${r.status}`);
+      turnstileResult = await r.json();
+    } catch {
+      return createErrorResponse("forbidden", 403, request);
+    }
+    if (
+      !turnstileResult.success ||
+      turnstileResult.action !== TURNSTILE_ACTION ||
+      !TURNSTILE_HOSTNAMES.has(turnstileResult.hostname)
+    ) {
+      return createErrorResponse("forbidden", 403, request);
     }
 
     const sanitizedData = {

@@ -1,7 +1,25 @@
 import type React from "react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CONTACT_LINKS } from "../../data/site";
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (
+        container: HTMLElement,
+        options: {
+          sitekey: string;
+          action: string;
+          callback: (token: string) => void;
+        },
+      ) => string;
+      reset: (widgetId: string) => void;
+    };
+  }
+}
+
+const TURNSTILE_SITEKEY = import.meta.env.PUBLIC_TURNSTILE_SITEKEY;
 
 export default function ContactForm() {
   const [showNote, setShowNote] = useState(true);
@@ -14,6 +32,30 @@ export default function ContactForm() {
     message: "",
     _honeypot: "",
   });
+  const turnstileRef = useRef<HTMLDivElement>(null);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [turnstileWidgetId, setTurnstileWidgetId] = useState<string | null>(
+    null,
+  );
+
+  useEffect(() => {
+    if (!TURNSTILE_SITEKEY || !turnstileRef.current || window.turnstile) return;
+    const script = document.createElement("script");
+    script.src =
+      "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+    script.async = true;
+    script.onload = () => {
+      if (turnstileRef.current && window.turnstile) {
+        const id = window.turnstile.render(turnstileRef.current, {
+          sitekey: TURNSTILE_SITEKEY,
+          action: "contact",
+          callback: (token: string) => setTurnstileToken(token),
+        });
+        setTurnstileWidgetId(id);
+      }
+    };
+    document.head.appendChild(script);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,7 +65,10 @@ export default function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          "cf-turnstile-response": turnstileToken,
+        }),
       });
 
       if (!res.ok) {
@@ -32,6 +77,10 @@ export default function ContactForm() {
       }
       setStatus("success");
       setFormData({ name: "", email: "", message: "", _honeypot: "" });
+      setTurnstileToken(null);
+      if (turnstileWidgetId && window.turnstile) {
+        window.turnstile.reset(turnstileWidgetId);
+      }
       // Redirect to thank-you page after brief success flash for #4
       setTimeout(() => {
         window.location.href = "/thanks";
@@ -39,6 +88,9 @@ export default function ContactForm() {
     } catch (error) {
       console.error("Error submitting form:", error);
       setStatus("error");
+      if (turnstileWidgetId && window.turnstile) {
+        window.turnstile.reset(turnstileWidgetId);
+      }
     }
   };
 
@@ -468,6 +520,12 @@ export default function ContactForm() {
                       tabIndex={-1}
                     />
                   </div>
+
+                  {TURNSTILE_SITEKEY && (
+                    <div className="flex justify-center">
+                      <div ref={turnstileRef} />
+                    </div>
+                  )}
 
                   <motion.button
                     whileHover={{ scale: 1.02 }}

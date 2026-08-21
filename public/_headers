@@ -7,3 +7,17 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   X-XSS-Protection: 1; mode=block
+
+# Never cache HTML so deploys take effect immediately (stale pages break the widget)
+/index.html
+  Cache-Control: no-cache, no-store, must-revalidate
+/
+  Cache-Control: no-cache, no-store, must-revalidate
+/thanks/
+  Cache-Control: no-cache, no-store, must-revalidate
+/minimal/
+  Cache-Control: no-cache, no-store, must-revalidate
+/privacy/
+  Cache-Control: no-cache, no-store, must-revalidate
+/404.html
+  Cache-Control: no-cache, no-store, must-revalidate

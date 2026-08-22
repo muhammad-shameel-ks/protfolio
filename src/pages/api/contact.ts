@@ -204,6 +204,10 @@ export const POST: APIRoute = async ({ request }) => {
       turnstileToken.length > 2048 ||
       TURNSTILE_HOSTNAMES.size === 0
     ) {
+      console.error("Turnstile reject [pre-siteverify]", {
+        tokenLen: turnstileToken.length,
+        hostnames: [...TURNSTILE_HOSTNAMES],
+      });
       return createErrorResponse("forbidden", 403, request);
     }
 
@@ -224,7 +228,10 @@ export const POST: APIRoute = async ({ request }) => {
       );
       if (!r.ok) throw new Error(`siteverify ${r.status}`);
       turnstileResult = await r.json();
-    } catch {
+    } catch (err) {
+      console.error("Turnstile reject [siteverify fetch]", {
+        msg: err instanceof Error ? err.message : String(err),
+      });
       return createErrorResponse("forbidden", 403, request);
     }
     if (
@@ -232,6 +239,12 @@ export const POST: APIRoute = async ({ request }) => {
       turnstileResult.action !== TURNSTILE_ACTION ||
       !TURNSTILE_HOSTNAMES.has(turnstileResult.hostname)
     ) {
+      console.error("Turnstile reject [siteverify result]", {
+        success: turnstileResult.success,
+        action: turnstileResult.action,
+        hostname: turnstileResult.hostname,
+        errorCodes: turnstileResult["error-codes"],
+      });
       return createErrorResponse("forbidden", 403, request);
     }
 

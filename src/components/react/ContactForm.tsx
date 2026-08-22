@@ -26,8 +26,9 @@ const TURNSTILE_SITEKEY =
 export default function ContactForm() {
   const [showNote, setShowNote] = useState(true);
   const [status, setStatus] = useState<
-    "idle" | "submitting" | "success" | "error"
+    "idle" | "submitting" | "success" | "error" | "rateLimited"
   >("idle");
+  const [retryAfter, setRetryAfter] = useState(0);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -59,6 +60,14 @@ export default function ContactForm() {
     document.head.appendChild(script);
   }, []);
 
+  useEffect(() => {
+    if (status !== "rateLimited" || retryAfter <= 0) return;
+    const id = setTimeout(() => {
+      setRetryAfter((r) => Math.max(0, r - 1));
+    }, 1000);
+    return () => clearTimeout(id);
+  }, [status, retryAfter]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("submitting");
@@ -75,6 +84,14 @@ export default function ContactForm() {
 
       if (!res.ok) {
         const data = await res.json().catch(() => null);
+        if (res.status === 429) {
+          setRetryAfter(Number(data?.retryAfter) || 30);
+          setStatus("rateLimited");
+          if (turnstileWidgetId && window.turnstile) {
+            window.turnstile.reset(turnstileWidgetId);
+          }
+          return;
+        }
         throw new Error(data?.error || "Failed to submit");
       }
       setStatus("success");
@@ -452,6 +469,47 @@ export default function ContactForm() {
                     className="mt-8 text-sm font-bold text-accent underline underline-offset-4"
                   >
                     Try again
+                  </button>
+                </motion.div>
+              ) : status === "rateLimited" ? (
+                <motion.div
+                  key="rateLimited"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="py-20 text-center"
+                >
+                  <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6 text-orange-600">
+                    <svg
+                      width="40"
+                      height="40"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-fg mb-2">
+                    You're sending too fast
+                  </h3>
+                  <p className="text-fg-muted">
+                    {retryAfter > 0
+                      ? `Please wait ${retryAfter} second${
+                          retryAfter === 1 ? "" : "s"
+                        } before trying again.`
+                      : "You can try again now."}
+                  </p>
+                  <button
+                    onClick={() => setStatus("idle")}
+                    disabled={retryAfter > 0}
+                    className="mt-8 text-sm font-bold text-accent underline underline-offset-4 disabled:opacity-40 disabled:cursor-not-allowed"
+                  >
+                    {retryAfter > 0
+                      ? `Retrying in ${retryAfter}s...`
+                      : "Try again"}
                   </button>
                 </motion.div>
               ) : (

@@ -37,12 +37,15 @@ const ALLOWED_ORIGINS = [
 ] as const;
 
 const TURNSTILE_ACTION = "contact";
-const TURNSTILE_HOSTNAMES = new Set(
-  (import.meta.env.TURNSTILE_HOSTNAMES ?? "")
-    .split(",")
-    .map((h) => h.trim())
-    .filter(Boolean),
-);
+
+function getHostnames(env: Record<string, string | undefined>): Set<string> {
+  return new Set(
+    (env.TURNSTILE_HOSTNAMES ?? "")
+      .split(",")
+      .map((h) => h.trim())
+      .filter(Boolean),
+  );
+}
 
 const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
 
@@ -125,8 +128,7 @@ function createErrorResponse(
   );
 }
 
-function getResendConfig() {
-  const env = import.meta.env as Record<string, string | undefined>;
+function getResendConfig(env: Record<string, string | undefined>) {
   const apiKey = env.RESEND_API_KEY;
   const from = env.RESEND_FROM ?? "Portfolio <onboarding@resend.dev>";
   const to = env.RESEND_TO ?? "muhammadshameelks@gmail.com";
@@ -148,8 +150,10 @@ export const OPTIONS: APIRoute = ({ request }) => {
   return new Response(null, { status: 204, headers });
 };
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request, locals }) => {
   try {
+    const env = locals.runtime.env as Record<string, string | undefined>;
+    const TURNSTILE_HOSTNAMES = getHostnames(env);
     const clientIP = getClientIP(request);
     const rateLimit = checkRateLimit(clientIP);
     if (!rateLimit.allowed) {
@@ -220,7 +224,7 @@ export const POST: APIRoute = async ({ request }) => {
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           signal: AbortSignal.timeout(10_000),
           body: new URLSearchParams({
-            secret: import.meta.env.TURNSTILE_SECRET ?? "",
+            secret: env.TURNSTILE_SECRET ?? "",
             response: turnstileToken,
             remoteip: clientIP,
           }),
@@ -285,7 +289,7 @@ export const POST: APIRoute = async ({ request }) => {
       return createErrorResponse("Invalid email format", 400, request);
     }
 
-    const { apiKey, from, to } = getResendConfig();
+    const { apiKey, from, to } = getResendConfig(env);
     if (!apiKey) {
       console.error(
         "Contact form: RESEND_API_KEY not set — falling back to error with mailto hint",

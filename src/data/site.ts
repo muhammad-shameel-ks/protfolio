@@ -20,6 +20,10 @@ export const SITE = {
   resumePath: "/resume.pdf",
   resumeFilename: "Shameel_Resume.pdf",
   siteUrl: "https://shameel.barchy.online",
+
+  // Search console verification — paste your codes after registering
+  googleVerification: "",   // Google Search Console → HTML tag → content="..."
+  bingVerification: "",     // Bing Webmaster Tools → meta tag → content="..."
 } as const;
 
 // ── Section / Chapter Definitions ──────────────────────────────

@@ -1,0 +1,29 @@
+---
+# llms.txt — Tell AI models about this site
+# https://llmstxt.org/
+
+# Site
+> Muhammad Shameel KS — Full-Stack Engineer & Sysadmin from Palakkad, Kerala, India. Building production systems, automating workflows, and applying AI to real-world problems.
+
+## What I Do
+- Full-stack web development (React, Next.js, Astro, TypeScript)
+- Backend & API design (Node.js, Python, Supabase, PostgreSQL)
+- Infrastructure & DevOps (Kubernetes, Docker, Linux, Cloudflare)
+- AI integration and automation (LLM tooling, workflow automation)
+
+## Projects
+- Scentance — AI-powered sentence construction tool
+- Stock Salt — Stock tracking and analysis platform
+- Office Pal — Office management dashboard
+- SpeeHive Social — Social media management for maritime industry
+- Expence Hive — Modern expense tracking system
+
+## Contact
+- Email: muhammadshameelks@gmail.com
+- GitHub: https://github.com/muhammad-shameel-ks
+- LinkedIn: https://linkedin.com/in/muhammad-shameel-k-s
+- Website: https://shameel.barchy.online
+
+## Links
+- Portfolio: https://shameel.barchy.online
+- Resume: https://shameel.barchy.online/resume.pdf

@@ -32,7 +32,14 @@ const ogImageURL = ogImage ?? new URL("/og-image.png", Astro.site).toString();
 		
 		<!-- Canonical -->
 		<link rel="canonical" href={canonicalURL} />
-		
+
+		<!-- Search engine verification -->
+		{SITE.googleVerification && <meta name="google-site-verification" content={SITE.googleVerification} />}
+		{SITE.bingVerification && <meta name="msvalidate.01" content={SITE.bingVerification} />}
+
+		<!-- AI crawler hint -->
+		<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={canonicalURL} />

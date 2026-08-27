@@ -399,6 +399,31 @@ export const projects: Project[] = [
     iconColor: "bg-pastel-yellow/40 text-yellow-700",
     kind: "AGENT",
   },
+  {
+    index: "16",
+    title: "Per-Monitor Workspaces",
+    subtitle: "Omarchy Plugin — Published to Marketplace",
+    description:
+      "Published Omarchy plugin that gives Hyprland N-monitor workspace pinning: each monitor gets its own 1-10 workspaces that stay persistent when you switch another screen. Supports up to 6 monitors (60 workspaces).",
+    funNote:
+      "300+ views on the Omarchy Plugin Marketplace. Because workspace isolation shouldn't be a luxury.",
+    tags: [
+      { name: "QML", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "Hyprland", color: "bg-pastel-purple/50 text-purple-700" },
+      { name: "Linux", color: "bg-pastel-orange/50 text-orange-700" },
+    ],
+    stackIcons: ["/arch-linux.svg"],
+    link: "https://omarchyplugins.com/plugin.html?id=shameel.workspaces",
+    highlights: [
+      "Published on Omarchy Plugin Marketplace",
+      "Per-monitor 1-10 workspace pinning (up to 60 WS)",
+      "Auto-detected monitor order, zero config",
+      "Open source — MIT licensed",
+    ],
+    cardBg: "bg-gradient-to-br from-pastel-green/20 to-pastel-blue/10",
+    iconColor: "bg-pastel-green/40 text-green-600",
+    kind: "OPEN SOURCE",
+  },
 ];
 
 /** SVG icon elements keyed by project index */
@@ -629,6 +654,20 @@ export const projectIcons: Record<string, React.ReactNode> = {
       strokeLinejoin="round"
     >
       <path d="M12 2l3 7 7 1-5 5 1.5 7L12 18l-6.5 4L7 15l-5-5 7-1z" />
+    </svg>
+  ),
+  "16": (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" />
     </svg>
   ),
 };

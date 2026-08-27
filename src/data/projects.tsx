@@ -138,6 +138,32 @@ export const projects: Project[] = [
     screenshot: "/projects/ksdc-smart.webp",
   },
   {
+    index: "16",
+    title: "Per-Monitor Workspaces",
+    subtitle: "Omarchy Plugin — Open Source Contribution",
+    description:
+      "Published plugin for Omarchy (DHH's Linux distro) that gives Hyprland per-monitor workspace pinning. Each monitor gets its own 1-10 workspaces — switch screens without losing context. 300+ marketplace views.",
+    funNote:
+      "I hit a friction point in my daily-driver OS, fixed it, and shared it. 300+ people installed it.",
+    tags: [
+      { name: "QML", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "Hyprland", color: "bg-pastel-purple/50 text-purple-700" },
+      { name: "Linux", color: "bg-pastel-orange/50 text-orange-700" },
+    ],
+    stackIcons: ["/arch-linux.svg"],
+    link: "https://github.com/muhammad-shameel-ks/omarchy-per-monitor-workspaces",
+    highlights: [
+      "Published on Omarchy Plugin Marketplace",
+      "Per-monitor workspace pinning — up to 60 workspaces",
+      "Auto-detected monitor order, zero config",
+      "MIT licensed, open source",
+    ],
+    cardBg: "bg-gradient-to-br from-pastel-green/20 to-pastel-blue/10",
+    iconColor: "bg-pastel-green/40 text-green-600",
+    screenshot: "/projects/omarchy.png",
+    kind: "OPEN SOURCE",
+  },
+  {
     index: "08",
     title: "SpeeHive Social",
     subtitle: "Agentic AI Social Media Planner",
@@ -398,31 +424,6 @@ export const projects: Project[] = [
     cardBg: "bg-gradient-to-br from-pastel-yellow/20 to-pastel-green/10",
     iconColor: "bg-pastel-yellow/40 text-yellow-700",
     kind: "AGENT",
-  },
-  {
-    index: "16",
-    title: "Per-Monitor Workspaces",
-    subtitle: "Omarchy Plugin — Published to Marketplace",
-    description:
-      "Published Omarchy plugin that gives Hyprland N-monitor workspace pinning: each monitor gets its own 1-10 workspaces that stay persistent when you switch another screen. Supports up to 6 monitors (60 workspaces).",
-    funNote:
-      "300+ views on the Omarchy Plugin Marketplace. Because workspace isolation shouldn't be a luxury.",
-    tags: [
-      { name: "QML", color: "bg-pastel-blue/50 text-blue-700" },
-      { name: "Hyprland", color: "bg-pastel-purple/50 text-purple-700" },
-      { name: "Linux", color: "bg-pastel-orange/50 text-orange-700" },
-    ],
-    stackIcons: ["/arch-linux.svg"],
-    link: "https://omarchyplugins.com/plugin.html?id=shameel.workspaces",
-    highlights: [
-      "Published on Omarchy Plugin Marketplace",
-      "Per-monitor 1-10 workspace pinning (up to 60 WS)",
-      "Auto-detected monitor order, zero config",
-      "Open source — MIT licensed",
-    ],
-    cardBg: "bg-gradient-to-br from-pastel-green/20 to-pastel-blue/10",
-    iconColor: "bg-pastel-green/40 text-green-600",
-    kind: "OPEN SOURCE",
   },
 ];
 

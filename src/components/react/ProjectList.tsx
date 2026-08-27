@@ -11,7 +11,7 @@ const CASE_STUDY_SLUGS: Record<string, string> = Object.fromEntries(
 );
 
 /** How many projects get a full card before the list collapses to rows */
-const FEATURED_COUNT = 6;
+const FEATURED_COUNT = 7;
 
 // Modal Component
 function ImageModal({

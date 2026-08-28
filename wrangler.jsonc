@@ -26,6 +26,10 @@
     {
       "pattern": "shameel.dev",
       "custom_domain": true
+    },
+    {
+      "pattern": "www.shameel.dev",
+      "custom_domain": true
     }
   ]
 }

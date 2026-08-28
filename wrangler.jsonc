@@ -16,11 +16,15 @@
   },
   "vars": {
     "PUBLIC_TURNSTILE_SITEKEY": "0x4AAAAAAEX5zQKd01A7oVgm",
-    "TURNSTILE_HOSTNAMES": "localhost,127.0.0.1,shameel.barchy.online"
+    "TURNSTILE_HOSTNAMES": "localhost,127.0.0.1,shameel.barchy.online,shameel.dev"
   },
   "routes": [
     {
       "pattern": "shameel.barchy.online",
+      "custom_domain": true
+    },
+    {
+      "pattern": "shameel.dev",
       "custom_domain": true
     }
   ]

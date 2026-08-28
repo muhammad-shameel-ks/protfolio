@@ -34,6 +34,7 @@ const ALLOWED_ORIGINS = [
   "http://localhost:3000",
   "https://shameel.barchy.online",
   "https://barchy.online",
+  "https://shameel.dev",
 ] as const;
 
 const TURNSTILE_ACTION = "contact";

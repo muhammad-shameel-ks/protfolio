@@ -22,8 +22,8 @@
 - Email: hi@shameel.dev
 - GitHub: https://github.com/muhammad-shameel-ks
 - LinkedIn: https://linkedin.com/in/muhammad-shameel-k-s
-- Website: https://shameel.barchy.online
+- Website: https://shameel.dev
 
 ## Links
-- Portfolio: https://shameel.barchy.online
-- Resume: https://shameel.barchy.online/resume.pdf
+- Portfolio: https://shameel.dev
+- Resume: https://shameel.dev/resume.pdf

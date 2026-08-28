@@ -11,7 +11,7 @@ export default defineConfig({
   adapter: cloudflare({
     imageService: 'passthrough',
   }),
-  site: 'https://shameel.barchy.online',
+  site: 'https://shameel.dev',
   vite: {
     plugins: [tailwindcss()],
     resolve: {

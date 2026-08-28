@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Resend setup — walks you through connecting the portfolio contact form to
-# Resend: API key, domain verification on shameel.barchy.online, then writes
+# Resend: API key, domain verification on shameel.dev, then writes
 # RESEND_API_KEY / RESEND_FROM / RESEND_TO to .env (and optionally sets the
 # API key as a Cloudflare Worker secret for production).
 #
@@ -198,7 +198,7 @@ finish() {
 # STAGES — author this section.
 # ──────────────────────────────────────────────────────────────────────────
 
-SENDING_DOMAIN="shameel.barchy.online"
+SENDING_DOMAIN="shameel.dev"
 DEFAULT_FROM="Portfolio <noreply@${SENDING_DOMAIN}>"
 RECIPIENT="hi@shameel.dev"
 

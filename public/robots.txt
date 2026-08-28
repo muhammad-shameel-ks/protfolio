@@ -1,5 +1,5 @@
-# robots.txt for shameel.barchy.online
+# robots.txt for shameel.dev
 User-agent: *
 Allow: /
 Disallow: /api/
-Sitemap: https://shameel.barchy.online/sitemap.xml
+Sitemap: https://shameel.dev/sitemap.xml

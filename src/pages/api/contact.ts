@@ -32,7 +32,7 @@ const RATE_LIMIT_MAX_REQUESTS = 5;
 const ALLOWED_ORIGINS = [
   "http://localhost:4321",
   "http://localhost:3000",
-  "https://shameel.barchy.online",
+  "https://shameel.dev",
   "https://barchy.online",
   "https://shameel.dev",
   "https://www.shameel.dev",
@@ -314,7 +314,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
     const html = `
       <div style="font-family: Inter, system-ui, sans-serif; max-width: 600px; margin: 0 auto; color: #1a1a1a;">
         <h2 style="color: #E8613C; margin-bottom: 8px;">New hire inquiry from portfolio</h2>
-        <p style="color: #737373; font-size: 14px; margin-top: 0;">via shameel.barchy.online — reply directly to the sender.</p>
+        <p style="color: #737373; font-size: 14px; margin-top: 0;">via shameel.dev — reply directly to the sender.</p>
         <hr style="border: none; border-top: 1px solid #ECEAE6; margin: 20px 0;" />
         <table style="width: 100%; font-size: 14px; line-height: 1.6;">
           <tr><td style="color:#737373; width: 80px;">Name</td><td><strong>${esc(sanitizedData.name)}</strong></td></tr>
@@ -338,7 +338,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
         reply_to: sanitizedData.email,
         subject: `Hire inquiry: ${sanitizedData.name} via portfolio`,
         html,
-        text: `New hire inquiry\nName: ${sanitizedData.name}\nEmail: ${sanitizedData.email}\nIP: ${clientIP}\n\n${sanitizedData.message}\n\n— shameel.barchy.online`,
+        text: `New hire inquiry\nName: ${sanitizedData.name}\nEmail: ${sanitizedData.email}\nIP: ${clientIP}\n\n${sanitizedData.message}\n\n— shameel.dev`,
       }),
     });
 

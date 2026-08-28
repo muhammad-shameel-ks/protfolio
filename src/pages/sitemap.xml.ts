@@ -16,7 +16,7 @@ const staticPaths = [
 
 export const GET: APIRoute = ({ site }) => {
   const base =
-    site?.toString().replace(/\/$/, "") ?? "https://shameel.barchy.online";
+    site?.toString().replace(/\/$/, "") ?? "https://shameel.dev";
   const urls = staticPaths
     .map(
       (p) =>

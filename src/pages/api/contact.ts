@@ -35,6 +35,7 @@ const ALLOWED_ORIGINS = [
   "https://shameel.barchy.online",
   "https://barchy.online",
   "https://shameel.dev",
+  "https://www.shameel.dev",
 ] as const;
 
 const TURNSTILE_ACTION = "contact";

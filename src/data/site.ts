@@ -19,7 +19,7 @@ export const SITE = {
   location: "Palakkad, Kerala, India",
   resumePath: "/resume.pdf",
   resumeFilename: "Shameel_Resume.pdf",
-  siteUrl: "https://shameel.barchy.online",
+  siteUrl: "https://shameel.dev",
 
   // Search console verification — paste your codes after registering
   googleVerification: "",   // Google Search Console → HTML tag → content="..."

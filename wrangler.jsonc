@@ -16,6 +16,7 @@
   },
   "vars": {
     "PUBLIC_TURNSTILE_SITEKEY": "0x4AAAAAAEX5zQKd01A7oVgm",
+    "RESEND_TO": "hi@shameel.dev",
     "TURNSTILE_HOSTNAMES": "localhost,127.0.0.1,shameel.dev,www.shameel.dev"
   },
   "routes": [

@@ -131,7 +131,7 @@ function createErrorResponse(
 function getResendConfig(env: Record<string, string | undefined>) {
   const apiKey = env.RESEND_API_KEY;
   const from = env.RESEND_FROM ?? "Portfolio <onboarding@resend.dev>";
-  const to = env.RESEND_TO ?? "muhammadshameelks@gmail.com";
+  const to = env.RESEND_TO ?? "hi@shameel.dev";
   return { apiKey, from, to };
 }
 

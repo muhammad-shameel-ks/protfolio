@@ -11,7 +11,7 @@
 export const SITE = {
   name: "Muhammad Shameel KS",
   title: "Full-Stack Engineer & Sysadmin",
-  email: "muhammadshameelks@gmail.com",
+  email: "hi@shameel.dev",
   phone: "+91 9605796725",
   phoneHref: "tel:+919605796725",
   linkedin: "https://linkedin.com/in/muhammad-shameel-k-s",

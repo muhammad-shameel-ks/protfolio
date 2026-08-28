@@ -200,7 +200,7 @@ finish() {
 
 SENDING_DOMAIN="shameel.barchy.online"
 DEFAULT_FROM="Portfolio <noreply@${SENDING_DOMAIN}>"
-RECIPIENT="muhammadshameelks@gmail.com"
+RECIPIENT="hi@shameel.dev"
 
 TOTAL_STAGES=6
 

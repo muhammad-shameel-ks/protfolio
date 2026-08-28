@@ -33,8 +33,6 @@ const ALLOWED_ORIGINS = [
   "http://localhost:4321",
   "http://localhost:3000",
   "https://shameel.dev",
-  "https://barchy.online",
-  "https://shameel.dev",
   "https://www.shameel.dev",
 ] as const;
 

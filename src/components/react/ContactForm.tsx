@@ -150,7 +150,7 @@ export default function ContactForm() {
               </svg>
             </div>
             <span className="font-[Silkscreen] text-[16px] text-accent tracking-[0.2em] uppercase font-bold">
-              Chapter 06 — The Connection
+              Chapter 05 — The Connection
             </span>
           </motion.div>
 

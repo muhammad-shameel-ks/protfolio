@@ -11,8 +11,7 @@ const CASE_STUDY_SLUGS: Record<string, string> = Object.fromEntries(
 );
 
 /** How many projects get a full card before the list collapses to rows */
-const FEATURED_COUNT = 7;
-
+const FEATURED_COUNT = 6;
 // Modal Component
 function ImageModal({
   src,
@@ -411,7 +410,7 @@ export default function ProjectList() {
         <div className="mt-12">
           <div className="flex items-center gap-3 mb-2">
             <span className="font-[Silkscreen] text-[11px] tracking-widest uppercase text-fg-faint">
-              More experiments & open source
+              More things I've built
             </span>
             <span className="h-px flex-1 bg-border/60" />
             <a

@@ -10,7 +10,7 @@
 
 export const SITE = {
   name: "Muhammad Shameel KS",
-  title: "Full-Stack Engineer & Sysadmin",
+  title: "Software Engineer — AI Automation & Full-Stack Development",
   email: "hi@shameel.dev",
   phone: "+91 9605796725",
   phoneHref: "tel:+919605796725",
@@ -18,7 +18,7 @@ export const SITE = {
   github: "https://github.com/muhammad-shameel-ks",
   location: "Palakkad, Kerala, India",
   resumePath: "/resume.pdf",
-  resumeFilename: "Shameel_Resume.pdf",
+  resumeFilename: "Muhammad_Shameel_KS_Resume.pdf",
   siteUrl: "https://shameel.dev",
 
   // Search console verification — paste your codes after registering
@@ -41,25 +41,21 @@ export interface Chapter {
 export const CHAPTERS: Chapter[] = [
   { id: "hero", number: "00", label: "The Beginning", navLabel: "Home" },
   { id: "chapter-01", number: "01", label: "The Origin", navLabel: "Story" },
-  {
-    id: "chapter-02",
-    number: "02",
-    label: "The Philosophy",
-    navLabel: "Ethos",
-  },
-  { id: "chapter-03", number: "03", label: "The Sysadmin", navLabel: "Admin" },
+  { id: "what-i-build", number: "02", label: "What I Build", navLabel: "Build" },
   { id: "projects", number: "WORK", label: "The Work", navLabel: "Work" },
-  { id: "infra", number: "PIPE", label: "The Pipeline", navLabel: "Infra" },
-  { id: "chapter-04", number: "04", label: "The Multiplier", navLabel: "AI" },
-  { id: "chapter-05", number: "05", label: "The Now", navLabel: "Now" },
-  { id: "contact", number: "06", label: "The Connection", navLabel: "Reach" },
+  { id: "how-i-work", number: "03", label: "How I Work", navLabel: "How" },
+  { id: "experience", number: "04", label: "Selected Experience", navLabel: "Experience" },
+  { id: "infra", number: "ENG", label: "The Engineering", navLabel: "Infra" },
+  { id: "stack", number: "STACK", label: "The Stack", navLabel: "Stack" },
+  { id: "contact", number: "05", label: "The Connection", navLabel: "Reach" },
 ] as const;
 
 /** Navigation items for PersistentNav — a focused subset of CHAPTERS */
 export const NAV_ITEMS = [
   { id: "chapter-01", label: "Story" },
+  { id: "what-i-build", label: "Build" },
   { id: "projects", label: "Work" },
-  { id: "infra", label: "Infra" },
+  { id: "experience", label: "Experience" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -76,13 +72,13 @@ export const FLOAT_ICONS = [
   "/reactjs.svg",
   "/nextjs-light.svg",
   "/typescript.svg",
-  "/kubernetes.svg",
-  "/docker-engine.svg",
   "/python.svg",
-  "/nodejs.svg",
+  "/n8n.svg",
   "/supabase.svg",
+  "/nodejs.svg",
+  "/cloudflare.svg",
   "/tailwind.svg",
-  "/arch-linux.svg",
+  "/linux.svg",
 ] as const;
 
 // ── Contact Info Links ─────────────────────────────────────────

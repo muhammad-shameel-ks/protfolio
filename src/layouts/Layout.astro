@@ -11,7 +11,7 @@ interface Props {
 
 const { 
 	title, 
-	description = `${SITE.name} — ${SITE.title} from Kerala. Building production systems, automating everything, and using AI to stay three steps ahead.`,
+	description = "Software Engineer building AI-powered applications, AI agents, and automated workflows. Full-stack development from TypeScript to Supabase to deployment.",
 	ogImage,
 	ogUrl,
 } = Astro.props;
@@ -70,7 +70,7 @@ const ogImageURL = ogImage ?? new URL("/og-image.png", Astro.site).toString();
 			"@context": "https://schema.org",
 			"@type": "Person",
 			"name": SITE.name,
-			"jobTitle": "Full-Stack Engineer",
+			"jobTitle": "Software Engineer | AI Automation & Full-Stack Development",
 			"url": SITE.siteUrl,
 			"image": `${SITE.siteUrl}/og-image.png`,
 			"address": {
@@ -80,7 +80,7 @@ const ogImageURL = ogImage ?? new URL("/og-image.png", Astro.site).toString();
 				"addressCountry": "IN"
 			},
 			"sameAs": [SITE.github, SITE.linkedin],
-			"knowsAbout": ["React", "TypeScript", "Kubernetes", "Linux", "DevOps", "AI"],
+			"knowsAbout": ["AI Agents", "Tool Calling", "MCP", "Automation", "Next.js", "TypeScript", "React", "Supabase", "PostgreSQL", "Python", "Cloudflare Workers"],
 			"contactPoint": {
 				"@type": "ContactPoint",
 				"contactType": "customer service",

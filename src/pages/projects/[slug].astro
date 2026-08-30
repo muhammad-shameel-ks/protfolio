@@ -17,7 +17,7 @@ if (!study) {
   return Astro.redirect("/404");
 }
 
-const title = `${study.title} — Case Study | Shameel | DevOps in Progress`;
+const title = `${study.title} — Case Study | Shameel | AI Automation & Full-Stack`;
 const description = study.subtitle;
 const canonical = new URL(`/projects/${study.slug}`, Astro.site).toString();
 const ogImage = study.heroImage ? new URL(study.heroImage, Astro.site).toString() : `${SITE.siteUrl}/og-image.png`;

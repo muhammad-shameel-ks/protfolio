@@ -1,6 +1,6 @@
 import { useRef, useMemo } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { FLOAT_ICONS } from "../../data/site";
+import { FLOAT_ICONS, SITE } from "../../data/site";
 import TopNav from "./TopNav";
 
 function FloatingIcon({
@@ -112,7 +112,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="inline-flex items-center gap-2.5 px-4 py-2 mb-8 rounded-full bg-pastel-green/50 border border-green-200/40"
+          className="inline-flex items-center gap-2.5 px-4 py-2 mt-16 sm:mt-20 mb-8 rounded-full bg-pastel-green/50 border border-green-200/40"
         >
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -167,41 +167,43 @@ export default function Hero() {
               style={{ display: "inline-block" }}
             >
               <svg
-                width="48"
-                height="48"
                 viewBox="0 0 36 36"
                 className="inline w-[0.75em] h-[0.75em]"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-label="Waving hand"
               >
                 <path
-                  fill="#FFDC5D"
-                  d="M18.5 3.5c0-1.1-.9-2-2-2s-2 .9-2 2v10h4v-10z"
+                  fill="#EF9645"
+                  d="M4.861 9.147c.94-.657 2.357-.531 3.201.166l-.968-1.407c-.779-1.111-.5-2.313.612-3.093 1.112-.777 4.263 1.312 4.263 1.312-.786-1.122-.639-2.544.483-3.331 1.122-.784 2.67-.513 3.456.611l10.42 14.72L25 31l-11.083-4.042L4.25 12.625c-.793-1.129-.519-2.686.611-3.478z"
                 />
                 <path
                   fill="#FFDC5D"
-                  d="M23.5 7.5c0-1.1-.9-2-2-2s-2 .9-2 2v8h4v-8z"
-                />
-                <path
-                  fill="#FFDC5D"
-                  d="M28.5 8.5c0-1.1-.9-2-2-2s-2 .9-2 2v7h4v-7z"
-                />
-                <path
-                  fill="#FFDC5D"
-                  d="M13.5 8.5c0-1.1-.9-2-2-2s-2 .9-2 2v13.5c0 .3-.2.5-.5.5s-.5-.2-.5-.5v-2.5c-1.5-2.5-4-1.5-3 1 1 2.5 2 5 3 7 2 4 5 6 10 6 6 0 10-4 10-10v-8c0-1.1-.9-2-2-2s-2 .9-2 2"
+                  d="M2.695 17.336s-1.132-1.65.519-2.781c1.649-1.131 2.78.518 2.78.518l5.251 7.658c.181-.302.379-.6.6-.894L4.557 11.21s-1.131-1.649.519-2.78c1.649-1.131 2.78.518 2.78.518l6.855 9.997c.255-.208.516-.417.785-.622L7.549 6.732s-1.131-1.649.519-2.78c1.649-1.131 2.78.518 2.78.518l7.947 11.589c.292-.179.581-.334.871-.498L12.238 4.729s-1.131-1.649.518-2.78c1.649-1.131 2.78.518 2.78.518l7.854 11.454 1.194 1.742c-4.948 3.394-5.419 9.779-2.592 13.902.565.825 1.39.26 1.39.26-3.393-4.949-2.357-10.51 2.592-13.903L24.515 8.62s-.545-1.924 1.378-2.47c1.924-.545 2.47 1.379 2.47 1.379l1.685 5.004c.668 1.984 1.379 3.961 2.32 5.831 2.657 5.28 1.07 11.842-3.94 15.279-5.465 3.747-12.936 2.354-16.684-3.11L2.695 17.336z"
                 />
               </svg>
             </motion.span>
           </motion.h1>
         </div>
 
-        <div className="overflow-hidden mb-8">
+        <div className="overflow-hidden mb-3">
           <motion.p
             initial={{ y: "100%" }}
             animate={{ y: "0%" }}
             transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[clamp(1rem,2.2vw,1.35rem)] text-fg-muted font-light leading-relaxed max-w-xl"
+            className="text-[clamp(1.2rem,3vw,1.8rem)] text-fg font-semibold leading-snug max-w-xl"
           >
-            Full-stack engineer walking the DevOps path. From Arch Linux to
-            Kubernetes — I build, run, and automate the systems I create.
+            I build <span className="text-accent">AI-powered applications</span> and automations.
+          </motion.p>
+        </div>
+        <div className="overflow-hidden mb-4">
+          <motion.p
+            initial={{ y: "100%" }}
+            animate={{ y: "0%" }}
+            transition={{ delay: 0.58, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[clamp(0.95rem,2vw,1.15rem)] text-fg-muted font-light leading-relaxed max-w-xl"
+          >
+            Software engineer focused on building useful products, AI agents, and workflows that automate real work.
           </motion.p>
         </div>
 
@@ -209,14 +211,23 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.68, duration: 0.8 }}
+          className="mb-3"
+        >
+          <span className="font-[Silkscreen] text-[12px] md:text-[13px] text-accent tracking-wider uppercase">
+            I build software that does the boring work for me.
+          </span>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.8 }}
           className="mb-6"
         >
-          <span className="font-[Silkscreen] text-[18px] md:text-[20px] text-accent tracking-wider uppercase">
-            Linux / Kubernetes / CI/CD / Home Lab / Self-Hosted
+          <span className="font-[Silkscreen] text-[11px] md:text-[12px] text-fg-faint tracking-widest uppercase">
+            AI Agents · Full-Stack · Automation · TypeScript · Next.js · Python
           </span>
         </motion.div>
-
         {/* Primary CTA — above the fold */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -226,16 +237,16 @@ export default function Hero() {
         >
           <div className="flex flex-wrap items-center gap-3">
             <a
-              href="#contact"
+              href="#projects"
               onClick={(e) => {
                 e.preventDefault();
                 document
-                  .getElementById("contact")
+                  .getElementById("projects")
                   ?.scrollIntoView({ behavior: "smooth" });
               }}
               className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-accent text-white text-[15px] font-bold shadow-lg shadow-accent/20 hover:bg-accent-dark hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all"
             >
-              Hire Me — Start a Project
+              View my work
               <svg
                 width="16"
                 height="16"
@@ -251,16 +262,21 @@ export default function Hero() {
               </svg>
             </a>
             <a
-              href="#projects"
-              onClick={(e) => {
-                e.preventDefault();
-                document
-                  .getElementById("projects")
-                  ?.scrollIntoView({ behavior: "smooth" });
-              }}
+              href={SITE.github}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white border border-border text-fg text-[15px] font-semibold hover:border-accent/40 hover:bg-pastel-blue/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
+            >
+              <img src="/github-light.svg" alt="" width="16" height="16" className="w-4 h-4" />
+              GitHub
+            </a>
+            <a
+              href={SITE.resumePath}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white border border-border text-fg text-[15px] font-semibold hover:border-accent/40 hover:bg-pastel-orange/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
             >
-              View Work
+              Resume
             </a>
           </div>
           <span className="text-xs text-fg-muted flex items-center gap-1.5">
@@ -310,7 +326,7 @@ export default function Hero() {
             </p>
           </motion.div>
 
-          {/* Infrastructure */}
+          {/* AI Agents */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -328,20 +344,19 @@ export default function Hero() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
               >
-                <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
-                <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />
-                <line x1="6" y1="6" x2="6.01" y2="6" />
-                <line x1="6" y1="18" x2="6.01" y2="18" />
+                <path d="M12 8V4H8" />
+                <rect x="8" y="8" width="8" height="8" rx="2" />
+                <path d="M16 8V4h4v4h-4z" />
+                <path d="M4 16v-4H0v4h4z" />
+                <path d="M20 16v-4h4v4h-4z" />
+                <circle cx="12" cy="12" r="1" />
               </svg>
               <span className="font-[Silkscreen] text-[14px] tracking-wider uppercase font-bold">
-                DevOps
+                AI Agents
               </span>
             </div>
             <p className="text-[13px] text-fg-muted leading-snug">
-              Self-hosted{" "}
-              <span className="text-fg font-medium">Kubernetes</span> cluster.
-              GitHub Actions pipelines. Learning{" "}
-              <span className="text-fg font-medium">Terraform</span> next.
+              Agents that <span className="text-fg font-medium">reason, call tools, and do real work</span> — from Linear to Asana.
             </p>
           </motion.div>
 

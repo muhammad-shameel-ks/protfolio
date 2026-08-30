@@ -8,24 +8,28 @@ export interface FAQItem {
 
 export const HIRE_FAQS: FAQItem[] = [
   {
-    q: "Are you available for hire right now?",
-    a: "Yes — I'm open to freelance and full-time opportunities. I reply within 12 hours (usually same day). Tell me your timeline in the form and I'll confirm availability within one message.",
+    q: "What do you build?",
+    a: "AI agents, automation, and full-stack products. Agents that reason, call tools, and interact with APIs — like the Linear AI Agent and Asana Coding Agent I built at SpeeHive — plus useful products from Next.js and TypeScript to Supabase and deployment. See the work at #projects — Scentance (live e-commerce), Stock Salt, and Office Pal are good starting points.",
   },
   {
-    q: "How do you charge and scope projects?",
-    a: "Fixed price for well-scoped MVPs, weekly rate for open-ended builds. I scope from your problem, not your ticket list — you get a clear milestone plan, what’s in/out, and a fixed or capped price before we start. No surprises.",
+    q: "How do you use AI in your workflow?",
+    a: "AI doesn't replace me — it makes me dangerous. I use AI as an engineering multiplier: agents that call tools, interact with APIs, and reason over context to handle repetitive implementation and investigation. I focus on architecture, product decisions, debugging, and shipping. Agentic development, tool calling, API integration, workflow automation — that's the stack.",
   },
   {
-    q: "How fast can you ship an MVP?",
-    a: "Small tools in 1–2 weeks, multi-tenant SaaS or e-commerce in 3–6 weeks depending on scope. I use AI as a force multiplier (architecture, tests, scaffolding) but I read every diff — speed without cutting quality.",
+    q: "What's the Asana Coding Agent?",
+    a: "Professional work at SpeeHive as an AI Automation Engineer: an AI agent that retrieves repositories, works on code, and automatically updates development tasks from Asana. Publicly, I ship the Asana MCP wiring at github.com/muhammad-shameel-ks/asana-agent — it connects Asana to opencode via OAuth or PAT so AI can read tasks and take actions. The repo configures the official Asana MCP Server V2 at https://mcp.asana.com/v2/mcp (remote type, OAuth option 1 / PAT option 2). The agent is the workflow; the repo is the wiring.",
+  },
+  {
+    q: "What's the Linear AI Agent?",
+    a: "An OpenAI-compatible tool-calling agent on Cloudflare Workers that lives inside Linear. It responds to AgentSession webhooks, looks up coordinates/weather/time with live tools, and writes AgentActivity entries back to the session. Zero-maintenance edge hosting, grounded answers, no context switch. See /projects/linear-ai-agent for the case study and github.com/muhammad-shameel-ks/speehive-linear-bot for the code.",
   },
   {
     q: "Will you work with my existing stack?",
-    a: "Yes. I pick the right tool, not the trendy one — I’ve shipped React / Next.js / TypeScript, Flutter, Supabase, PostgreSQL, Python, and Node. If your stack is MSSQL, Docker, or self-hosted K8s, even better — I live there. If it’s a mismatch, I’ll tell you upfront.",
+    a: "Yes — I pick the right tool, not the trendy one. TypeScript, Next.js, React, Node.js, Python, Flutter, Astro, Supabase, PostgreSQL, MySQL, MSSQL. For AI: OpenAI tool calling, MCP, n8n, Cloudflare Workers. If your stack is infra-heavy (Docker, K8s, Tailscale, Linux) that's a plus — I run that myself. If it's a mismatch, I'll tell you upfront.",
   },
   {
-    q: "How do we work together remotely?",
-    a: "Async-first, Palakkad (IST, UTC+5:30) — overlapping hours with EU/MENA, morning overlap with US East. GitHub, weekly demos, and plain-English updates. You always see the repo and the deployment pipeline, not just screenshots.",
+    q: "Are you available for remote work?",
+    a: "Yes — Palakkad, Kerala (IST, UTC+5:30), async-first, overlapping EU/MENA hours and mornings with US East. GitHub, weekly demos, plain-English updates. You see the repo and deployment, not just screenshots. I reply within 12 hours — tell me your timeline at #contact and I'll confirm in one message.",
   },
 ];
 

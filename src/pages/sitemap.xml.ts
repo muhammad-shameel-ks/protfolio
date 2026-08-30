@@ -12,6 +12,8 @@ const staticPaths = [
   "/projects/office-pal",
   "/projects/speehive-social",
   "/projects/expence-hive",
+  "/projects/linear-ai-agent",
+  "/projects/asana-coding-agent",
 ];
 
 export const GET: APIRoute = ({ site }) => {

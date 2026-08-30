@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 const proofs = [
-  { value: "15", label: "projects shipped", sub: "6 featured above, all on GitHub" },
+  { value: "AI Agents", label: "Linear & Asana", sub: "tool-calling bots at SpeeHive — on GitHub" },
   {
     value: "Scentance",
     label: "live e-commerce",
@@ -13,9 +13,9 @@ const proofs = [
     sub: "used daily by non-technical staff",
   },
   {
-    value: "Self-hosted",
-    label: "Kubernetes on VAIO",
-    sub: "CI/CD via GitHub → Tailscale → K3s",
+    value: "Full-Stack",
+    label: "TypeScript → Supabase",
+    sub: "frontend to database to deployment",
   },
 ];
 

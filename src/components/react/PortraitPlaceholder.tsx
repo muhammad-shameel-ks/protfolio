@@ -23,7 +23,7 @@ export default function PortraitPlaceholder() {
   if (src) {
     const isWebP = src.endsWith(".webp");
     const alt =
-      "Portrait of Muhammad Shameel KS - Full-Stack Engineer & Sysadmin from Palakkad, Kerala";
+      "Portrait of Muhammad Shameel KS - Software Engineer, AI Automation & Full-Stack Development from Palakkad, Kerala";
 
     return (
       <div className="rounded-2xl overflow-hidden border border-border shadow-lg">

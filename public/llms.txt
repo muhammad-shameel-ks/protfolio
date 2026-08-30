@@ -3,20 +3,21 @@
 # https://llmstxt.org/
 
 # Site
-> Muhammad Shameel KS — Full-Stack Engineer & Sysadmin from Palakkad, Kerala, India. Building production systems, automating workflows, and applying AI to real-world problems.
+> Muhammad Shameel KS — Software Engineer | AI Automation & Full-Stack Development from Palakkad, Kerala, India. Building AI-powered applications, AI agents, and automated workflows — from TypeScript to Supabase to deployment.
 
 ## What I Do
-- Full-stack web development (React, Next.js, Astro, TypeScript)
-- Backend & API design (Node.js, Python, Supabase, PostgreSQL)
-- Infrastructure & DevOps (Kubernetes, Docker, Linux, Cloudflare)
-- AI integration and automation (LLM tooling, workflow automation)
+- AI automation & agentic workflows (OpenAI tool calling, MCP, n8n, Cloudflare Workers)
+- Full-stack web development (React, Next.js, Astro, TypeScript, Flutter)
+- Backend & API design (Node.js, Python, Supabase, PostgreSQL, MSSQL)
+- Infrastructure & self-hosting (Docker, Kubernetes, Linux, Tailscale, GitHub Actions)
 
 ## Projects
-- Scentance — AI-powered sentence construction tool
-- Stock Salt — Stock tracking and analysis platform
-- Office Pal — Office management dashboard
-- SpeeHive Social — Social media management for maritime industry
-- Expence Hive — Modern expense tracking system
+- Linear AI Agent — Tool-calling agent inside Linear on Cloudflare Workers
+- Asana Coding Agent — AI-powered development automation at SpeeHive
+- SpeeHive Social — Agentic AI social media planner (Flutter + Clean Architecture)
+- Scentance — Premium fragrance e-commerce, live with real revenue
+- Stock Salt — Real-time inventory SaaS for 5 outlets
+- Office Pal — College management with anti-cheat exam seating
 
 ## Contact
 - Email: hi@shameel.dev

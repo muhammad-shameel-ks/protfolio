@@ -26,6 +26,83 @@ export interface Project {
 export const projects: Project[] = [
   {
     index: "01",
+    title: "SpeeHive Social",
+    subtitle: "Agentic AI Social Media Planner",
+    description:
+      "Flutter app with Clean Architecture that lets an agentic AI core decide when to query calendars and post to LinkedIn. Tool-calling AI, OAuth, multi-tone drafts.",
+    funNote:
+      "The agent stops reminding you to post — it just reads your calendar and drafts.",
+    tags: [
+      { name: "Flutter", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "Dart", color: "bg-pastel-green/50 text-green-700" },
+      { name: "Riverpod", color: "bg-pastel-orange/50 text-orange-700" },
+      { name: "OpenAI", color: "bg-pastel-purple/50 text-purple-700" },
+    ],
+    stackIcons: ["/flutter.svg", "/reactjs.svg"],
+    link: "https://github.com/muhammad-shameel-ks/speehive_social",
+    highlights: [
+      "Agentic AI tool-calling core",
+      "Clean Architecture + Riverpod",
+      "Google / Outlook → LinkedIn automation",
+    ],
+    cardBg: "bg-gradient-to-br from-pastel-blue/20 to-pastel-green/10",
+    iconColor: "bg-pastel-blue/40 text-blue-600",
+    kind: "AGENTIC APP",
+  },
+  {
+    index: "02",
+    title: "Linear AI Agent",
+    subtitle: "AI agent inside Linear — tool-calling bot that answers from live workspace tools",
+    description:
+      "An OpenAI-compatible tool-calling agent deployed as a Cloudflare Worker that integrates with Linear, responds to AgentSession webhooks, looks up coordinates/weather/time with live tools, and writes AgentActivity entries.",
+    funNote:
+      "An agent that lives in Linear and answers weather/time questions from your team.",
+    tags: [
+      { name: "OpenAI", color: "bg-pastel-purple/50 text-purple-700" },
+      { name: "Tool Calling", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "Webhooks", color: "bg-pastel-orange/50 text-orange-700" },
+      { name: "Cloudflare Workers", color: "bg-pastel-orange/50 text-orange-700" },
+      { name: "TypeScript", color: "bg-pastel-blue/50 text-blue-700" },
+    ],
+    stackIcons: ["/typescript.svg", "/cloudflare.svg"],
+    link: "https://github.com/muhammad-shameel-ks/speehive-linear-bot",
+    highlights: [
+      "Linear AgentSession webhook integration",
+      "Tool calling: coordinates, weather, local time",
+      "Writes AgentActivity entries",
+      "Zero-maintenance edge hosting on Cloudflare Workers",
+    ],
+    cardBg: "bg-gradient-to-br from-pastel-orange/20 to-pastel-blue/10",
+    iconColor: "bg-pastel-orange/40 text-orange-600",
+    kind: "AGENT",
+  },
+  {
+    index: "03",
+    title: "Asana Coding Agent",
+    subtitle: "AI-powered development automation",
+    description:
+      "Built at SpeeHive as an AI Automation Engineer: an AI agent that retrieves repositories, works on code, and automatically updates development tasks from Asana. Public MCP wiring at github.com/muhammad-shameel-ks/asana-agent connects Asana to OpenAI-compatible agents via OAuth/PAT so AI can read tasks and take actions.",
+    funNote: "Built for real work at SpeeHive — the agent does the repo work, you keep the meetings.",
+    tags: [
+      { name: "Python", color: "bg-pastel-yellow/50 text-yellow-700" },
+      { name: "MCP", color: "bg-pastel-purple/50 text-purple-700" },
+      { name: "Asana", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "OpenAI", color: "bg-pastel-purple/50 text-purple-700" },
+    ],
+    stackIcons: ["/python.svg"],
+    link: "https://github.com/muhammad-shameel-ks/asana-agent",
+    highlights: [
+      "Retrieves repos and updates Asana tasks automatically",
+      "MCP wiring for OpenAI-compatible agents",
+      "OAuth + PAT auth flows",
+      "Part of agentic development workflow at SpeeHive",
+    ],
+    cardBg: "bg-gradient-to-br from-pastel-yellow/20 to-pastel-green/10",
+    iconColor: "bg-pastel-yellow/40 text-yellow-700",
+    kind: "AGENT",
+  },
+  {
+    index: "04",
     title: "Scentance",
     subtitle: "Premium Fragrance E-commerce",
     description:
@@ -56,7 +133,7 @@ export const projects: Project[] = [
     isLive: true,
   },
   {
-    index: "02",
+    index: "05",
     title: "Stock Salt",
     subtitle: "Real-time Inventory SaaS",
     description:
@@ -84,7 +161,7 @@ export const projects: Project[] = [
     screenshot: "/projects/stock-salt.webp",
   },
   {
-    index: "03",
+    index: "06",
     title: "Office Pal",
     subtitle: "College Management System",
     description:
@@ -107,7 +184,7 @@ export const projects: Project[] = [
     screenshot: "/projects/office-pal.webp",
   },
   {
-    index: "04",
+    index: "07",
     title: "KSDC Smart Helper",
     subtitle: "SQL tooling for non-technical staff",
     description:
@@ -138,7 +215,7 @@ export const projects: Project[] = [
     screenshot: "/projects/ksdc-smart.webp",
   },
   {
-    index: "16",
+    index: "08",
     title: "Per-Monitor Workspaces",
     subtitle: "Omarchy Plugin — Open Source Contribution",
     description:
@@ -162,31 +239,6 @@ export const projects: Project[] = [
     iconColor: "bg-pastel-green/40 text-green-600",
     screenshot: "/projects/omarchy.png",
     kind: "OPEN SOURCE",
-  },
-  {
-    index: "08",
-    title: "SpeeHive Social",
-    subtitle: "Agentic AI Social Media Planner",
-    description:
-      "Flutter app with Clean Architecture that lets an agentic AI core decide when to query calendars and post to LinkedIn. Tool-calling AI, OAuth, multi-tone drafts.",
-    funNote:
-      "The agent stops reminding you to post — it just reads your calendar and drafts.",
-    tags: [
-      { name: "Flutter", color: "bg-pastel-blue/50 text-blue-700" },
-      { name: "Dart", color: "bg-pastel-green/50 text-green-700" },
-      { name: "Riverpod", color: "bg-pastel-orange/50 text-orange-700" },
-      { name: "OpenAI", color: "bg-pastel-purple/50 text-purple-700" },
-    ],
-    stackIcons: ["/flutter.svg", "/reactjs.svg"],
-    link: "https://github.com/muhammad-shameel-ks/speehive_social",
-    highlights: [
-      "Agentic AI tool-calling core",
-      "Clean Architecture + Riverpod",
-      "Google / Outlook → LinkedIn automation",
-    ],
-    cardBg: "bg-gradient-to-br from-pastel-blue/20 to-pastel-green/10",
-    iconColor: "bg-pastel-blue/40 text-blue-600",
-    kind: "AGENTIC APP",
   },
   {
     index: "09",
@@ -214,7 +266,7 @@ export const projects: Project[] = [
     kind: "ARCHITECTURE",
   },
   {
-    index: "05",
+    index: "10",
     title: "n8n Easy Webhooks",
     subtitle: "Zero-Config Tunneling",
     description: "Auto Cloudflare Tunnel for local n8n development.",
@@ -235,7 +287,7 @@ export const projects: Project[] = [
     iconColor: "bg-pastel-green/40 text-green-600",
   },
   {
-    index: "06",
+    index: "11",
     title: "DMS Speech-to-Text",
     subtitle: "Zero-idle dictation plugin for Hyprland",
     description:
@@ -257,7 +309,7 @@ export const projects: Project[] = [
     kind: "HYPRLAND PLUGIN",
   },
   {
-    index: "07",
+    index: "12",
     title: "Unified Agent Control",
     subtitle: "One config layer for Claude, opencode, Gemini CLI agents",
     description:
@@ -281,7 +333,7 @@ export const projects: Project[] = [
     kind: "CLI TOOL",
   },
   {
-    index: "10",
+    index: "13",
     title: "Menma Catering & Events",
     subtitle: "Premium Event Company Landing",
     description:
@@ -307,7 +359,7 @@ export const projects: Project[] = [
     kind: "LANDING PAGE",
   },
   {
-    index: "11",
+    index: "14",
     title: "Chemmeenz",
     subtitle: "Kerala Seafood Restaurant Landing",
     description:
@@ -332,31 +384,7 @@ export const projects: Project[] = [
     kind: "LANDING PAGE",
   },
   {
-    index: "12",
-    title: "SpeeHive Linear Bot",
-    subtitle: "Cloudflare Worker AI Agent",
-    description:
-      "OpenAI-powered Cloudflare Worker agent that integrates with Linear — responds to AgentSession webhooks, answers from a tool set, writes AgentActivity entries.",
-    funNote:
-      "An agent that lives in Linear and answers weather/time questions from your team.",
-    tags: [
-      { name: "TypeScript", color: "bg-pastel-blue/50 text-blue-700" },
-      { name: "Cloudflare", color: "bg-pastel-orange/50 text-orange-700" },
-      { name: "OpenAI", color: "bg-pastel-purple/50 text-purple-700" },
-    ],
-    stackIcons: ["/typescript.svg", "/cloudflare.svg"],
-    link: "https://github.com/muhammad-shameel-ks/speehive-linear-bot",
-    highlights: [
-      "Linear webhook + OAuth integration",
-      "Tool-based agent on Cloudflare Workers",
-      "Runs free on the edge, no server",
-    ],
-    cardBg: "bg-gradient-to-br from-pastel-orange/20 to-pastel-blue/10",
-    iconColor: "bg-pastel-orange/40 text-orange-600",
-    kind: "AGENT",
-  },
-  {
-    index: "13",
+    index: "15",
     title: "Clinic Management",
     subtitle: "Tauri Desktop App",
     description:
@@ -380,7 +408,7 @@ export const projects: Project[] = [
     kind: "DESKTOP",
   },
   {
-    index: "14",
+    index: "16",
     title: "Bakery POS",
     subtitle: "Tauri Desktop POS",
     description:
@@ -402,29 +430,6 @@ export const projects: Project[] = [
     iconColor: "bg-pastel-yellow/40 text-yellow-700",
     kind: "DESKTOP",
   },
-  {
-    index: "15",
-    title: "Asana Agent",
-    subtitle: "Asana MCP Agent",
-    description:
-      "Python MCP setup that wires Asana into OpenAI-compatible agents (opencode/Claude) via OAuth or PAT, so AI can read tasks and take actions.",
-    funNote: "The agent does Asana — you keep the meetings.",
-    tags: [
-      { name: "Python", color: "bg-pastel-yellow/50 text-yellow-700" },
-      { name: "MCP", color: "bg-pastel-purple/50 text-purple-700" },
-      { name: "Asana", color: "bg-pastel-blue/50 text-blue-700" },
-    ],
-    stackIcons: ["/python.svg"],
-    link: "https://github.com/muhammad-shameel-ks/asana-agent",
-    highlights: [
-      "OAuth + PAT auth flows",
-      "MCP for AI tool access",
-      "Task read/action via agent",
-    ],
-    cardBg: "bg-gradient-to-br from-pastel-yellow/20 to-pastel-green/10",
-    iconColor: "bg-pastel-yellow/40 text-yellow-700",
-    kind: "AGENT",
-  },
 ];
 
 /** SVG icon elements keyed by project index */
@@ -440,12 +445,56 @@ export const projectIcons: Record<string, React.ReactNode> = {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <path d="M12 2a4 4 0 00-4 4v1a3 3 0 00-3 3 3 3 0 000 6 3 3 0 003 3v1a4 4 0 008 0v-1a3 3 0 003-3 3 3 0 000-6 3 3 0 00-3-3V6a4 4 0 00-4-4z" />
+      <path d="M12 2v20" />
+    </svg>
+  ),
+  "02": (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <polyline points="16 18 22 12 16 6" />
+      <polyline points="8 6 2 12 8 18" />
+    </svg>
+  ),
+  "03": (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M12 2l3 7 7 1-5 5 1.5 7L12 18l-6.5 4L7 15l-5-5 7-1z" />
+    </svg>
+  ),
+  "04": (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
       <line x1="3" y1="6" x2="21" y2="6" />
       <path d="M16 10a4 4 0 01-8 0" />
     </svg>
   ),
-  "02": (
+  "05": (
     <svg
       width="22"
       height="22"
@@ -460,7 +509,7 @@ export const projectIcons: Record<string, React.ReactNode> = {
       <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
     </svg>
   ),
-  "03": (
+  "06": (
     <svg
       width="22"
       height="22"
@@ -476,7 +525,7 @@ export const projectIcons: Record<string, React.ReactNode> = {
       <line x1="12" y1="17" x2="12" y2="21" />
     </svg>
   ),
-  "04": (
+  "07": (
     <svg
       width="22"
       height="22"
@@ -491,53 +540,6 @@ export const projectIcons: Record<string, React.ReactNode> = {
       <polyline points="8 6 2 12 8 18" />
     </svg>
   ),
-  "05": (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M12 2v20M2 12h20" />
-      <circle cx="12" cy="12" r="4" />
-      <path d="M2 2l20 20" />
-    </svg>
-  ),
-  "06": (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M12 2a3 3 0 00-3 3v6a3 3 0 006 0V5a3 3 0 00-3-3z" />
-      <path d="M19 10v2a7 7 0 01-14 0v-2" />
-      <line x1="12" y1="19" x2="12" y2="22" />
-    </svg>
-  ),
-  "07": (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect x="3" y="4" width="18" height="16" rx="2" />
-      <path d="M7 8h10M7 12h6" />
-    </svg>
-  ),
   "08": (
     <svg
       width="22"
@@ -549,8 +551,7 @@ export const projectIcons: Record<string, React.ReactNode> = {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <path d="M12 2a4 4 0 00-4 4v1a3 3 0 00-3 3 3 3 0 000 6 3 3 0 003 3v1a4 4 0 008 0v-1a3 3 0 003-3 3 3 0 000-6 3 3 0 00-3-3V6a4 4 0 00-4-4z" />
-      <path d="M12 2v20" />
+      <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" />
     </svg>
   ),
   "09": (
@@ -579,8 +580,9 @@ export const projectIcons: Record<string, React.ReactNode> = {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <path d="M3 9l9-6 9 6v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-      <path d="M9 22V12h6v10" />
+      <path d="M12 2v20M2 12h20" />
+      <circle cx="12" cy="12" r="4" />
+      <path d="M2 2l20 20" />
     </svg>
   ),
   "11": (
@@ -594,7 +596,9 @@ export const projectIcons: Record<string, React.ReactNode> = {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <path d="M3 11l19-9-9 19-2-8-8-2z" />
+      <path d="M12 2a3 3 0 00-3 3v6a3 3 0 006 0V5a3 3 0 00-3-3z" />
+      <path d="M19 10v2a7 7 0 01-14 0v-2" />
+      <line x1="12" y1="19" x2="12" y2="22" />
     </svg>
   ),
   "12": (
@@ -608,11 +612,40 @@ export const projectIcons: Record<string, React.ReactNode> = {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <polyline points="16 18 22 12 16 6" />
-      <polyline points="8 6 2 12 8 18" />
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <path d="M7 8h10M7 12h6" />
     </svg>
   ),
   "13": (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M3 9l9-6 9 6v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+      <path d="M9 22V12h6v10" />
+    </svg>
+  ),
+  "14": (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M3 11l19-9-9 19-2-8-8-2z" />
+    </svg>
+  ),
+  "15": (
     <svg
       width="22"
       height="22"
@@ -627,7 +660,7 @@ export const projectIcons: Record<string, React.ReactNode> = {
       <path d="M8 21h8M12 17v4" />
     </svg>
   ),
-  "14": (
+  "16": (
     <svg
       width="22"
       height="22"
@@ -641,34 +674,6 @@ export const projectIcons: Record<string, React.ReactNode> = {
       <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
       <line x1="3" y1="6" x2="21" y2="6" />
       <path d="M9 17l6-6" />
-    </svg>
-  ),
-  "15": (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M12 2l3 7 7 1-5 5 1.5 7L12 18l-6.5 4L7 15l-5-5 7-1z" />
-    </svg>
-  ),
-  "16": (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" />
     </svg>
   ),
 };

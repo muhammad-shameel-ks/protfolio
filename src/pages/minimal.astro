@@ -4,7 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import { SITE } from "../data/site";
 ---
 
-<Layout title="Muhammad Shameel KS — Full-Stack Engineer & Sysadmin" description="Full-stack engineer walking the DevOps path. Building, running and automating systems from Palakkad, Kerala. BSc CS (2022-2027 expected) — shipped Scentance, Stock Salt, Office Pal, homelab K8s on VAIO.">
+<Layout title="Muhammad Shameel KS — Software Engineer | AI Automation & Full-Stack Development" description="Software engineer focused on building useful products, AI agents, and workflows that automate real work. BSc CS 2022-2027 expected — shipped Linear AI Agent, Asana Coding Agent, Scentance, homelab K3s on VAIO.">
   <main class="px-6 md:px-8 py-10 md:py-14">
     <div class="max-w-[720px] mx-auto">
       <!-- Header — identity -->
@@ -17,7 +17,7 @@ import { SITE } from "../data/site";
         </a>
         <div class="min-w-0 flex-1">
           <h1 class="text-[28px] font-extrabold tracking-tight leading-none text-fg">Muhammad Shameel KS</h1>
-          <p class="text-[15px] text-fg-muted leading-snug mt-1">Full-stack engineer walking the DevOps path. I build, run and automate the systems I create.</p>
+          <p class="text-[15px] text-fg-muted leading-snug mt-1">Software engineer focused on building useful products, AI agents, and workflows that automate real work.</p>
           <p class="font-[Silkscreen] text-[11px] tracking-widest uppercase text-accent mt-2">Palakkad, Kerala — remote worldwide · Reply in 12h</p>
           <div class="flex flex-wrap gap-2 mt-3">
             <a href="#contact" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-accent text-white text-xs font-bold hover:bg-accent-dark transition-colors">Hire me</a>
@@ -30,17 +30,17 @@ import { SITE } from "../data/site";
       <!-- Social + quick links -->
       <div class="flex flex-wrap items-center gap-3 mt-6 text-xs">
         <a href={SITE.github} target="_blank" rel="noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface border border-border hover:border-accent/40 transition-colors"><img src="/github-light.svg" alt="GitHub logo" width="14" height="14" class="w-3.5 h-3.5" /> GitHub</a>
-        <a href={SITE.linkedin} target="_blank" rel="noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface border border-border hover:border-accent/40 transition-colors"><img src="/linkedin.svg" alt="LinkedIn logo" width="14" height="14" class="w-3.5 h-3.5 opacity-70" onerror="this.style.display='none'" /> LinkedIn</a>
+        <a href={SITE.linkedin} target="_blank" rel="noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface border border-border hover:border-accent/40 transition-colors"><img src="/linkedin.png" alt="LinkedIn logo" width="14" height="14" class="w-3.5 h-3.5 object-contain opacity-70" onerror="this.style.display='none'" /> LinkedIn</a>
         <a href={`mailto:${SITE.email}`} class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface border border-border hover:border-accent/40 transition-colors">Email</a>
         <span class="text-fg-faint">·</span>
-        <a href="/projects/scentance" class="underline underline-offset-4 hover:text-accent">Scentance</a>
-        <a href="/projects/stock-salt" class="hover:text-accent underline underline-offset-4">Stock Salt</a>
-        <a href="/projects/office-pal" class="hover:text-accent underline underline-offset-4">Office Pal</a>
+        <a href="/projects/linear-ai-agent" class="underline underline-offset-4 hover:text-accent">Linear AI Agent</a>
+        <a href="/projects/asana-coding-agent" class="hover:text-accent underline underline-offset-4">Asana Coding Agent</a>
+        <a href="/projects/scentance" class="hover:text-accent underline underline-offset-4">Scentance</a>
       </div>
 
       <!-- Intro — one paragraph -->
       <div class="mt-10 prose prose-sm max-w-none prose-p:text-fg-muted prose-p:leading-relaxed prose-a:text-accent">
-        <p>I didn't start with a CS degree — I started with a broken laptop, then Arch Linux, Hyprland, and a custom setup I call <strong>Barchy Reborn</strong>. I build lean tools that make someone's Tuesday less painful, then run them myself on a self-hosted K3s cluster on a Sony VAIO.</p>
+        <p>I didn't start with a CS degree — I started with a broken laptop, then Arch Linux, Hyprland, and a custom setup I call <strong>Barchy Reborn</strong>. I build AI agents that automate real work and full-stack products from frontend to deployment. I like understanding what happens after git push — from self-hosted K3s to automated pipelines.</p>
       </div>
 
       <!-- Timeline — karpathy style, your theme -->
@@ -53,26 +53,41 @@ import { SITE } from "../data/site";
           <div class="relative">
             <span class="absolute -left-[29px] top-1 w-2.5 h-2.5 rounded-full bg-accent border-2 border-bg" aria-hidden="true"></span>
             <div class="flex flex-wrap items-baseline gap-2">
-              <span class="font-mono text-xs font-bold text-accent">Aug 2026 — Present</span>
-              <span class="text-sm font-bold text-fg">SpeeHive — AI Agentic Developer</span>
+              <span class="font-mono text-xs font-bold text-accent">July 2026 — Present</span>
+              <span class="text-sm font-bold text-fg">SpeeHive — AI Automation Engineer</span>
               <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-pastel-green/40 border border-green-200/40 text-[10px] font-bold tracking-wider uppercase text-green-700">Now</span>
             </div>
             <div class="mt-2 flex gap-3">
               <img src="/logos/speehive.webp" alt="SpeeHive logo" width="40" height="40" class="w-10 h-10 rounded-lg object-contain border border-border bg-white p-1 shrink-0" loading="lazy" decoding="async" />
-              <p class="text-sm leading-relaxed text-fg-muted flex-1">Working at SpeeHive as an AI agentic developer. Building autonomous workflows and tool-use agents, shipping with AI as a force multiplier — not a crutch. Focus on reliability and fast iteration.</p>
+              <div class="flex-1">
+                <p class="text-sm leading-relaxed text-fg-muted">AI Automation Engineer at SpeeHive, Palakkad. Building AI-powered applications and agentic workflows.</p>
+                <ul class="mt-2 text-sm leading-relaxed text-fg-muted list-disc list-inside marker:text-accent space-y-1">
+                  <li>Built an AI-powered Asana bot that retrieves repos, modifies code, and updates tasks automatically.</li>
+                  <li>Rewrote legacy .NET and Angular apps as modern Next.js apps, including an internal expense tracker.</li>
+                  <li>Integrated agentic AI workflows into daily development; designed scrolling storytelling website.</li>
+                  <li>Diagnosed and fixed database issues during QA.</li>
+                </ul>
+              </div>
             </div>
           </div>
 
-          <!-- Nov 2025 — KSDC -->
+          <!-- Nov 2025 — Jan 2026 — KSDC -->
           <div class="relative">
             <span class="absolute -left-[29px] top-1 w-2.5 h-2.5 rounded-full bg-white border-2 border-border" aria-hidden="true"></span>
             <div class="flex flex-wrap items-baseline gap-2">
-              <span class="font-mono text-xs font-semibold text-fg-faint">Nov 2025 — Jul 2026</span>
+              <span class="font-mono text-xs font-semibold text-fg-faint">Nov 2025 — Jan 2026</span>
               <span class="text-sm font-bold text-fg">Kerala State Development Corporation for SC/ST — Software Developer</span>
             </div>
             <div class="mt-2 flex gap-3">
               <img src="/logos/ksdc.webp" alt="KSDC logo" width="56" height="40" class="w-14 h-10 rounded-lg object-contain border border-border bg-white p-1.5 shrink-0" loading="lazy" decoding="async" />
-              <p class="text-sm leading-relaxed text-fg-muted flex-1">Built <a href="https://github.com/muhammad-shameel-ks/ksdc-smart-helper" target="_blank" rel="noreferrer" class="underline underline-offset-4">KSDC Smart Helper</a> — auto-generates SQL for non-technical staff. React + TypeScript + Node + MSSQL. Used live by staff. The <a href="/projects/office-pal" class="underline underline-offset-4">Office Pal</a> pattern: exam-seating algorithm and role-based dashboards reused here. <a href="/projects/stock-salt" class="underline underline-offset-4">Stock Salt</a> realtime pattern informed the design.</p>
+              <div class="flex-1">
+                <ul class="text-sm leading-relaxed text-fg-muted list-disc list-inside marker:text-accent space-y-1">
+                  <li>Resolved database and migration issues for a government agency's .NET and MySQL systems.</li>
+                  <li>Fixed errors in an application migrating from a legacy system.</li>
+                  <li>Diagnosed and fixed migration-related database issues, restoring data accuracy.</li>
+                </ul>
+                <p class="text-sm leading-relaxed text-fg-muted mt-2">Also built <a href="https://github.com/muhammad-shameel-ks/ksdc-smart-helper" target="_blank" rel="noreferrer" class="underline underline-offset-4">KSDC Smart Helper</a> — auto-generates SQL for non-technical staff, used live daily.</p>
+              </div>
             </div>
           </div>
 
@@ -82,11 +97,11 @@ import { SITE } from "../data/site";
             <div class="flex flex-wrap items-baseline gap-2">
               <span class="font-mono text-xs font-semibold text-fg-faint">2022 — 2027 (expected)</span>
               <span class="text-sm font-bold text-fg">BSc Computer Science</span>
-              <span class="text-xs text-fg-faint">— non-linear path, completing alongside production work</span>
+              <span class="text-xs text-fg-faint">— St Thomas College Thrissur (University of Calicut)</span>
             </div>
             <div class="mt-2 flex gap-3">
               <img src="/logos/stthomas.webp" alt="St Thomas College logo" width="40" height="40" class="w-10 h-10 rounded-lg object-contain border border-border bg-white p-1 shrink-0" loading="lazy" decoding="async" />
-              <p class="text-sm leading-relaxed text-fg-muted flex-1">Supposed to be 2022-2025, now 2022-2027 because of backlogs. Shipped <a href="/projects/scentance" class="underline underline-offset-4">Scentance</a> (live e-commerce, real revenue) and homelab K3s on a VAIO while finishing the degree. Homelab taught more than any tutorial — the 2 AM crash is the point. See full story on <a href="/" class="underline underline-offset-4">/</a>.</p>
+              <p class="text-sm leading-relaxed text-fg-muted flex-1">Shipped <a href="/projects/scentance" class="underline underline-offset-4">Scentance</a> (live e-commerce, real revenue) and homelab K3s on a VAIO while finishing the degree. Homelab taught more than any tutorial — the 2 AM crash is the point. See full story on <a href="/" class="underline underline-offset-4">/</a>.</p>
             </div>
           </div>
 
@@ -95,9 +110,9 @@ import { SITE } from "../data/site";
             <span class="absolute -left-[29px] top-1 w-2.5 h-2.5 rounded-full bg-pastel-orange/60 border-2 border-orange-200" aria-hidden="true"></span>
             <div class="flex flex-wrap items-baseline gap-2">
               <span class="font-mono text-xs font-bold text-accent">2027 →</span>
-              <span class="text-sm font-bold text-fg">Platform / DevOps in progress</span>
+              <span class="text-sm font-bold text-fg">AI agents & automation at scale</span>
             </div>
-            <p class="text-sm leading-relaxed text-fg-muted mt-2">Next: Terraform, observable homelab → production, shipping small AI-assisted tools fast. Palakkad as base, remote worldwide. If you want that kind of builder — <a href="#contact" class="underline underline-offset-4">hire me</a>, I reply in 12h.</p>
+            <p class="text-sm leading-relaxed text-fg-muted mt-2">Next: building AI agents and automation that scale — from tool-calling workflows to full-stack products. Terraform, observable homelab, and self-hosted infra stay as supporting knowledge, not identity. Palakkad as base, remote worldwide. If you want that kind of builder — <a href="#contact" class="underline underline-offset-4">hire me</a>, I reply in 12h.</p>
           </div>
         </div>
       </section>
@@ -106,18 +121,18 @@ import { SITE } from "../data/site";
       <section class="mt-10">
         <h2 class="font-[Silkscreen] text-[12px] tracking-widest uppercase text-fg-faint mb-3">Selected work</h2>
         <div class="space-y-3">
-          <a href="/projects/scentance" class="flex gap-3 p-3 rounded-xl border border-border bg-white hover:border-accent/40 hover:shadow-sm transition-all group">
-            <img src="/projects/scentence.png" alt="Scentance screenshot" width="72" height="48" class="w-[72px] h-[48px] rounded-lg object-cover border border-border shrink-0" loading="lazy" decoding="async" />
+          <a href="/projects/linear-ai-agent" class="flex gap-3 p-3 rounded-xl border border-border bg-white hover:border-accent/40 hover:shadow-sm transition-all group">
+            <div class="w-[72px] h-[48px] rounded-lg bg-pastel-orange/30 border border-orange-100 flex items-center justify-center shrink-0"><span class="font-[Silkscreen] text-[10px] text-orange-600">AGENT</span></div>
             <div class="min-w-0 flex-1">
-              <div class="text-sm font-bold text-fg group-hover:text-accent">Scentance — Premium Fragrance E-commerce <span class="ml-1 inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-green-500/10 border border-green-200 text-[10px] font-bold tracking-wider text-green-700">LIVE</span></div>
-              <div class="text-xs text-fg-muted leading-snug line-clamp-2">Live at scentenceparfum.com with real revenue. Next.js 16 + Three.js + Supabase. <span class="underline underline-offset-4">Case study →</span></div>
+              <div class="text-sm font-bold text-fg group-hover:text-accent">Linear AI Agent — Tool-calling agent inside Linear</div>
+              <div class="text-xs text-fg-muted leading-snug line-clamp-2">OpenAI + Cloudflare Workers, AgentSession webhooks, live tools for coordinates/weather/time. <span class="underline underline-offset-4">Case study →</span></div>
             </div>
           </a>
-          <a href="/projects/stock-salt" class="flex gap-3 p-3 rounded-xl border border-border bg-white hover:border-accent/40 hover:shadow-sm transition-all group">
-            <img src="/projects/stock-salt.png" alt="Stock Salt screenshot" width="72" height="48" class="w-[72px] h-[48px] rounded-lg object-cover border border-border shrink-0" loading="lazy" decoding="async" />
+          <a href="/projects/asana-coding-agent" class="flex gap-3 p-3 rounded-xl border border-border bg-white hover:border-accent/40 hover:shadow-sm transition-all group">
+            <div class="w-[72px] h-[48px] rounded-lg bg-pastel-yellow/30 border border-yellow-100 flex items-center justify-center shrink-0"><span class="font-[Silkscreen] text-[10px] text-yellow-700">AGENT</span></div>
             <div class="min-w-0 flex-1">
-              <div class="text-sm font-bold text-fg group-hover:text-accent">Stock Salt — Real-time Inventory SaaS</div>
-              <div class="text-xs text-fg-muted leading-snug line-clamp-2">One source of truth for 5 outlets. Supabase Realtime, <200ms sync. <span class="underline underline-offset-4">Case study →</span></div>
+              <div class="text-sm font-bold text-fg group-hover:text-accent">Asana Coding Agent — AI-powered development automation</div>
+              <div class="text-xs text-fg-muted leading-snug line-clamp-2">Built at SpeeHive: retrieves repos, works on code, updates Asana tasks. MCP wiring for OpenAI agents. <span class="underline underline-offset-4">Case study →</span></div>
             </div>
           </a>
           <a href="/projects/office-pal" class="flex gap-3 p-3 rounded-xl border border-border bg-white hover:border-accent/40 hover:shadow-sm transition-all group">
@@ -127,8 +142,15 @@ import { SITE } from "../data/site";
               <div class="text-xs text-fg-muted leading-snug line-clamp-2">Exam seating for 2000, anti-cheat algorithm, print-ready PDFs. <span class="underline underline-offset-4">Case study →</span></div>
             </div>
           </a>
+          <a href="/projects/stock-salt" class="flex gap-3 p-3 rounded-xl border border-border bg-white hover:border-accent/40 hover:shadow-sm transition-all group">
+            <img src="/projects/stock-salt.png" alt="Stock Salt screenshot" width="72" height="48" class="w-[72px] h-[48px] rounded-lg object-cover border border-border shrink-0" loading="lazy" decoding="async" />
+            <div class="min-w-0 flex-1">
+              <div class="text-sm font-bold text-fg group-hover:text-accent">Stock Salt — Real-time Inventory SaaS</div>
+              <div class="text-xs text-fg-muted leading-snug line-clamp-2">One source of truth for 5 outlets. Supabase Realtime, &lt;200ms sync. <span class="underline underline-offset-4">Case study →</span></div>
+            </div>
+          </a>
         </div>
-        <p class="text-xs text-fg-faint mt-3">5 more on <a href="/#projects" class="underline underline-offset-4 hover:text-accent">portfolio</a> and <a href={SITE.github} target="_blank" rel="noreferrer" class="underline underline-offset-4 hover:text-accent">GitHub</a>.</p>
+        <p class="text-xs text-fg-faint mt-3">More on <a href="/#projects" class="underline underline-offset-4 hover:text-accent">portfolio</a> and <a href={SITE.github} target="_blank" rel="noreferrer" class="underline underline-offset-4 hover:text-accent">GitHub</a>.</p>
       </section>
 
       <!-- Contact — minimal -->
@@ -171,7 +193,7 @@ import { SITE } from "../data/site";
         const data = new FormData(form);
         const payload: Record<string,string> = {};
         data.forEach((v,k) => payload[k] = String(v));
-        const btn = form.querySelector('button[type=\"submit\"]') as HTMLButtonElement | null;
+        const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
         if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
         statusEl.textContent = '';
         try {

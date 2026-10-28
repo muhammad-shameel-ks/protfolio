@@ -17,7 +17,7 @@ export const HIRE_FAQS: FAQItem[] = [
   },
   {
     q: "What's the Asana Coding Agent?",
-    a: "Professional work at SpeeHive as an AI Automation Engineer: an AI agent that retrieves repositories, works on code, and automatically updates development tasks from Asana. Publicly, I ship the Asana MCP wiring at github.com/muhammad-shameel-ks/asana-agent — it connects Asana to opencode via OAuth or PAT so AI can read tasks and take actions. The repo configures the official Asana MCP Server V2 at https://mcp.asana.com/v2/mcp (remote type, OAuth option 1 / PAT option 2). The agent is the workflow; the repo is the wiring.",
+    a: "Professional work at SpeeHive as a Software Engineer (Agentic Engineer): an AI agent that retrieves repositories, works on code, and automatically updates development tasks from Asana. Publicly, I ship the Asana MCP wiring at github.com/muhammad-shameel-ks/asana-agent — it connects Asana to opencode via OAuth or PAT so AI can read tasks and take actions. The repo configures the official Asana MCP Server V2 at https://mcp.asana.com/v2/mcp (remote type, OAuth option 1 / PAT option 2). The agent is the workflow; the repo is the wiring.",
   },
   {
     q: "What's the Linear AI Agent?",

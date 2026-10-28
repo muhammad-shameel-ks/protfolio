@@ -3,7 +3,7 @@
 # https://llmstxt.org/
 
 # Site
-> Muhammad Shameel KS — Software Engineer | AI Automation & Full-Stack Development from Palakkad, Kerala, India. Building AI-powered applications, AI agents, and automated workflows — from TypeScript to Supabase to deployment.
+> Muhammad Shameel KS — Software Engineer (Agentic Engineering) from Palakkad, Kerala, India. Ships production software at SpeeHive: the PALnxt maritime maintenance platform (Flutter, .NET, React/TypeScript) plus AI agents and automated workflows — from TypeScript to Supabase to deployment.
 
 ## What I Do
 - AI automation & agentic workflows (OpenAI tool calling, MCP, n8n, Cloudflare Workers)
@@ -12,12 +12,16 @@
 - Infrastructure & self-hosting (Docker, Kubernetes, Linux, Tailscale, GitHub Actions)
 
 ## Projects
+- PALnxt (SpeeHive) — Production maritime maintenance platform: Flutter app, .NET services, React/TypeScript web console
 - Linear AI Agent — Tool-calling agent inside Linear on Cloudflare Workers
 - Asana Coding Agent — AI-powered development automation at SpeeHive
 - SpeeHive Social — Agentic AI social media planner (Flutter + Clean Architecture)
 - Scentance — Premium fragrance e-commerce, live with real revenue
 - Stock Salt — Real-time inventory SaaS for 5 outlets
 - Office Pal — College management with anti-cheat exam seating
+- Per-Monitor Workspaces — Omarchy/Hyprland plugin, per-monitor workspace pinning
+- Hermes Mobile — Expo + React Native client for the Hermes agent
+- Shey's STT — Rust speech-to-text for Wayland/Hyprland
 
 ## Contact
 - Email: hi@shameel.dev

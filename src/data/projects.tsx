@@ -25,6 +25,31 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    index: "17",
+    title: "PALnxt",
+    subtitle: "Maritime maintenance platform — Flutter, .NET, React",
+    description:
+      "Production maritime PMS I ship at SpeeHive: a Flutter crew app, .NET/C# services and a React/TypeScript web console. Offline-first data capture, approvals, equipment hierarchy, document control and push notifications, used on vessels where the signal drops.",
+    funNote:
+      "Engineers log maintenance at sea with no signal. The app has to cope and the server catches up later.",
+    tags: [
+      { name: "Flutter", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "TypeScript", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: ".NET", color: "bg-pastel-purple/50 text-purple-700" },
+    ],
+    stackIcons: ["/flutter.svg", "/typescript.svg", "/microsoft-sql-server.svg"],
+    link: "https://speehive.com",
+    highlights: [
+      "Offline-first crew app with a capture queue that replays on reconnect",
+      "Approvals, My Work, equipment hierarchy and RA/WP gated sign-off",
+      "Self-hosted CI/CD for iOS + Android releases",
+      "Vessel-group domain in .NET/EF Core with tenant isolation",
+    ],
+    cardBg: "bg-gradient-to-br from-pastel-blue/25 to-pastel-purple/10",
+    iconColor: "bg-pastel-blue/40 text-blue-600",
+    kind: "PRODUCTION",
+  },
+  {
     index: "01",
     title: "SpeeHive Social",
     subtitle: "Agentic AI Social Media Planner",
@@ -81,7 +106,7 @@ export const projects: Project[] = [
     title: "Asana Coding Agent",
     subtitle: "AI-powered development automation",
     description:
-      "Built at SpeeHive as an AI Automation Engineer: an AI agent that retrieves repositories, works on code, and automatically updates development tasks from Asana. Public MCP wiring at github.com/muhammad-shameel-ks/asana-agent connects Asana to OpenAI-compatible agents via OAuth/PAT so AI can read tasks and take actions.",
+      "Built at SpeeHive as a Software Engineer (Agentic Engineer): an AI agent that retrieves repositories, works on code, and automatically updates development tasks from Asana. Public MCP wiring at github.com/muhammad-shameel-ks/asana-agent connects Asana to OpenAI-compatible agents via OAuth/PAT so AI can read tasks and take actions.",
     funNote: "Built for real work at SpeeHive — the agent does the repo work, you keep the meetings.",
     tags: [
       { name: "Python", color: "bg-pastel-yellow/50 text-yellow-700" },
@@ -430,6 +455,97 @@ export const projects: Project[] = [
     iconColor: "bg-pastel-yellow/40 text-yellow-700",
     kind: "DESKTOP",
   },
+  {
+    index: "18",
+    title: "Hermes Mobile",
+    subtitle: "Native mobile client for my AI agent",
+    description:
+      "Expo + React Native client for the Hermes agent — talk to the same agent that runs my desktop from a phone, with streaming replies and a native iOS/Android shell around it.",
+    funNote: "The agent follows me out of the house.",
+    tags: [
+      { name: "React Native", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "Expo", color: "bg-pastel-purple/50 text-purple-700" },
+      { name: "TypeScript", color: "bg-pastel-blue/50 text-blue-700" },
+    ],
+    stackIcons: ["/reactjs.svg", "/typescript.svg"],
+    link: "https://github.com/muhammad-shameel-ks/hermes-mobile",
+    highlights: [
+      "Expo + React Native, one codebase for iOS and Android",
+      "Talks to the Hermes agent runtime",
+      "Streaming replies with native navigation",
+    ],
+    cardBg: "bg-gradient-to-br from-pastel-blue/20 to-pastel-green/10",
+    iconColor: "bg-pastel-blue/40 text-blue-600",
+    kind: "APP",
+    isWip: true,
+  },
+  {
+    index: "19",
+    title: "Shey's STT",
+    subtitle: "Fast cloud speech-to-text for Wayland",
+    description:
+      "Rust daemon that dictates anywhere on Hyprland: holds the mic, streams audio to a cloud STT model and types the transcript straight into the focused window. No idle process, no browser tab.",
+    funNote: "Reaching for the keyboard mid-thought kills the thought.",
+    tags: [
+      { name: "Rust", color: "bg-pastel-orange/50 text-orange-700" },
+      { name: "Wayland", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "Hyprland", color: "bg-pastel-purple/50 text-purple-700" },
+    ],
+    stackIcons: ["/arch-linux.svg"],
+    link: "https://github.com/muhammad-shameel-ks/sheys-stt",
+    highlights: [
+      "Rust, zero idle CPU",
+      "Dictates into any focused window",
+      "Cloud STT without a browser in the loop",
+    ],
+    cardBg: "bg-gradient-to-br from-pastel-orange/20 to-pastel-yellow/10",
+    iconColor: "bg-pastel-orange/40 text-orange-600",
+    kind: "RUST TOOL",
+  },
+  {
+    index: "20",
+    title: "Gymly",
+    subtitle: "Workout tracker with a Duolingo streak habit",
+    description:
+      "Flutter training log with a playful, high-contrast UI. Its release pipeline runs release-please → auto-merge → tag → attached builds, so shipping a version is boring on purpose.",
+    funNote: "Making the gym feel like a streak, not a chore.",
+    tags: [
+      { name: "Flutter", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "Dart", color: "bg-pastel-green/50 text-green-700" },
+    ],
+    stackIcons: ["/flutter.svg"],
+    link: "https://github.com/muhammad-shameel-ks/gymly",
+    highlights: [
+      "Flutter UI with playful motion",
+      "release-please → auto-merge → tag → attach",
+      "Personal training log, used while lifting",
+    ],
+    cardBg: "bg-gradient-to-br from-pastel-green/20 to-pastel-blue/10",
+    iconColor: "bg-pastel-green/40 text-green-600",
+    kind: "APP",
+  },
+  {
+    index: "21",
+    title: "OMP Model Profiles",
+    subtitle: "Named model + thinking-level profiles for Oh My Pi",
+    description:
+      "Fullscreen TUI that applies, snapshots and edits per-role model and reasoning-level assignments for the omp agent harness, so the right model answers the right kind of question.",
+    funNote: "Reasoning budget: spent where it earns its keep.",
+    tags: [
+      { name: "TypeScript", color: "bg-pastel-blue/50 text-blue-700" },
+      { name: "TUI", color: "bg-pastel-purple/50 text-purple-700" },
+    ],
+    stackIcons: ["/typescript.svg"],
+    link: "https://github.com/muhammad-shameel-ks/omp-model-profiles",
+    highlights: [
+      "Fullscreen TUI dashboard",
+      "Apply, snapshot and restore profiles",
+      "Per-role model and thinking-level assignment",
+    ],
+    cardBg: "bg-gradient-to-br from-pastel-purple/20 to-pastel-pink/10",
+    iconColor: "bg-pastel-purple/40 text-purple-600",
+    kind: "PLUGIN",
+  },
 ];
 
 /** SVG icon elements keyed by project index */
@@ -674,6 +790,95 @@ export const projectIcons: Record<string, React.ReactNode> = {
       <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
       <line x1="3" y1="6" x2="21" y2="6" />
       <path d="M9 17l6-6" />
+    </svg>
+  ),
+  "17": (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12" cy="5" r="3" />
+      <line x1="12" y1="22" x2="12" y2="8" />
+      <path d="M5 12H2a10 10 0 0020 0h-3" />
+    </svg>
+  ),
+  "18": (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="5" y="2" width="14" height="20" rx="2" />
+      <line x1="12" y1="18" x2="12" y2="18.01" />
+    </svg>
+  ),
+  "19": (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z" />
+      <path d="M19 10v2a7 7 0 01-14 0v-2" />
+      <line x1="12" y1="19" x2="12" y2="23" />
+    </svg>
+  ),
+  "20": (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M6.5 6.5l11 11" />
+      <path d="M21 21l-1-1" />
+      <path d="M3 3l1 1" />
+      <path d="M18 22l4-4" />
+      <path d="M2 6l4-4" />
+      <path d="M3 10l7-7" />
+      <path d="M14 21l7-7" />
+    </svg>
+  ),
+  "21": (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <line x1="4" y1="21" x2="4" y2="14" />
+      <line x1="4" y1="10" x2="4" y2="3" />
+      <line x1="12" y1="21" x2="12" y2="12" />
+      <line x1="12" y1="8" x2="12" y2="3" />
+      <line x1="20" y1="21" x2="20" y2="16" />
+      <line x1="20" y1="12" x2="20" y2="3" />
+      <line x1="1" y1="14" x2="7" y2="14" />
+      <line x1="9" y1="8" x2="15" y2="8" />
+      <line x1="17" y1="16" x2="23" y2="16" />
     </svg>
   ),
 };

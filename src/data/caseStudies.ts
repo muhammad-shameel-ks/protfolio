@@ -246,7 +246,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     link: "https://github.com/muhammad-shameel-ks/asana-agent",
     linkLabel: "View on GitHub",
     problem:
-      "At SpeeHive, development tasks live in Asana but turning a task into code still meant manual repo wrangling — clone, read context, edit, push, then update the task. As an AI Automation Engineer, I needed a way for an agent to do that loop automatically while staying tied to the Asana source of truth.",
+      "At SpeeHive, development tasks live in Asana but turning a task into code still meant manual repo wrangling — clone, read context, edit, push, then update the task. As a Software Engineer (Agentic Engineer), I needed a way for an agent to do that loop automatically while staying tied to the Asana source of truth.",
     approach: [
       "Professional work at SpeeHive: built an AI agent that retrieves repositories, works on code, and automatically updates development tasks from Asana — part of an agentic development workflow where AI handles implementation and investigation.",
       "Public MCP wiring at github.com/muhammad-shameel-ks/asana-agent connects Asana to opencode via OAuth or PAT — so AI can read tasks, search workspaces, and take actions from the editor. The repo configures the official Asana MCP Server V2 at https://mcp.asana.com/v2/mcp (remote type, OAuth option 1 / PAT option 2).",
@@ -269,7 +269,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "No invented metrics — the value is the workflow: less context switching, faster task throughput.",
     ],
     highlights: [
-      "Built at SpeeHive as AI Automation Engineer",
+      "Built at SpeeHive as Software Engineer (Agentic Engineer)",
       "Retrieves repos, works on code, updates Asana tasks",
       "Asana MCP wiring via OAuth/PAT",
       "Agentic development workflow",
